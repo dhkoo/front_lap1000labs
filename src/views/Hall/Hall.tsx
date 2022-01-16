@@ -13,6 +13,9 @@ import {
 } from 'constants/images';
 
 const Hall = () => {
+  const saySomething = (say: string) => {
+    alert(say);
+  }
   return (
     <S.HallContainer>
       <S.TitleText>TODO: 계승식 투표 생성</S.TitleText>
@@ -46,7 +49,7 @@ const Hall = () => {
                 [닉네임]
                 <br />{' '}
                 <b>
-                  <u>내사랑인재의엉뎡이가너무나고그리운오늘.</u>
+                  <u onClick={() => {saySomething("엣헴")}}>내사랑인재의엉뎡이가너무나고그리운오늘.</u>
                 </b>{' '}
                 <br />
                 [주소] 0x5e8...5a4 <br />
@@ -60,7 +63,7 @@ const Hall = () => {
               <S.ContentText>
                 [닉네임]{' '}
                 <b>
-                  <u>2대호카게_팔라대왕</u>
+                  <u onClick={() => {saySomething("나도 엣헴..ㅎ")}}>2대호카게_팔라대왕</u>
                 </b>{' '}
                 <br />
                 [주소] 0x40F...e4e <br />
@@ -91,7 +94,7 @@ const Hall = () => {
               <S.ContentText>
                 [닉네임]{' '}
                 <b>
-                  <u>alapu2</u>
+                  <u onClick={() => saySomething("et.hem")}>alapu2</u>
                 </b>{' '}
                 <br />
                 [주소] 0x27c...3b7 <br />
@@ -122,7 +125,7 @@ const Hall = () => {
               <S.ContentText>
                 [닉네임]{' '}
                 <b>
-                  <u>알라프</u>
+                  <u onClick={() => saySomething("우가가가")}>알라프</u>
                 </b>{' '}
                 <br />
                 [주소] 0x9b9...e0b <br />
@@ -153,7 +156,7 @@ const Hall = () => {
               <S.ContentText>
                 [닉네임]{' '}
                 <b>
-                  <u>나는 전설이다</u>
+                  <u onClick={() => saySomething("뀨")}>나는 전설이다</u>
                 </b>{' '}
                 <br />
                 [주소] 0x452...6a3 <br />
@@ -170,23 +173,23 @@ const Hall = () => {
       <S.NamedContainer>
         <S.NamedGroup>
           <S.NamedImage src={NamedAlap1} />
-          <S.ContentText>강도깨비</S.ContentText>
+          <S.ContentText onClick={() => saySomething("끼룩끼룩")}><u>강도깨비</u></S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
           <S.NamedImage src={NamedAlap2} />
-          <S.ContentText>기억할게</S.ContentText>
+          <S.ContentText onClick={() => saySomething("랍천 기억할게!")}><u>기억할게</u></S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
           <S.NamedImage src={NamedAlap3} />
-          <S.ContentText>572</S.ContentText>
+          <S.ContentText onClick={() => saySomething("작명..그으으만..")}><u>572</u></S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
           <S.NamedImage src={NamedAlap4} />
-          <S.ContentText>k-bluewhale</S.ContentText>
+          <S.ContentText onClick={() => saySomething("고래 뿌우뿌우!!")}><u>k-bluewhale</u></S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
           <S.NamedImage src={NamedAlap5} />
-          <S.ContentText>팔달라</S.ContentText>
+          <S.ContentText onClick={() => saySomething("사딸라? 아니아니 팔딸라!")}><u>팔달라</u></S.ContentText>
         </S.NamedGroup>
       </S.NamedContainer>
       <S.ContentText>
