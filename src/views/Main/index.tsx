@@ -8,7 +8,7 @@ import Hall from 'views/Hall/Hall';
 
 const Main = () => {
   return (
-    <>
+    <S.Main>
       <TopBar />
       <BrowserRouter>
         <Link to="/">
@@ -22,7 +22,7 @@ const Main = () => {
           <Route path="/hall" element={<Hall />}/>
         </Routes>
       </BrowserRouter>
-    </>
+    </S.Main>
   );
 }
 
