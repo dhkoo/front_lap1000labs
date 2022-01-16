@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import * as S from './style';
 
 import TopBar from 'components/TopBar';
-import Intro from 'views/Intro/Intro';
-import Hall from 'views/Hall/Hall';
+import Intro from 'views/Intro';
+import Hall from 'views/Hall';
 
 const Main = () => {
   return (
