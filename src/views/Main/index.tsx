@@ -18,12 +18,12 @@ const Main = () => {
           <S.ContentText>전시관</S.ContentText>
         </Link>
         <Routes>
-          <Route path="/" element={<Intro />}/>
-          <Route path="/hall" element={<Hall />}/>
+          <Route path="/" element={<Intro />} />
+          <Route path="/hall" element={<Hall />} />
         </Routes>
       </BrowserRouter>
     </S.Main>
   );
-}
+};
 
 export default Main;

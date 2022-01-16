@@ -8,8 +8,8 @@ const App = () => {
     <>
       <GlobalStyle />
       <Main />
-   </>
-  )
-}
+    </>
+  );
+};
 
 export default App;

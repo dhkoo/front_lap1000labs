@@ -9,6 +9,6 @@ const TopBar = () => {
       </S.TopBar>
     </>
   );
-}
+};
 
 export default TopBar;
