@@ -35,6 +35,8 @@ export const LapgendTemplate = styled.div`
 
 export const LapgendImage = styled.img`
   width: 300px;
+  border: solid;
+  cursor: pointer;
 `;
 
 export const NamedContainer = styled.div`
@@ -54,6 +56,15 @@ export const NamedGroup = styled.div`
 
 export const NamedImage = styled.img`
   width: 100px;
+  border: solid;
+  cursor: pointer;
+`;
+
+export const PetImage = styled.img`
+  width: 90px;
+  height: 90px;
+  border: solid;
+  cursor: pointer;
 `;
 
 export const TitleText = styled.div`

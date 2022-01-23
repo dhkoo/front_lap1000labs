@@ -12,22 +12,16 @@ const Intro = () => {
       </S.ContentText>
       <S.ContentText>
         <br />
-        2. 알랍 거버넌스 투표 (진행 예정)
-      </S.ContentText>
-      <S.ContentText>(계승식, 네임드 선정, 이달의 알랍 등)</S.ContentText>
-      <S.ContentText>
-        <br />
-        3. 전시관 댓글 기능
+        2. 지갑 연결시 소유 Alap 표시 (작업중)
       </S.ContentText>
       <S.ContentText>
         <br />
-        4. LapToken
+        3. 레전드, 네임드 대사 등록 컨트랙트
       </S.ContentText>
       <S.ContentText>
         <br />
-        등등
+        4. 알랍 투표 기능
       </S.ContentText>
-      <S.ContentText>좋은 아이디어 있으면 알려줘.. 참고는 해볼게</S.ContentText>
       <S.IntroContainer>
         <S.TitleText>DONATION</S.TitleText>
         <S.ContentText></S.ContentText>

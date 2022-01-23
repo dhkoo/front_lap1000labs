@@ -10,6 +10,9 @@ import {
   NamedAlap3,
   NamedAlap4,
   NamedAlap5,
+  NamedAlap6,
+  Pet1,
+  Pet2,
 } from 'constants/images';
 
 const Hall = () => {
@@ -44,30 +47,30 @@ const Hall = () => {
           </S.ContentText>
           <S.LapgendTemplateGroup>
             <S.LapgendTemplate>
-              <S.LapgendImage src={Lapgend1_1} />
+              <S.LapgendImage src={Lapgend1_1} onClick={() => {saySomething("엣헴")}} />
               <S.ContentText>
                 [닉네임]
                 <br />{' '}
                 <b>
-                  <u onClick={() => {saySomething("엣헴")}}>내사랑인재의엉뎡이가너무나고그리운오늘.</u>
+                  <b>내사랑인재의엉뎡이가너무나고그리운오늘.</b>
                 </b>{' '}
                 <br />
-                [주소] 0x5e8...5a4 <br />
+                [계정] 0x5e8...5a4 <br />
                 [상태] retirement <br />
                 [임기 기간] 2021.11.11 ~ 2022.01.03 <br />
                 [계승 가격] 30 KLAY
               </S.ContentText>
             </S.LapgendTemplate>
             <S.LapgendTemplate>
-              <S.LapgendImage src={Lapgend1_2} />
+              <S.LapgendImage src={Lapgend1_2} onClick={() => {saySomething("나도 엣헴..ㅎ")}} />
               <S.ContentText>
                 [닉네임]{' '}
                 <b>
-                  <u onClick={() => {saySomething("나도 엣헴..ㅎ")}}>2대호카게_팔라대왕</u>
+                  <b>2대호카게_팔라대왕</b>
                 </b>{' '}
                 <br />
                 [주소] 0x40F...e4e <br />
-                [상태] active <br />
+                [계정] active <br />
                 [임기 기간] 2022.01.03 ~ <br />
                 [계승 가격] 21111 KLAY
               </S.ContentText>
@@ -76,6 +79,7 @@ const Hall = () => {
           <S.VoteCreationButton color="#FDEB8D">투표 생성 (준비중)</S.VoteCreationButton>
         </S.LapgendGroup>
 
+        <S.LapgendTemplateGroup>
         <S.LapgendGroup>
           <S.TitleText>Lapgend #2</S.TitleText>
           <button
@@ -90,14 +94,14 @@ const Hall = () => {
           </button>
           <S.LapgendTemplateGroup>
             <S.LapgendTemplate>
-              <S.LapgendImage src={Lapgend2_1} />
+              <S.LapgendImage src={Lapgend2_1} onClick={() => saySomething("et.ham")} />
               <S.ContentText>
                 [닉네임]{' '}
                 <b>
-                  <u onClick={() => saySomething("et.hem")}>alapu2</u>
+                  <b>alapu2</b>
                 </b>{' '}
                 <br />
-                [주소] 0x27c...3b7 <br />
+                [계정] 0x27c...3b7 <br />
                 [상태] active <br />
                 [임기 기간] 2022.01.12 ~ <br />
                 [계승 가격] 25000 KLAY
@@ -121,14 +125,14 @@ const Hall = () => {
           </button>
           <S.LapgendTemplateGroup>
             <S.LapgendTemplate>
-              <S.LapgendImage src={Lapgend3_1} />
+              <S.LapgendImage src={Lapgend3_1} onClick={() => saySomething("우가가가")} />
               <S.ContentText>
                 [닉네임]{' '}
                 <b>
-                  <u onClick={() => saySomething("우가가가")}>알라프</u>
+                  <b>알라프</b>
                 </b>{' '}
                 <br />
-                [주소] 0x9b9...e0b <br />
+                [계정] 0x9b9...e0b <br />
                 [상태] active <br />
                 [임기 기간] 2021.11.12 ~ <br />
                 [계승 가격] 2500 KLAY
@@ -152,14 +156,14 @@ const Hall = () => {
           </button>
           <S.LapgendTemplateGroup>
             <S.LapgendTemplate>
-              <S.LapgendImage src={Lapgend4_1} />
+              <S.LapgendImage src={Lapgend4_1} onClick={() => saySomething("뀨")}/>
               <S.ContentText>
                 [닉네임]{' '}
                 <b>
-                  <u onClick={() => saySomething("뀨")}>나는 전설이다</u>
+                  <b onClick={() => saySomething("뀨")}>나는 전설이다</b>
                 </b>{' '}
                 <br />
-                [주소] 0x452...6a3 <br />
+                [계정] 0x452...6a3 <br />
                 [상태] active <br />
                 [임기 기간] 2022.01.07 ~ <br />
                 [계승 가격] 25000 KLAY
@@ -168,41 +172,49 @@ const Hall = () => {
           </S.LapgendTemplateGroup>
           <S.VoteCreationButton color="#65E7C5">투표 생성 (준비중)</S.VoteCreationButton>
         </S.LapgendGroup>
+        </S.LapgendTemplateGroup>
       </S.LapgendContainer>
       <S.TitleText>네임드 알랍</S.TitleText>
       <S.NamedContainer>
         <S.NamedGroup>
-          <S.NamedImage src={NamedAlap1} />
-          <S.ContentText onClick={() => saySomething("끼룩끼룩")}><u>강도깨비</u></S.ContentText>
+          <S.NamedImage src={NamedAlap1} onClick={() => saySomething("팔라야 힘내!")}/>
+          <S.ContentText><b>강도깨비</b></S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
-          <S.NamedImage src={NamedAlap2} />
-          <S.ContentText onClick={() => saySomething("랍천 기억할게!")}><u>기억할게</u></S.ContentText>
+          <S.NamedImage src={NamedAlap6} onClick={() => saySomething("똥아니다.. 수염이다..")} />
+          <S.ContentText><b>셀마 헤이엑</b></S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
-          <S.NamedImage src={NamedAlap3} />
-          <S.ContentText onClick={() => saySomething("작명..그으으만..")}><u>572</u></S.ContentText>
+          <S.NamedImage src={NamedAlap2} onClick={() => saySomething("랍천 기억할게!")} />
+          <S.ContentText><b>기억할게</b></S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
-          <S.NamedImage src={NamedAlap4} />
-          <S.ContentText onClick={() => saySomething("고래 뿌우뿌우!!")}><u>k-bluewhale</u></S.ContentText>
+          <S.NamedImage src={NamedAlap3} onClick={() => saySomething("작명..그으으만..")} />
+          <S.ContentText><b>572</b></S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
-          <S.NamedImage src={NamedAlap5} />
-          <S.ContentText onClick={() => saySomething("사딸라? 아니아니 팔딸라!")}><u>팔달라</u></S.ContentText>
+          <S.NamedImage src={NamedAlap4} onClick={() => saySomething("고래 뿌우뿌우!!")} />
+          <S.ContentText><b>k-bluewhale</b></S.ContentText>
+        </S.NamedGroup>
+        <S.NamedGroup>
+          <S.NamedImage src={NamedAlap5} onClick={() => saySomething("팔라 팔달라 가면 닉 뭐하지?")} />
+          <S.ContentText><b>팔달라</b></S.ContentText>
         </S.NamedGroup>
       </S.NamedContainer>
-      <S.ContentText>
+      <S.TitleText>공식 애완동물</S.TitleText>
+      <S.NamedContainer>
+        <S.NamedGroup>
+          <S.PetImage src={Pet1} onClick={() => saySomething("으으으ㅏㅇ아아아ㅏ앙ㅇ꺄아아아아아아ㅜㅜ웅ㅇ우우우ㅜㅜ루룰~!")}/>
+          <S.ContentText><b>(팔라가 오르면 우는 늑대)</b></S.ContentText>
+        </S.NamedGroup>
+        <S.NamedGroup>
+          <S.PetImage src={Pet2} onClick={() => saySomething("키치이이이잉이이이익!")} />
+          <S.ContentText><b>(늑대대신울어주는토끼)</b></S.ContentText>
+        </S.NamedGroup>
+      </S.NamedContainer>
         <br />
         <br />
-        번호 순 나열이고 네임드인데 여기 없으면 내가 이미지 번호를 못찾아서야..
-      </S.ContentText>
-      <S.ContentText>
-        이의가 있다면 커뮤니티에서 합의를 보고 알려줘 반영할게
         <br />
-        <br />
-        <br />
-      </S.ContentText>
     </S.HallContainer>
   );
 };
