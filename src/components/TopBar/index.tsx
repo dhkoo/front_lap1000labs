@@ -20,7 +20,7 @@ const TopBar = () => {
   };
 
   useEffect(() => {
-    const getAlapId = async () => {
+    const displayAlap = async () => {
       let ids = [];
       if (isLoggedIn()) {
         ids = await getUserAlapIds(caver, address, 0, 10);
@@ -29,7 +29,7 @@ const TopBar = () => {
         }
       }
     };
-    getAlapId();
+    displayAlap();
   }, [address]);
 
   return (

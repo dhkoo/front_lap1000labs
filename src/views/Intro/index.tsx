@@ -12,7 +12,7 @@ const Intro = () => {
       </S.ContentText>
       <S.ContentText>
         <br />
-        2. 지갑 연결시 소유 Alap 표시 (작업중)
+        2. <s>지갑 연결시 소유 Alap 표시</s> (완료)
       </S.ContentText>
       <S.ContentText>
         <br />
