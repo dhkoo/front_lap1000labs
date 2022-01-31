@@ -7,20 +7,18 @@ export const TopBar = styled.div`
   align-items: center;
 `;
 
-export const NavigationWrapper = styled.div`
+export const ProfileWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-`;
-
-export const Menu = styled.div`
-  font-family: Pretendard;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 40px;
-  color: white;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Lap1000Logo = styled.img`
   width: 250px;
   border: solid white;
+`;
+
+export const AlapImage = styled.img`
+  width: 90px;
 `;

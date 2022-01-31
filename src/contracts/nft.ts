@@ -3,9 +3,9 @@ import Caver from 'caver-js';
 import AlapViewerABI from './abi/AlapViewer.json';
 import { contractAddr } from './addrBook';
 
-export const getUserAlapAmount = async (caver: typeof Caver, account: string) => {
+export const getUserAlapAmount = async (caver: typeof Caver, account: string): Promise<any> => {
     const viewer = caver.contract.create(AlapViewerABI, contractAddr.AlapViewer);
-    const amount = await viewer.methods.balanceof(account).call();
+    const amount = await viewer.methods.balanceOf(account).call();
     return Number(amount);
 };
 
