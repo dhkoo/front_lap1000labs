@@ -8,9 +8,10 @@ import Caver from 'caver-js';
 import { getUserAlapIds } from 'contracts/nft';
 
 import { RootState } from 'state';
+import { gateway } from 'contracts/addrBook';
 
 const TopBar = () => {
-  const caver = new Caver('https://public-node-api.klaytnapi.com/v1/cypress');
+  const caver = new Caver(gateway.cypress);
   const walletName = useSelector((state: RootState) => state.wallet.name);
   const address = useSelector((state: RootState) => state.wallet.address);
   const [imageURL, setImageURL] = useState<string>();

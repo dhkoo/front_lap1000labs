@@ -5,6 +5,8 @@ import * as S from './style';
 import TopBar from 'components/TopBar';
 import Intro from 'views/Intro';
 import Hall from 'views/Hall';
+import Messenger from 'views/Messenger';
+import Store from 'views/Store';
 
 const Main = () => {
   return (
@@ -17,9 +19,17 @@ const Main = () => {
         <Link to="/hall">
           <S.ContentText>전시관</S.ContentText>
         </Link>
+        <Link to="/messenger">
+          <S.ContentText>메신저</S.ContentText>
+        </Link>
+        <Link to="/store">
+          <S.ContentText>만물상</S.ContentText>
+        </Link>
         <Routes>
           <Route path="/" element={<Intro />} />
           <Route path="/hall" element={<Hall />} />
+          <Route path="/messenger" element={<Messenger />} />
+          <Route path="/store" element={<Store />} />
         </Routes>
       </BrowserRouter>
     </S.Main>
