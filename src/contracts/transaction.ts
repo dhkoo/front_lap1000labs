@@ -4,7 +4,7 @@ export const executeTx = async (
   from: string,
   to: string,
   value: string,
-  abi: string,
+  abi: any,
   params: any,
   caver: typeof Caver,
   receiptCallback?: any,
@@ -18,17 +18,19 @@ export const executeTx = async (
     value,
     gas: 3000000,
   };
-  console.log(from, to, data, value);
+  let txHash = '';
   await caver.rpc.klay
     .sendTransaction(tx)
     .on('transactionHash', (transactionHash: any) => {
-      console.log('txHash', transactionHash);
+      txHash = transactionHash;
     })
     .on('receipt', (receipt: any) => {
       console.log('receipt', receipt);
       if (receiptCallback) receiptCallback();
     })
     .on('error', async (error: any) => {
+      const failedReceipt = await caver.rpc.klay.getTransactionReceipt(txHash.toString());
+      console.log('failed receipt', failedReceipt);
       console.log('error', error);
     });
 };

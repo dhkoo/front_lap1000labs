@@ -4,13 +4,18 @@ import AlapViewerABI from './abi/AlapViewer.json';
 import { contractAddr } from './addrBook';
 
 export const getUserAlapAmount = async (caver: typeof Caver, account: string): Promise<any> => {
-    const viewer = caver.contract.create(AlapViewerABI, contractAddr.AlapViewer);
-    const amount = await viewer.methods.balanceOf(account).call();
-    return Number(amount);
+  const viewer = caver.contract.create(AlapViewerABI, contractAddr.AlapViewer);
+  const amount = await viewer.methods.balanceOf(account).call();
+  return Number(amount);
 };
 
-export const getUserAlapIds = async (caver: typeof Caver, account: string, offset: number, limit: number): Promise<any> => {
-    const alapViewer = caver.contract.create(AlapViewerABI, contractAddr.AlapViewer);
-    const res = await alapViewer.methods.userTokenIds(account, offset, limit).call();
-    return res.tokenIds;
+export const getUserAlapIds = async (
+  caver: typeof Caver,
+  account: string,
+  offset: number,
+  limit: number,
+): Promise<any> => {
+  const alapViewer = caver.contract.create(AlapViewerABI, contractAddr.AlapViewer);
+  const res = await alapViewer.methods.userTokenIds(account, offset, limit).call();
+  return res.tokenIds;
 };

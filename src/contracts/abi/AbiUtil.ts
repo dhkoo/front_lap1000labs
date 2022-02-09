@@ -1,4 +1,4 @@
-import { AbiItem } from 'web3-utils'
+import { AbiItem } from 'web3-utils';
 
 export const getABI = (abi: AbiItem[], name: string): any => {
   for (let i = 0; i < abi.length; ++i) {
@@ -7,4 +7,4 @@ export const getABI = (abi: AbiItem[], name: string): any => {
     }
   }
   return false;
-}
+};

@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Caver from 'caver-js';
 import { useSelector } from 'react-redux';
+
 import { RootState } from 'state';
-import { getKlayTopDonators } from 'contracts/donation';
-import { gateway } from 'contracts/addrBook';
+import { donateKlay, getKlayTopDonators } from 'contracts/donation';
+import { contractAddr, gateway } from 'contracts/addrBook';
+
 import * as S from './style';
 
 const Intro = () => {
-  const caver = new Caver(gateway.cypress);
+  const caver = new Caver(window.klaytn);
 
   const walletName = useSelector((state: RootState) => state.wallet.name);
   const address = useSelector((state: RootState) => state.wallet.address);
@@ -16,27 +18,23 @@ const Intro = () => {
     const [donationAmount, setDonationAmount] = useState(0);
 
     const handleChange = (event: any) => setDonationAmount(event.target.value);
-    const handleSubmit = (event:any) => {
+    const handleSubmit = (event: any) => {
       event.preventDefault();
       if (walletName !== '' && address !== '') {
-        alert("[Not work yet] Donate " + donationAmount);
-        //donateKlay(caver, address, contractAddr.Donation, donationAmount);
+        // alert('[Not work yet] Donate ' + donationAmount);
+        donateKlay(caver, address, contractAddr.Donation, donationAmount * 10 ** 18);
       } else {
-        alert("Need to Login");
+        alert('Need to Login');
       }
     };
 
     return (
       <form onSubmit={handleSubmit}>
-        <input
-          type="number"
-          min={0}
-          placeholder='후원할 KLAY 수량 입력'
-          onChange={handleChange} />
+        <S.DonationInput type="number" min={0} step={0.01} placeholder="후원할 KLAY 수량" onChange={handleChange} />
         <button type="submit">Donate</button>
       </form>
     );
-  }
+  };
 
   const [donators, setDonators] = useState([]);
   const [tokenIds, setTokenIds] = useState([]);
@@ -46,9 +44,9 @@ const Intro = () => {
       const res = await getKlayTopDonators(caver);
       setDonators(res.donatorList);
       setTokenIds(res.tokenList);
-    }
+    };
     klayTopDonators();
-  }, [])
+  }, []);
 
   return (
     <S.Intro>
@@ -82,14 +80,12 @@ const Intro = () => {
       <S.IntroContainer>
         <S.TitleText>DONATION</S.TitleText>
         <S.ContentText></S.ContentText>
-        <S.ContentText>
-          0x2eE778B760F1fB93c24c48B9B2992Cd8F3f0c75A
-        </S.ContentText>
-      <br />
-      <Donation />
-      <br />
-      <br />
-      <br />
+        <S.ContentText>0x2eE778B760F1fB93c24c48B9B2992Cd8F3f0c75A</S.ContentText>
+        <br />
+        <Donation />
+        <br />
+        <br />
+        <br />
       </S.IntroContainer>
     </S.Intro>
   );
