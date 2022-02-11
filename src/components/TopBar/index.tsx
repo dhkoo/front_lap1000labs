@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import ConnectWalletButton from './ConnectWalletButton';
-import ConnectedWalletButton from './ConnectedWalletButton';
-import * as S from './style';
-import { Lap1000Logo } from 'constants/images';
 import Caver from 'caver-js';
-import { getUserAlapIds } from 'contracts/nft';
 
 import { RootState } from 'state';
+import { getUserAlapIds } from 'contracts/nft';
 import { gateway } from 'contracts/addrBook';
+import ConnectWalletButton from './ConnectWalletButton';
+import ConnectedWalletButton from './ConnectedWalletButton';
+
+import { Lap1000Logo } from 'constants/images';
+import * as S from './style';
 
 const TopBar = () => {
   const caver = new Caver(gateway.cypress);
@@ -26,7 +27,7 @@ const TopBar = () => {
       if (isLoggedIn()) {
         ids = await getUserAlapIds(caver, address, 0, 10);
         if (ids.length > 0) {
-          setImageURL("https://alap.s3.ap-northeast-2.amazonaws.com/alap-"+ids[0]+".png");
+          setImageURL('https://alap.s3.ap-northeast-2.amazonaws.com/alap-' + ids[0] + '.png');
         }
       }
     };
