@@ -21,7 +21,6 @@ const Intro = () => {
     const handleSubmit = (event: any) => {
       event.preventDefault();
       if (walletName !== '' && address !== '') {
-        // alert('[Not work yet] Donate ' + donationAmount);
         donateKlay(caver, address, contractAddr.Donation, donationAmount * 10 ** 18);
       } else {
         alert('Need to Login');
@@ -50,37 +49,24 @@ const Intro = () => {
 
   return (
     <S.Intro>
-      <S.TitleText>INTRO</S.TitleText>
-      <S.ContentText>팔라 생태계 커뮤니티 기반 서비스 만들 예정</S.ContentText>
-      <S.ContentText>사이드로 진행하는거라 시간있을 때만 진행</S.ContentText>
-      <S.TitleText>PLAN</S.TitleText>
+      <S.TitleText>연구일지</S.TitleText>
+      <br />
+      <S.ContentText>여행 중 배가 침몰했다.</S.ContentText>
+      <S.ContentText>눈을 떠보니 어디선가 이상한 소리가 들린다.</S.ContentText>
+      <br />
       <S.ContentText>
-        1. <s>Hall of Lapgend NFT 및 전시관</s> (완료)
+        <b>Attention! Attention!</b>
       </S.ContentText>
+      <br />
+      <S.ContentText>팔라섬이다.</S.ContentText>
+      <S.ContentText>여기는 기존의 세계와는 무언가 다르다.</S.ContentText>
+      <br />
       <S.ContentText>
-        <br />
-        2. <s>지갑 연결시 소유 Alap 표시</s> (완료)
-      </S.ContentText>
-      <S.ContentText>
-        <br />
-        3. 알랍 메신저
-      </S.ContentText>
-      <S.ContentText>
-        <br />
-        4. 만물상
-      </S.ContentText>
-      <S.ContentText>
-        <br />
-        5. 레전드, 네임드 대사 등록 컨트랙트
-      </S.ContentText>
-      <S.ContentText>
-        <br />
-        6. 알랍 투표 기능
+        <b>이곳이 궁금하다.</b>
       </S.ContentText>
       <S.IntroContainer>
         <S.TitleText>DONATION</S.TitleText>
-        <S.ContentText></S.ContentText>
-        <S.ContentText>0x2eE778B760F1fB93c24c48B9B2992Cd8F3f0c75A</S.ContentText>
+        <S.ContentText>후원금은 연구소 발전에 사용될 것입니다.</S.ContentText>
         <br />
         <Donation />
         <br />

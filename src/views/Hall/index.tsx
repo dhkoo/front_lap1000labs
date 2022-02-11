@@ -21,15 +21,15 @@ const Hall = () => {
   };
   return (
     <S.HallContainer>
-      <S.TitleText>TODO: 계승식 투표 생성</S.TitleText>
-      <S.ContentText>레전드 알랍 소유 but,</S.ContentText>
-      <S.ContentText>Lapgend NFT가 없는 계정만 투표 생성 가능</S.ContentText>
-      <S.ContentText>계승식 투표는 알랍인만 가능하며,</S.ContentText>
-      <S.ContentText>소유하고 있는 알랍 수 만큼 투표 가능</S.ContentText>
-      <S.ContentText>
-        <br />
-        [통과시] Hall of Lapgend NFT 민팅
-      </S.ContentText>
+      <S.TitleText>전시관 연구일지</S.TitleText>
+      <br />
+      <S.ContentText>팔라섬에는 알랍인들이 살고있다.</S.ContentText>
+      <br />
+      <S.ContentText>특이한 점은 이들은 계급을 가지고 있다는 점이다.</S.ContentText>
+      <S.ContentText>하지만, 계급에 따른 차등은 아직 확인되지 않았다.</S.ContentText>
+      <br />
+      <S.ContentText>유명 알랍인들을 조사해보았다.</S.ContentText>
+      <S.ContentText>이들은 각자의 유행어가 있음을 확인했다.</S.ContentText>
       <S.LapgendContainer>
         <S.LapgendGroup>
           <S.TitleText>Lapgend #1</S.TitleText>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Store = styled.div`
+export const Charnel = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
