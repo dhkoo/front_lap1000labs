@@ -5,8 +5,9 @@ import { GlobalStyle } from 'GlobalStyle';
 import TopBar from 'components/TopBar';
 import Intro from 'views/Intro';
 import Hall from 'views/Hall';
+import Event from 'views/Event';
 import Messenger from 'views/Messenger';
-import Store from 'views/Store';
+import Store from 'views/Charnel';
 
 import * as S from './style';
 
@@ -20,14 +21,16 @@ const App = () => {
           <S.MenuContainer>
             <S.MenuItem to="/">소개</S.MenuItem>
             <S.MenuItem to="/hall">전시관</S.MenuItem>
+            <S.MenuItem to="/event">이벤트</S.MenuItem>
             <S.MenuItem to="/messenger">메신저</S.MenuItem>
-            <S.MenuItem to="/store">만물상</S.MenuItem>
+            {/* <S.MenuItem to="/charnel">납골당</S.MenuItem> */}
           </S.MenuContainer>
           <Routes>
             <Route path="/" element={<Intro />} />
             <Route path="/hall" element={<Hall />} />
+            <Route path="/event" element={<Event />} />
             <Route path="/messenger" element={<Messenger />} />
-            <Route path="/store" element={<Store />} />
+            {/* <Route path="/charnel" element={<Store />} /> */}
           </Routes>
         </BrowserRouter>
       </S.Main>
