@@ -4,10 +4,7 @@ import { GlobalStyle } from 'GlobalStyle';
 
 import TopBar from 'components/TopBar';
 import Intro from 'views/Intro';
-import Hall from 'views/Hall';
-import Event from 'views/Event';
-import Messenger from 'views/Messenger';
-import Store from 'views/Charnel';
+import LabNote from 'views/LabNote';
 
 import * as S from './style';
 
@@ -15,25 +12,15 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <S.Main>
-        <TopBar />
-        <BrowserRouter>
-          <S.MenuContainer>
-            <S.MenuItem to="/">소개</S.MenuItem>
-            <S.MenuItem to="/hall">전시관</S.MenuItem>
-            <S.MenuItem to="/event">이벤트</S.MenuItem>
-            <S.MenuItem to="/messenger">메신저</S.MenuItem>
-            {/* <S.MenuItem to="/charnel">납골당</S.MenuItem> */}
-          </S.MenuContainer>
+      <BrowserRouter>
+        <S.Main>
+          <TopBar />
           <Routes>
             <Route path="/" element={<Intro />} />
-            <Route path="/hall" element={<Hall />} />
-            <Route path="/event" element={<Event />} />
-            <Route path="/messenger" element={<Messenger />} />
-            {/* <Route path="/charnel" element={<Store />} /> */}
+            <Route path="/LabNote/*" element={<LabNote />} />
           </Routes>
-        </BrowserRouter>
-      </S.Main>
+        </S.Main>
+      </BrowserRouter>
     </>
   );
 };

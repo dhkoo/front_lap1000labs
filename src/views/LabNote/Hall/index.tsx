@@ -21,15 +21,25 @@ const Hall = () => {
   };
   return (
     <S.HallContainer>
-      <S.TitleText>전시관 연구일지</S.TitleText>
-      <br />
-      <S.ContentText>팔라섬에는 알랍인들이 살고있다.</S.ContentText>
-      <br />
-      <S.ContentText>특이한 점은 이들은 계급을 가지고 있다는 점이다.</S.ContentText>
-      <S.ContentText>하지만, 계급에 따른 차등은 아직 확인되지 않았다.</S.ContentText>
-      <br />
-      <S.ContentText>유명 알랍인들을 조사해보았다.</S.ContentText>
-      <S.ContentText>이들은 각자의 유행어가 있음을 확인했다.</S.ContentText>
+      <S.MainLogWrapper>
+        나는 인간이 사회적 동물이라는 말을 믿는다. <br />
+        앞으로 함께 지내야할 사람들에 대해 먼저 알고 싶었다. <br />
+        <br />이 곳은 섬이고, <S.Purple>'팔라'</S.Purple>라고 부른다. <br />
+        PalaLand <br />
+        ..라고 부르면 될까.. <br />
+        <br />
+        그리고 팔라에 지내는 사람들을 '알랍'이라고 지칭한다. <br />
+        크게 조건은 없는 것 같다. <br />
+        나도 금세 알랍으로 받아들여진게 그 근거다. <br />
+        <br />
+        운이 좋게도 팔라에는 유명한 알랍을 기록하는 전시관(?) 이 있다. <br />
+        아래는 그 전시관과 알랍들 사이에서 얻은 정보이다. <br />
+        <br />
+        P.S. 인지도가 높은 알랍들은 유행어도 있는듯하다. <br />
+        <br />
+        P.S. 늑대와 토끼가 사이좋게 지내는 모습도 목격했다. <br />
+      </S.MainLogWrapper>
+
       <S.LapgendContainer>
         <S.LapgendGroup>
           <S.TitleText>Lapgend #1</S.TitleText>
