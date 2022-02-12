@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 
 import * as walletAction from 'state/wallet';
 
+import * as S from './style';
+
 declare global {
   interface Window {
     klaytn: any;
@@ -29,7 +31,7 @@ const ConnectWalletButton = () => {
     }
   };
 
-  return <button onClick={onClickKaikas}>카이카스 연결</button>;
+  return <S.WalletButton onClick={onClickKaikas}>카이카스 연결</S.WalletButton>;
 };
 
 export default ConnectWalletButton;

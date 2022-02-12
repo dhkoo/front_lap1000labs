@@ -26,9 +26,9 @@ const Intro = () => {
         </S.Purple>
         <br />
         팔..라..? <br />
-        새..가 내는 소리를 미묘하게 알아들을 수 있다. <br />
-        나는 아직 살아 있는건 맞겠지..? <br />
-        <b>이곳이 궁금하다.</b> <br />
+        새..가 말하는 것 같다.. <br />
+        나는 아직 살아 있는건가..? <br />
+        <b>궁금한 것</b> 투성이다. <br />
         <br />
       </S.ContentText>
       <S.EnterButton to="LabNote/">
