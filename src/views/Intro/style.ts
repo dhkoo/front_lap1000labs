@@ -7,12 +7,6 @@ export const Intro = styled.div`
   align-items: center;
 `;
 
-export const IntroContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 export const Purple = styled.span`
   color: #82a3f9;
 `;
@@ -57,7 +51,28 @@ export const EnterButton = styled(NavLink)`
   background: #74ecd2;
 `;
 
+export const DonationForm = styled.form`
+  box-sizing: border-box;
+  width: 330px;
+  margin: 5px 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const DonationInput = styled.input`
+  box-sizing: border-box;
+  height: 40px;
+  width: 200px;
+  border-radius: 10px;
+  padding-right: 10px;
+
+  text-align: right;
+
+  background: #eeeeee;
+
   ::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
@@ -66,4 +81,46 @@ export const DonationInput = styled.input`
     -webkit-appearance: none;
     margin: 0;
   }
+`;
+
+export const DonationButton = styled.button`
+  box-sizing: border-box;
+  height: 40px;
+  width: 120px;
+  border-radius: 10px;
+
+  background: #74ecd2;
+  cursor: pointer;
+`;
+
+export const DonationRankItem = styled.div`
+  box-sizing: border-box;
+  width: 330px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: white;
+`;
+
+export const DonationRankProfile = styled.div`
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const DonationRankAlapImage = styled.img`
+  box-sizing: border-box;
+  height: 50px;
+  margin: 0 5px;
+  border: 1px solid #74ecd2;
+  border-radius: 5px;
 `;

@@ -34,15 +34,7 @@ const Intro = () => {
       <S.EnterButton to="LabNote/">
         <b>연구 노트 확인하기</b>
       </S.EnterButton>
-      <S.IntroContainer>
-        <S.TitleText>DONATION</S.TitleText>
-        <S.ContentText>후원금은 연구소 발전에 사용될 것입니다.</S.ContentText>
-        <br />
-        <Donation />
-        <br />
-        <br />
-        <br />
-      </S.IntroContainer>
+      <Donation />
     </S.Intro>
   );
 };

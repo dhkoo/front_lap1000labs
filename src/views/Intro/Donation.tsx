@@ -3,8 +3,9 @@ import Caver from 'caver-js';
 import { useSelector } from 'react-redux';
 
 import { RootState } from 'state';
-import { donateKlay, getKlayTopDonators } from 'contracts/donation';
-import { contractAddr, gateway } from 'contracts/addrBook';
+import { Donator, donateKlay, getKlayTopDonators, getPalaTopDonators, donatePala } from 'contracts/donation';
+import { contractAddr } from 'contracts/addrBook';
+import { getNumberFromInt256 } from 'utils/number';
 
 import * as S from './style';
 
@@ -13,34 +14,87 @@ const Donation = () => {
   const walletName = useSelector((state: RootState) => state.wallet.name);
   const address = useSelector((state: RootState) => state.wallet.address);
 
-  const [donationAmount, setDonationAmount] = useState(0);
-  const [donators, setDonators] = useState([]);
-  const [tokenIds, setTokenIds] = useState([]);
+  const [klayAmount, setKlayAmount] = useState(0);
+  const [klayDonators, setKlayDonators] = useState<Donator[]>([]);
+  const [palaAmount, setPalaAmount] = useState(0);
+  const [PalaDonators, setPalaDonators] = useState<Donator[]>([]);
 
   useEffect(() => {
-    const klayTopDonators = async () => {
-      const res = await getKlayTopDonators(caver);
-      setDonators(res.donatorList);
-      setTokenIds(res.tokenList);
+    const GetTopDonators = async () => {
+      const klayResult = await getKlayTopDonators(caver);
+      setKlayDonators(klayResult);
+      const palaResult = await getPalaTopDonators(caver);
+      setPalaDonators(palaResult);
     };
-    klayTopDonators();
+    GetTopDonators();
   }, []);
 
-  const handleChange = (event: any) => setDonationAmount(event.target.value);
-  const handleSubmit = (event: any) => {
+  const onChangeKlayAmount = (event: any) => setKlayAmount(event.target.value);
+  const onSubmitKlayDonation = (event: any) => {
     event.preventDefault();
     if (walletName !== '' && address !== '') {
-      donateKlay(caver, address, contractAddr.Donation, donationAmount * 10 ** 18);
+      donateKlay(caver, address, contractAddr.Donation, klayAmount * 10 ** 18);
     } else {
-      alert('Need to Login');
+      alert('지갑을 연결해 주세요.');
+    }
+  };
+
+  const onChangePalaAmount = (event: any) => setPalaAmount(event.target.value);
+  const onSubmitPalaDonation = (event: any) => {
+    event.preventDefault();
+    if (walletName !== '' && address !== '') {
+      donatePala(caver, address, contractAddr.Donation, palaAmount * 10 ** 18);
+    } else {
+      alert('지갑을 연결해 주세요.');
+    }
+  };
+
+  const viewRank = (donators: Donator[]) => {
+    if (donators.length !== 0) {
+      console.log(donators[0].alapId);
+      return donators.map((donator: Donator, index: number) => {
+        return (
+          <S.DonationRankItem>
+            <S.DonationRankProfile>
+              <S.Mint>
+                <b>#{index + 1} </b>
+              </S.Mint>
+              <S.DonationRankAlapImage
+                src={'https://alap.s3.ap-northeast-2.amazonaws.com/alap-'
+                  .concat(donator.alapId.toString())
+                  .concat('.png')}
+              />
+              {donator.addr.substring(0, 6)}...{donator.addr.substring(donator.addr.length - 4, donator.addr.length)}
+            </S.DonationRankProfile>
+            <S.Purple> {getNumberFromInt256(donator.amount, 18).toLocaleString()}</S.Purple>
+          </S.DonationRankItem>
+        );
+      });
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <S.DonationInput type="number" min={0} step={0.01} placeholder="후원할 KLAY 수량" onChange={handleChange} />
-      <button type="submit">Donate</button>
-    </form>
+    <>
+      <S.TitleText>DONATION</S.TitleText>
+      <S.ContentText>
+        <br />
+        바닥부터 하나씩 만들어나가야 한다. <br />
+        <br />
+        알랍을 더욱 풍요롭게 하기위해 <br />
+        많은 사랑과 후원 부탁드립니다..♡ <br />
+        <br />
+      </S.ContentText>
+      <S.DonationForm onSubmit={onSubmitKlayDonation}>
+        <S.DonationInput type="number" min={0} step={0.01} placeholder="후원 수량" onChange={onChangeKlayAmount} />
+        <S.DonationButton type="submit">KLAY 후원하기</S.DonationButton>
+      </S.DonationForm>
+      {viewRank(klayDonators)}
+      <S.DonationForm onSubmit={onSubmitPalaDonation}>
+        <S.DonationInput type="number" min={0} step={0.01} placeholder="후원 수량" onChange={onChangePalaAmount} />
+        <S.DonationButton type="submit">PALA 후원하기</S.DonationButton>
+      </S.DonationForm>
+      {viewRank(PalaDonators)}
+    </>
   );
 };
 
