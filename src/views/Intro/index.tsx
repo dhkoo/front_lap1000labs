@@ -17,9 +17,8 @@ const Intro = () => {
         나는.. <br />
         분명 은퇴 기념 휴가를 가던 중이었는데 <br />
         <br />
-        주변으로 고심해서 고른 <S.Mint>민트색</S.Mint> 요트가 <br />
-        나를 지키고 있었다. <br />
-        다시는 돌아올수 없는 형태로.. <br />
+        피부색은 <S.Mint>민트색</S.Mint>으로 변해있고 <br />
+        계속 의미를 알 수 없는 소리가 들려온다.. <br />
         <br />
         <S.Purple>
           Attention! Pala! Attention! Alap! <br />

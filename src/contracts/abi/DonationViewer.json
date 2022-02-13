@@ -18,9 +18,7 @@
   {
     "inputs": [],
     "name": "donation",
-    "outputs": [
-      { "internalType": "address payable", "name": "", "type": "address" }
-    ],
+    "outputs": [{ "internalType": "address payable", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function",
     "constant": true
@@ -74,18 +72,14 @@
     "constant": true
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_donation", "type": "address" }
-    ],
+    "inputs": [{ "internalType": "address", "name": "_donation", "type": "address" }],
     "name": "setDonation",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_alapViewer", "type": "address" }
-    ],
+    "inputs": [{ "internalType": "address", "name": "_alapViewer", "type": "address" }],
     "name": "setAlapViewer",
     "outputs": [],
     "stateMutability": "nonpayable",

@@ -53,7 +53,7 @@ const Donation = () => {
 
   const viewRank = (donators: Donator[], name: string) => {
     if (donators.length !== 0) {
-      donators.sort(((a, b) => (a.amount > b.amount ? -1 : 1)));
+      donators.sort((a, b) => (a.amount > b.amount ? -1 : 1));
 
       return donators.map((donator: Donator, index: number) => {
         return (
@@ -69,7 +69,11 @@ const Donation = () => {
               />
               {donator.addr.substring(0, 6)}...{donator.addr.substring(donator.addr.length - 4, donator.addr.length)}
             </S.DonationRankProfile>
-            <S.Purple> {getNumberFromInt256(donator.amount, 18).toLocaleString()}{' '.concat(name)}</S.Purple>
+            <S.Purple>
+              {' '}
+              {getNumberFromInt256(donator.amount, 18).toLocaleString()}
+              {' '.concat(name)}
+            </S.Purple>
           </S.DonationRankItem>
         );
       });

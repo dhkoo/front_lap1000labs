@@ -12,9 +12,9 @@ const LabNote = () => {
   const LabNoteGuide = () => {
     return (
       <S.GuideWrapper>
-        이 곳은, 매우 흥미롭다. <br />
+        이곳은, 매우 흥미롭다. <br />
         <br />
-        새의 소리를 알아 들을 수 있던 것은 우연이 아니었고, <br />
+        새의 소리를 알아들을 수 있던 것은 우연이 아니었고, <br />
         다행히 무인도도 아니었다. <br />
         <br />
         다시 집으로 돌아가기 전까지 <br />

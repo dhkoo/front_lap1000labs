@@ -1,8 +1,6 @@
 [
   {
-    "inputs": [
-      { "internalType": "uint256", "name": "_totalSupply", "type": "uint256" }
-    ],
+    "inputs": [{ "internalType": "uint256", "name": "_totalSupply", "type": "uint256" }],
     "stateMutability": "nonpayable",
     "type": "constructor"
   },
