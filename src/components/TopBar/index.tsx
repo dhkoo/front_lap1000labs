@@ -37,9 +37,11 @@ const TopBar = () => {
   return (
     <>
       <S.TopBar>
-        <S.Lap1000Logo src={Lap1000Logo} />
+        <S.LogoButton to="/">
+          <S.Lap1000Logo src={Lap1000Logo} />
+        </S.LogoButton>
         <S.ProfileWrapper>
-          {isLoggedIn() ? <S.AlapImage src={imageURL} /> : <></>}
+          <S.AlapImage src={isLoggedIn() ? imageURL : undefined} />
           {isLoggedIn() ? <ConnectedWalletButton name={walletName} address={address} /> : <ConnectWalletButton />}
         </S.ProfileWrapper>
       </S.TopBar>

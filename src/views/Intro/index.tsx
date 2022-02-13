@@ -1,78 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import Caver from 'caver-js';
-import { useSelector } from 'react-redux';
+import React from 'react';
 
-import { RootState } from 'state';
-import { donateKlay, getKlayTopDonators } from 'contracts/donation';
-import { contractAddr, gateway } from 'contracts/addrBook';
+import Donation from './Donation';
 
 import * as S from './style';
 
 const Intro = () => {
-  const caver = new Caver(window.klaytn);
-
-  const walletName = useSelector((state: RootState) => state.wallet.name);
-  const address = useSelector((state: RootState) => state.wallet.address);
-
-  const Donation = () => {
-    const [donationAmount, setDonationAmount] = useState(0);
-
-    const handleChange = (event: any) => setDonationAmount(event.target.value);
-    const handleSubmit = (event: any) => {
-      event.preventDefault();
-      if (walletName !== '' && address !== '') {
-        donateKlay(caver, address, contractAddr.Donation, donationAmount * 10 ** 18);
-      } else {
-        alert('Need to Login');
-      }
-    };
-
-    return (
-      <form onSubmit={handleSubmit}>
-        <S.DonationInput type="number" min={0} step={0.01} placeholder="후원할 KLAY 수량" onChange={handleChange} />
-        <button type="submit">Donate</button>
-      </form>
-    );
-  };
-
-  const [donators, setDonators] = useState([]);
-  const [tokenIds, setTokenIds] = useState([]);
-
-  useEffect(() => {
-    const klayTopDonators = async () => {
-      const res = await getKlayTopDonators(caver);
-      setDonators(res.donatorList);
-      setTokenIds(res.tokenList);
-    };
-    klayTopDonators();
-  }, []);
-
   return (
     <S.Intro>
-      <S.TitleText>연구일지</S.TitleText>
-      <br />
-      <S.ContentText>여행 중 배가 침몰했다.</S.ContentText>
-      <S.ContentText>눈을 떠보니 어디선가 이상한 소리가 들린다.</S.ContentText>
-      <br />
+      <S.TitleText>
+        <S.Purple>Attention! Attention!</S.Purple>
+      </S.TitleText>
       <S.ContentText>
-        <b>Attention! Attention!</b>
+        <br />
+        귀를 찌르는 청량한 소리에 정신이 들었다. <br />
+        <br />
+        나는.. <br />
+        분명 은퇴 기념 휴가를 가던 중이었는데 <br />
+        <br />
+        피부색은 <S.Mint>민트색</S.Mint>으로 변해있고 <br />
+        계속 의미를 알 수 없는 소리가 들려온다.. <br />
+        <br />
+        <S.Purple>
+          Attention! Pala! Attention! Alap! <br />
+        </S.Purple>
+        <br />
+        팔..라..? <br />
+        새..가 말하는 것 같다.. <br />
+        나는 아직 살아 있는건가..? <br />
+        <b>궁금한 것</b> 투성이다. <br />
+        <br />
       </S.ContentText>
-      <br />
-      <S.ContentText>팔라섬이다.</S.ContentText>
-      <S.ContentText>여기는 기존의 세계와는 무언가 다르다.</S.ContentText>
-      <br />
-      <S.ContentText>
-        <b>이곳이 궁금하다.</b>
-      </S.ContentText>
-      <S.IntroContainer>
-        <S.TitleText>DONATION</S.TitleText>
-        <S.ContentText>후원금은 연구소 발전에 사용될 것입니다.</S.ContentText>
-        <br />
-        <Donation />
-        <br />
-        <br />
-        <br />
-      </S.IntroContainer>
+      <S.EnterButton to="LabNote/">
+        <b>연구 노트 확인하기</b>
+      </S.EnterButton>
+      <Donation />
     </S.Intro>
   );
 };

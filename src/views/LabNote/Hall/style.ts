@@ -7,6 +7,19 @@ export const HallContainer = styled.div`
   align-items: center;
 `;
 
+export const Purple = styled.span`
+  color: #82a3f9;
+`;
+
+export const MainLogWrapper = styled.div`
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: white;
+  text-align: center;
+`;
+
 export const LapgendContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -76,7 +89,7 @@ export const TitleText = styled.div`
   color: white;
 `;
 
-export const ContentText = styled.div<{fontSize?: number}>`
+export const ContentText = styled.div<{ fontSize?: number }>`
   font-family: Pretendard;
   font-style: normal;
   font-weight: 400;
@@ -84,22 +97,22 @@ export const ContentText = styled.div<{fontSize?: number}>`
   color: white;
 `;
 
-export const VoteCreationButton = styled.div<{color: string}>`
-width: 150px;
-height: 40px;
-border-radius: 15px;
+export const VoteCreationButton = styled.div<{ color: string }>`
+  width: 150px;
+  height: 40px;
+  border-radius: 15px;
 
-margin: 20px 0 0 0;
+  margin: 20px 0 0 0;
 
-font-family: Pretendard;
-font-style: normal;
-font-weight: 800;
-font-size: 15px;
-line-height: 40px;
-text-align: center;
-vertical-align: middle;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 40px;
+  text-align: center;
+  vertical-align: middle;
 
-background: ${(props) => props.color};
+  background: ${(props) => props.color};
 
-cursor: not-allowed;
+  cursor: not-allowed;
 `;
