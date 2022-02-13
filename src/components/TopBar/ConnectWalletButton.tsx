@@ -21,8 +21,6 @@ const ConnectWalletButton = () => {
         console.log(`Need to install Kaikas`);
       } else {
         const accounts = await klaytn.enable();
-        console.log(accounts);
-
         const address = accounts[0];
         if (address) dispath(walletAction.setWallet('kaikas', address));
       }

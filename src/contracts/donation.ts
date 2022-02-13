@@ -35,10 +35,10 @@ export const getPalaTopDonators = async (caver: typeof Caver): Promise<any> => {
 
 export const donateKlay = async (caver: typeof Caver, from: string, to: string, amount: Number): Promise<void> => {
   const abi = getABI(DonationABI as AbiItem[], 'donateKLAY');
-  executeTx(from, to, amount.toString(), abi, [], caver);
+  await executeTx(from, to, amount.toString(), abi, [], caver);
 };
 
 export const donatePala = async (caver: typeof Caver, from: string, to: string, amount: Number): Promise<void> => {
   const abi = getABI(DonationABI as AbiItem[], 'donatePALA');
-  executeTx(from, to, '0', abi, [amount.toString()], caver);
+  await executeTx(from, to, '0', abi, [amount.toString()], caver);
 };

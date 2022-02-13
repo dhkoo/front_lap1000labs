@@ -8,6 +8,7 @@ import { contractAddr } from 'contracts/addrBook';
 import { getNumberFromInt256 } from 'utils/number';
 
 import * as S from './style';
+import { approve } from 'contracts/erc20';
 
 const Donation = () => {
   const caver = new Caver(window.klaytn);
@@ -30,31 +31,33 @@ const Donation = () => {
   }, []);
 
   const onChangeKlayAmount = (event: any) => setKlayAmount(event.target.value);
-  const onSubmitKlayDonation = (event: any) => {
+  const onSubmitKlayDonation = async (event: any) => {
     event.preventDefault();
     if (walletName !== '' && address !== '') {
-      donateKlay(caver, address, contractAddr.Donation, klayAmount * 10 ** 18);
+      await donateKlay(caver, address, contractAddr.Donation, klayAmount * 10 ** 18);
     } else {
       alert('지갑을 연결해 주세요.');
     }
   };
 
   const onChangePalaAmount = (event: any) => setPalaAmount(event.target.value);
-  const onSubmitPalaDonation = (event: any) => {
+  const onSubmitPalaDonation = async (event: any) => {
     event.preventDefault();
     if (walletName !== '' && address !== '') {
-      donatePala(caver, address, contractAddr.Donation, palaAmount * 10 ** 18);
+      await approve(caver, address, contractAddr.pala, contractAddr.Donation, palaAmount * 10 ** 18);
+      await donatePala(caver, address, contractAddr.Donation, palaAmount * 10 ** 18);
     } else {
       alert('지갑을 연결해 주세요.');
     }
   };
 
-  const viewRank = (donators: Donator[]) => {
+  const viewRank = (donators: Donator[], name: string) => {
     if (donators.length !== 0) {
-      console.log(donators[0].alapId);
+      donators.sort(((a, b) => (a.amount > b.amount ? -1 : 1)));
+
       return donators.map((donator: Donator, index: number) => {
         return (
-          <S.DonationRankItem>
+          <S.DonationRankItem key={donator.alapId}>
             <S.DonationRankProfile>
               <S.Mint>
                 <b>#{index + 1} </b>
@@ -66,7 +69,7 @@ const Donation = () => {
               />
               {donator.addr.substring(0, 6)}...{donator.addr.substring(donator.addr.length - 4, donator.addr.length)}
             </S.DonationRankProfile>
-            <S.Purple> {getNumberFromInt256(donator.amount, 18).toLocaleString()}</S.Purple>
+            <S.Purple> {getNumberFromInt256(donator.amount, 18).toLocaleString()}{' '.concat(name)}</S.Purple>
           </S.DonationRankItem>
         );
       });
@@ -80,20 +83,20 @@ const Donation = () => {
         <br />
         바닥부터 하나씩 만들어나가야 한다. <br />
         <br />
-        알랍을 더욱 풍요롭게 하기위해 <br />
-        많은 사랑과 후원 부탁드립니다..♡ <br />
+        팔라랜드의 무궁한 발전을 위해 <br />
+        많은 사랑과 후원이 필요해 보인다. <br />
         <br />
       </S.ContentText>
       <S.DonationForm onSubmit={onSubmitKlayDonation}>
         <S.DonationInput type="number" min={0} step={0.01} placeholder="후원 수량" onChange={onChangeKlayAmount} />
         <S.DonationButton type="submit">KLAY 후원하기</S.DonationButton>
       </S.DonationForm>
-      {viewRank(klayDonators)}
+      {viewRank(klayDonators, 'KLAY')}
       <S.DonationForm onSubmit={onSubmitPalaDonation}>
         <S.DonationInput type="number" min={0} step={0.01} placeholder="후원 수량" onChange={onChangePalaAmount} />
         <S.DonationButton type="submit">PALA 후원하기</S.DonationButton>
       </S.DonationForm>
-      {viewRank(PalaDonators)}
+      {viewRank(PalaDonators, 'PALA')}
     </>
   );
 };
