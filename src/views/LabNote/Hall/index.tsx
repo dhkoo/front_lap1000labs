@@ -11,6 +11,8 @@ import {
   NamedAlap4,
   NamedAlap5,
   NamedAlap6,
+  NamedAlap7,
+  NamedAlap8,
   Pet1,
   Pet2,
 } from 'constants/images';
@@ -198,13 +200,13 @@ const Hall = () => {
       <S.TitleText>네임드 알랍</S.TitleText>
       <S.NamedContainer>
         <S.NamedGroup>
-          <S.NamedImage src={NamedAlap1} onClick={() => saySomething('팔라야 힘내!')} />
+          <S.NamedImage src={NamedAlap1} onClick={() => saySomething('싼랍클로스 입니다. 선물 뿌린다!!')} />
           <S.ContentText>
             <b>강도깨비</b>
           </S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
-          <S.NamedImage src={NamedAlap6} onClick={() => saySomething('똥아니다.. 수염이다..')} />
+          <S.NamedImage src={NamedAlap6} onClick={() => saySomething('똥이다.. 수염 아니다..')} />
           <S.ContentText>
             <b>셀마 헤이엑</b>
           </S.ContentText>
@@ -222,9 +224,23 @@ const Hall = () => {
           </S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
+          <S.NamedImage src={NamedAlap8} onClick={() => saySomething('블록왕 구사칠랍')} />
+          <S.ContentText>
+            <b>구사칠랍S2</b>
+          </S.ContentText>
+        </S.NamedGroup>
+        <S.NamedGroup>
           <S.NamedImage src={NamedAlap4} onClick={() => saySomething('고래 뿌우뿌우!!')} />
           <S.ContentText>
             <b>k-bluewhale</b>
+          </S.ContentText>
+        </S.NamedGroup>
+        <S.NamedGroup>
+          <S.NamedImage src={NamedAlap7} onClick={() => {
+              if (window.confirm('팔라멘트 블로그 바로가기')) window.open('https://m.blog.naver.com/PostList.naver?blogId=palament_111');
+            }} />
+          <S.ContentText>
+            <b>팔라멘트</b>
           </S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
