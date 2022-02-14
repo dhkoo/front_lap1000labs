@@ -53,7 +53,7 @@ const Donation = () => {
     }
   };
 
-  const viewRank = (donators: Donator[], name: string) => {
+  const viewRank = (donators: Donator[], unit: string) => {
     if (donators.length !== 0) {
       donators.sort((a, b) => {
         return parseInt(b.amount) - parseInt(a.amount);
@@ -65,23 +65,20 @@ const Donation = () => {
               <S.Mint>
                 <b>#{index + 1}</b>
               </S.Mint>
-              {
-                donator.alapId != 0 ? 
-                  <S.DonationRankAlapImage
-                    src={'https://alap.s3.ap-northeast-2.amazonaws.com/alap-'
-                      .concat(donator.alapId.toString())
-                      .concat('.png')}
-                  /> :
-                  <S.DonationRankAlapImage
-                    src={defaultAlap}
-                  />
-              }
+              <S.DonationRankAlapImage
+                src={
+                  donator.alapId === 0
+                    ? defaultAlap
+                    : 'https://alap.s3.ap-northeast-2.amazonaws.com/alap-'
+                        .concat(donator.alapId.toString())
+                        .concat('.png')
+                }
+              />
               {donator.addr.substring(0, 6)}...{donator.addr.substring(donator.addr.length - 4, donator.addr.length)}
             </S.DonationRankProfile>
             <S.Purple>
-              {' '}
               {getNumberFromInt256(donator.amount, 18).toLocaleString()}
-              {' '.concat(name)}
+              {' '.concat(unit)}
             </S.Purple>
           </S.DonationRankItem>
         );
