@@ -4,14 +4,15 @@ import { useSelector } from 'react-redux';
 
 import { RootState } from 'state';
 import { Donator, donateKlay, getKlayTopDonators, getPalaTopDonators, donatePala } from 'contracts/donation';
-import { contractAddr } from 'contracts/addrBook';
+import { contractAddr, gateway } from 'contracts/addrBook';
+import { approve } from 'contracts/erc20';
 import { getNumberFromInt256 } from 'utils/number';
 
 import * as S from './style';
-import { approve } from 'contracts/erc20';
 
 const Donation = () => {
-  const caver = new Caver(window.klaytn);
+  const klaytnCaver = new Caver(window.klaytn);
+  const caver = new Caver(gateway.cypress);
   const walletName = useSelector((state: RootState) => state.wallet.name);
   const address = useSelector((state: RootState) => state.wallet.address);
 
@@ -34,7 +35,7 @@ const Donation = () => {
   const onSubmitKlayDonation = async (event: any) => {
     event.preventDefault();
     if (walletName !== '' && address !== '') {
-      await donateKlay(caver, address, contractAddr.Donation, klayAmount * 10 ** 18);
+      await donateKlay(klaytnCaver, address, contractAddr.Donation, klayAmount * 10 ** 18);
     } else {
       alert('지갑을 연결해 주세요.');
     }
@@ -44,8 +45,8 @@ const Donation = () => {
   const onSubmitPalaDonation = async (event: any) => {
     event.preventDefault();
     if (walletName !== '' && address !== '') {
-      await approve(caver, address, contractAddr.pala, contractAddr.Donation, palaAmount * 10 ** 18);
-      await donatePala(caver, address, contractAddr.Donation, palaAmount * 10 ** 18);
+      await approve(klaytnCaver, address, contractAddr.pala, contractAddr.Donation, palaAmount * 10 ** 18);
+      await donatePala(klaytnCaver, address, contractAddr.Donation, palaAmount * 10 ** 18);
     } else {
       alert('지갑을 연결해 주세요.');
     }
