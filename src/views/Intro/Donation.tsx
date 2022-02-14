@@ -7,6 +7,7 @@ import { Donator, donateKlay, getKlayTopDonators, getPalaTopDonators, donatePala
 import { contractAddr, gateway } from 'contracts/addrBook';
 import { approve } from 'contracts/erc20';
 import { getNumberFromInt256 } from 'utils/number';
+import { defaultAlap } from 'constants/images';
 
 import * as S from './style';
 
@@ -54,20 +55,27 @@ const Donation = () => {
 
   const viewRank = (donators: Donator[], name: string) => {
     if (donators.length !== 0) {
-      donators.sort((a, b) => (a.amount > b.amount ? -1 : 1));
-
+      donators.sort((a, b) => {
+        return parseInt(b.amount) - parseInt(a.amount);
+      });
       return donators.map((donator: Donator, index: number) => {
         return (
           <S.DonationRankItem key={donator.alapId}>
             <S.DonationRankProfile>
               <S.Mint>
-                <b>#{index + 1} </b>
+                <b>#{index + 1}</b>
               </S.Mint>
-              <S.DonationRankAlapImage
-                src={'https://alap.s3.ap-northeast-2.amazonaws.com/alap-'
-                  .concat(donator.alapId.toString())
-                  .concat('.png')}
-              />
+              {
+                donator.alapId != 0 ? 
+                  <S.DonationRankAlapImage
+                    src={'https://alap.s3.ap-northeast-2.amazonaws.com/alap-'
+                      .concat(donator.alapId.toString())
+                      .concat('.png')}
+                  /> :
+                  <S.DonationRankAlapImage
+                    src={defaultAlap}
+                  />
+              }
               {donator.addr.substring(0, 6)}...{donator.addr.substring(donator.addr.length - 4, donator.addr.length)}
             </S.DonationRankProfile>
             <S.Purple>

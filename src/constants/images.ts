@@ -1,6 +1,7 @@
 const imageLocation = window.location.origin;
 
 export const Lap1000Logo = imageLocation.concat('/images/lap1000_logo.png');
+export const defaultAlap = imageLocation.concat('/images/dummy_profile.png');
 export const Lapgend1_1 = imageLocation.concat('/images/lapgend1_1.png');
 export const Lapgend1_2 = imageLocation.concat('/images/lapgend1_2.png');
 export const Lapgend2_1 = imageLocation.concat('/images/lapgend2_1.png');
