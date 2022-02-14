@@ -14,7 +14,7 @@ import * as S from './style';
 const Donation = () => {
   const klaytnCaver = new Caver(window.klaytn);
   const caver = new Caver(gateway.cypress);
-  const walletName = useSelector((state: RootState) => state.wallet.name);
+  const walletType = useSelector((state: RootState) => state.wallet.walletType);
   const address = useSelector((state: RootState) => state.wallet.address);
 
   const [klayAmount, setKlayAmount] = useState(0);
@@ -35,7 +35,7 @@ const Donation = () => {
   const onChangeKlayAmount = (event: any) => setKlayAmount(event.target.value);
   const onSubmitKlayDonation = async (event: any) => {
     event.preventDefault();
-    if (walletName !== '' && address !== '') {
+    if (walletType !== '' && address !== '') {
       await donateKlay(klaytnCaver, address, contractAddr.Donation, klayAmount * 10 ** 18);
     } else {
       alert('지갑을 연결해 주세요.');
@@ -45,7 +45,7 @@ const Donation = () => {
   const onChangePalaAmount = (event: any) => setPalaAmount(event.target.value);
   const onSubmitPalaDonation = async (event: any) => {
     event.preventDefault();
-    if (walletName !== '' && address !== '') {
+    if (walletType !== '' && address !== '') {
       await approve(klaytnCaver, address, contractAddr.pala, contractAddr.Donation, palaAmount * 10 ** 18);
       await donatePala(klaytnCaver, address, contractAddr.Donation, palaAmount * 10 ** 18);
     } else {

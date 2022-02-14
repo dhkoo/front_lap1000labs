@@ -1,8 +1,12 @@
-import * as walletReducer from 'state/wallet';
+import { useSelector } from 'react-redux';
+
+import { RootState } from 'state';
 
 import * as S from './style';
 
-const ConnectedWalletButton = ({ name, address }: walletReducer.WalletState) => {
+const ConnectedWalletButton = () => {
+  const address = useSelector((state: RootState) => state.wallet.address);
+
   const frontAddr = address.substr(0, 5);
   const backAddr = address.substr(address.length - 4, 4);
 

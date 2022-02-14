@@ -12,9 +12,11 @@ export const TopBar = styled.div`
 `;
 
 export const ProfileWrapper = styled.div`
+  box-sizing: border-box;
+  height: 120px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -24,7 +26,8 @@ export const LogoButton = styled(NavLink)`
 `;
 
 export const Lap1000Logo = styled.img`
-  width: 200px;
+  box-sizing: border-box;
+  height: 120px;
   border: double #74ecd2;
   border-radius: 10px;
 `;
@@ -32,6 +35,8 @@ export const Lap1000Logo = styled.img`
 export const AlapImage = styled.img`
   box-sizing: border-box;
   height: 85px;
+  border-radius: 10px;
+  border: 1px solid #74ecd2;
 `;
 
 export const WalletButton = styled.button`
@@ -39,6 +44,7 @@ export const WalletButton = styled.button`
   height: 25px;
   width: 110px;
   border-radius: 10px;
+  border: 1px solid #74ecd2;
 
   color: #74ecd2;
 
