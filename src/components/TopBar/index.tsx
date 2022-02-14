@@ -8,7 +8,7 @@ import { gateway } from 'contracts/addrBook';
 import ConnectWalletButton from './ConnectWalletButton';
 import ConnectedWalletButton from './ConnectedWalletButton';
 
-import { Lap1000Logo } from 'constants/images';
+import { Lap1000Logo, defaultAlap } from 'constants/images';
 import * as S from './style';
 
 const TopBar = () => {
@@ -41,7 +41,7 @@ const TopBar = () => {
           <S.Lap1000Logo src={Lap1000Logo} />
         </S.LogoButton>
         <S.ProfileWrapper>
-          <S.AlapImage src={isLoggedIn() ? imageURL : undefined} />
+          <S.AlapImage src={!isLoggedIn() ? undefined : (imageURL == undefined ? defaultAlap : imageURL)} />
           {isLoggedIn() ? <ConnectedWalletButton name={walletName} address={address} /> : <ConnectWalletButton />}
         </S.ProfileWrapper>
       </S.TopBar>
