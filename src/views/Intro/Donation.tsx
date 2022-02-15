@@ -91,7 +91,7 @@ const Donation = () => {
 
   return (
     <>
-      <S.TitleText>DONATION</S.TitleText>
+      <S.TitleText>SUPPORT</S.TitleText>
       <S.ContentText>
         <br />
         바닥부터 하나씩 만들어나가야 한다. <br />

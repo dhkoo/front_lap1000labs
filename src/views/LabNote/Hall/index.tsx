@@ -95,7 +95,7 @@ const Hall = () => {
                 [주소] 0x40F...e4e <br />
                 [계정] active <br />
                 [임기 기간] 2022.01.03 ~ <br />
-                [계승 가격] 21111 KLAY
+                [계승 가격] 21,111 KLAY
               </S.ContentText>
             </S.LapgendTemplate>
           </S.LapgendTemplateGroup>
@@ -127,7 +127,7 @@ const Hall = () => {
                   [계정] 0x27c...3b7 <br />
                   [상태] active <br />
                   [임기 기간] 2022.01.12 ~ <br />
-                  [계승 가격] 25000 KLAY
+                  [계승 가격] 25,000 KLAY
                 </S.ContentText>
               </S.LapgendTemplate>
             </S.LapgendTemplateGroup>
@@ -158,7 +158,7 @@ const Hall = () => {
                   [계정] 0x9b9...e0b <br />
                   [상태] active <br />
                   [임기 기간] 2021.11.12 ~ <br />
-                  [계승 가격] 2500 KLAY
+                  [계승 가격] 2,500 KLAY
                 </S.ContentText>
               </S.LapgendTemplate>
             </S.LapgendTemplateGroup>
@@ -189,7 +189,7 @@ const Hall = () => {
                   [계정] 0x452...6a3 <br />
                   [상태] active <br />
                   [임기 기간] 2022.01.07 ~ <br />
-                  [계승 가격] 25000 KLAY
+                  [계승 가격] 25,000 KLAY
                 </S.ContentText>
               </S.LapgendTemplate>
             </S.LapgendTemplateGroup>
@@ -230,14 +230,16 @@ const Hall = () => {
           </S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
-          <S.NamedImage src={NamedAlap4} onClick={() => saySomething('고래 뿌우뿌우!!')} />
+          <S.NamedImage src={NamedAlap4} onClick={() => { 
+            if (window.confirm('k-bluewhale 블로그 바로가기')) window.open('https://blog.naver.com/k-bluewhale');
+          }} />
           <S.ContentText>
             <b>k-bluewhale</b>
           </S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
           <S.NamedImage src={NamedAlap7} onClick={() => {
-              if (window.confirm('팔라멘트 블로그 바로가기')) window.open('https://m.blog.naver.com/PostList.naver?blogId=palament_111');
+              if (window.confirm('팔라멘트 블로그 바로가기')) window.open('https://blog.naver.com/PostList.naver?blogId=palament_111');
             }} />
           <S.ContentText>
             <b>팔라멘트</b>
@@ -250,7 +252,7 @@ const Hall = () => {
           </S.ContentText>
         </S.NamedGroup>
       </S.NamedContainer>
-      <S.TitleText>공식 애완동물</S.TitleText>
+      <S.TitleText>공식 반려동물</S.TitleText>
       <S.NamedContainer>
         <S.NamedGroup>
           <S.PetImage
@@ -258,13 +260,13 @@ const Hall = () => {
             onClick={() => saySomething('으으으ㅏㅇ아아아ㅏ앙ㅇ꺄아아아아아아ㅜㅜ웅ㅇ우우우ㅜㅜ루룰~!')}
           />
           <S.ContentText>
-            <b>(팔라가 오르면 우는 늑대)</b>
+            <b>[팔라가 오르면 우는 늑대]</b>
           </S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
           <S.PetImage src={Pet2} onClick={() => saySomething('키치이이이잉이이이익!')} />
           <S.ContentText>
-            <b>(늑대대신울어주는토끼)</b>
+            <b>[늑대대신울어주는토끼]</b>
           </S.ContentText>
         </S.NamedGroup>
       </S.NamedContainer>
