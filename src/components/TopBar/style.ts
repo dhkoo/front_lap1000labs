@@ -11,15 +11,6 @@ export const TopBar = styled.div`
   align-items: center;
 `;
 
-export const ProfileWrapper = styled.div`
-  box-sizing: border-box;
-  height: 120px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-`;
-
 export const LogoButton = styled(NavLink)`
   box-sizing: border-box;
   border-radius: 5px;
@@ -32,14 +23,26 @@ export const Lap1000Logo = styled.img`
   border-radius: 10px;
 `;
 
-export const AlapImage = styled.img`
+// Profile
+
+export const Profile = styled.div`
+  box-sizing: border-box;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const ProfileImage = styled.img`
   box-sizing: border-box;
   height: 85px;
+  width: 85px;
   border-radius: 10px;
   border: 1px solid #74ecd2;
 `;
 
-export const WalletButton = styled.button`
+export const ConnectedWalletButton = styled.button`
   box-sizing: border-box;
   height: 25px;
   width: 110px;
@@ -50,4 +53,40 @@ export const WalletButton = styled.button`
 
   background: black;
   cursor: pointer;
+`;
+
+export const ConnectWalletButtonWrapper = styled.div`
+  box-sizing: border-box;
+  height: 25px;
+  width: 85px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const ConnectWalletButton = styled.button`
+  box-sizing: border-box;
+  height: 25px;
+  width: 33px;
+  border-radius: 10px;
+  border: 1px solid #74ecd2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: black;
+  cursor: pointer;
+`;
+
+export const ButtonImage = styled.img`
+  box-sizing: border-box;
+  height: 15px;
+`;
+
+export const KlipButtonImage = styled.img`
+  box-sizing: border-box;
+  width: 22px;
+  filter: invert(1);
 `;

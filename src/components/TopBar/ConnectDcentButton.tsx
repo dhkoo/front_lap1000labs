@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import * as walletAction from 'state/wallet';
 
+import * as Image from 'constants/images';
 import * as S from './style';
 
 declare global {
@@ -11,7 +12,7 @@ declare global {
   }
 }
 
-const ConnectWalletButton = () => {
+const ConnectDcentButton: React.FC<{ setImageUrl: (url: string) => void }> = ({ setImageUrl }) => {
   const dispath = useDispatch();
 
   const DcentDeepLinkBaseUrl = 'https://link.dcentwallet.com/DAppBrowser/?url=';
@@ -32,7 +33,11 @@ const ConnectWalletButton = () => {
     }
   };
 
-  return <S.WalletButton onClick={onClickKaikas}>디센트 연결</S.WalletButton>;
+  return (
+    <S.ConnectWalletButton onClick={onClickKaikas}>
+      <S.ButtonImage src={Image.dcentLogo} />
+    </S.ConnectWalletButton>
+  );
 };
 
-export default ConnectWalletButton;
+export default ConnectDcentButton;

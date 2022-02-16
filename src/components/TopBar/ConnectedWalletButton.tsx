@@ -11,11 +11,11 @@ const ConnectedWalletButton = () => {
   const backAddr = address.substr(address.length - 4, 4);
 
   return (
-    <S.WalletButton>
+    <S.ConnectedWalletButton>
       {frontAddr}
       {'...'}
       {backAddr}
-    </S.WalletButton>
+    </S.ConnectedWalletButton>
   );
 };
 

@@ -4,6 +4,7 @@ import { prepare } from 'klip-sdk';
 
 import * as walletAction from 'state/wallet';
 
+import * as Image from 'constants/images';
 import * as S from './style';
 
 declare global {
@@ -12,13 +13,13 @@ declare global {
   }
 }
 
-const ConnectWalletButton = () => {
+const ConnectKlipButton = () => {
   const dispath = useDispatch();
   const [klipRequestKey, setKlipRequestKey] = useState('');
 
   const onClickKaikas = async () => {
     try {
-      const bappName = process.env.REACT_APP_PROJECT;
+      const bappName = '랍천 연구소';
       const res = await prepare.auth({ bappName });
       if (res.err) {
         // console.log('error auth');
@@ -32,7 +33,11 @@ const ConnectWalletButton = () => {
     }
   };
 
-  return <S.WalletButton onClick={onClickKaikas}>클립 연결</S.WalletButton>;
+  return (
+    <S.ConnectWalletButton onClick={onClickKaikas}>
+      <S.KlipButtonImage src={Image.klipLogo} />
+    </S.ConnectWalletButton>
+  );
 };
 
-export default ConnectWalletButton;
+export default ConnectKlipButton;
