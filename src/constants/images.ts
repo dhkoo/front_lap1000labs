@@ -4,6 +4,7 @@ const imageLocation = window.location.origin;
 export const dcentLogo = imageLocation.concat('/images/wallet/dcent.svg');
 export const kaikasLogo = imageLocation.concat('/images/wallet/kaikas.svg');
 export const klipLogo = imageLocation.concat('/images/wallet/klip.svg');
+export const maina = imageLocation.concat('/images/wallet/maina.png');
 
 // alaps
 export const Lap1000Logo = imageLocation.concat('/images/lap1000_logo.png');

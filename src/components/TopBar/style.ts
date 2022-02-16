@@ -36,8 +36,8 @@ export const Profile = styled.div`
 
 export const ProfileImage = styled.img`
   box-sizing: border-box;
-  height: 85px;
-  width: 85px;
+  height: 100px;
+  width: 100px;
   border-radius: 10px;
   border: 1px solid #74ecd2;
 `;
@@ -45,7 +45,7 @@ export const ProfileImage = styled.img`
 export const ConnectedWalletButton = styled.button`
   box-sizing: border-box;
   height: 25px;
-  width: 110px;
+  width: 100px;
   border-radius: 10px;
   border: 1px solid #74ecd2;
 
@@ -58,7 +58,7 @@ export const ConnectedWalletButton = styled.button`
 export const ConnectWalletButtonWrapper = styled.div`
   box-sizing: border-box;
   height: 25px;
-  width: 85px;
+  width: 100px;
 
   display: flex;
   flex-direction: row;

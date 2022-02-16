@@ -2,7 +2,7 @@ import React from 'react';
 
 import Profile from './Profile';
 
-import { Lap1000Logo, defaultAlap } from 'constants/images';
+import { Lap1000Logo } from 'constants/images';
 import * as S from './style';
 
 const TopBar = () => {
