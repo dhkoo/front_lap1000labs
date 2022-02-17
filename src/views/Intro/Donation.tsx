@@ -67,7 +67,7 @@ const Donation = () => {
               </S.Mint>
               <S.DonationRankAlapImage
                 src={
-                  donator.alapId === 0
+                  donator.alapId == 0
                     ? defaultAlap
                     : 'https://alap.s3.ap-northeast-2.amazonaws.com/alap-'
                         .concat(donator.alapId.toString())
