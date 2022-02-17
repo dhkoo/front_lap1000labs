@@ -2,14 +2,18 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Main = styled.div`
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  padding: 10px 0;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: black;
+  background: black;
 `;
 
 export const MenuContainer = styled.div`

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import * as walletAction from 'state/wallet';
 
+import * as Image from 'constants/images';
 import * as S from './style';
 
 declare global {
@@ -11,7 +12,7 @@ declare global {
   }
 }
 
-const ConnectWalletButton = () => {
+const ConnectKaikasButton: React.FC<{ setImageUrl: (url: string) => void }> = ({ setImageUrl }) => {
   const dispath = useDispatch();
 
   const onClickKaikas = async () => {
@@ -20,6 +21,7 @@ const ConnectWalletButton = () => {
       if (!klaytn) {
         console.log(`Need to install Kaikas`);
       } else {
+        setImageUrl(Image.kaikasLogo);
         const accounts = await klaytn.enable();
         const address = accounts[0];
         if (address) dispath(walletAction.setWallet('kaikas', address));
@@ -29,7 +31,11 @@ const ConnectWalletButton = () => {
     }
   };
 
-  return <S.WalletButton onClick={onClickKaikas}>카이카스 연결</S.WalletButton>;
+  return (
+    <S.ConnectWalletButton onClick={onClickKaikas}>
+      <S.ButtonImage src={Image.kaikasLogo} />
+    </S.ConnectWalletButton>
+  );
 };
 
-export default ConnectWalletButton;
+export default ConnectKaikasButton;

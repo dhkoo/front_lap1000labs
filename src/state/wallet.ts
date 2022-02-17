@@ -1,6 +1,6 @@
 // State
 export type WalletState = {
-  name: string;
+  walletType: string;
   address: string;
 };
 
@@ -8,10 +8,10 @@ export type WalletState = {
 export const SET_WALLET = 'SET_WALLET' as const;
 
 // action creators
-export const setWallet = (name: string, address: string) => {
+export const setWallet = (walletType: string, address: string) => {
   return {
     type: SET_WALLET,
-    name,
+    walletType,
     address,
   };
 };
@@ -20,7 +20,7 @@ export const setWallet = (name: string, address: string) => {
 type WalletAction = ReturnType<typeof setWallet>;
 
 const initalState: WalletState = {
-  name: '',
+  walletType: '',
   address: '',
 };
 
@@ -30,7 +30,7 @@ const reducer = (state: WalletState = initalState, action: WalletAction): Wallet
     case SET_WALLET: {
       return {
         ...state,
-        name: action.name,
+        walletType: action.walletType,
         address: action.address,
       };
     }
