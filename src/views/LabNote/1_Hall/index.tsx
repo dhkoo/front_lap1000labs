@@ -15,6 +15,7 @@ const Hall = () => {
         <br />이 곳은 섬이고, <S.Purple>'팔라'</S.Purple>라고 부른다. <br />
         PalaLand <br />
         ..라고 부르면 될까.. <br />
+        <LabNoteS.DarkCheon>새로워! 짜릿해! 최고야!</LabNoteS.DarkCheon> <br />
         <br />
         그리고 팔라에 거주하는 사람들을 '알랍'이라 지칭한다. <br />
         크게 조건은 없는 것 같다. <br />

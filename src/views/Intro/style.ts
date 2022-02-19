@@ -8,11 +8,15 @@ export const Intro = styled.div`
 `;
 
 export const Purple = styled.span`
-  color: #82a3f9;
+  color: ${(props) => props.theme.color.sub};
 `;
 
 export const Mint = styled.span`
-  color: #74ecd2;
+  color: ${(props) => props.theme.color.main};
+`;
+
+export const DarkCheon = styled.span`
+  color: ${(props) => props.theme.color.darkCheon};
 `;
 
 export const TitleText = styled.div`

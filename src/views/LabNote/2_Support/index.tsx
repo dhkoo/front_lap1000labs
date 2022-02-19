@@ -16,8 +16,7 @@ const Event = () => {
         감사의 마음을 조금이나마 표하기 위해 <br />
         후원자 리스트를 만들어 도움을 주신 분들의 <br />
         선행을 널리 알리고자 한다. <br />
-        <LabNoteS.DarkCheon>ㅎㅎ 압도적 감사!</LabNoteS.DarkCheon>
-        <br />
+        <LabNoteS.DarkCheon>ㅎㅎ 압도적 감사!</LabNoteS.DarkCheon> <br />
         상황이 나아지면 더 나은 감사의 표시를 해드리고 싶다. <br />
         <br />
         - 상위 후원자들에게 특별한 혜택..? <br />

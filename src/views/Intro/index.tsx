@@ -20,6 +20,7 @@ const Intro = () => {
         <br />
         피부는 <S.Mint>민트색</S.Mint>으로 변해있고 <br />
         계속 의미를 알 수 없는 소리가 들려온다.. <br />
+        <S.DarkCheon>새로워! 짜릿해! 최고야!</S.DarkCheon> <br />
         <br />
         <S.Purple>
           Attention! Pala! Attention! Alap! <br />
