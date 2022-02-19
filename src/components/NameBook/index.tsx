@@ -18,7 +18,7 @@ const NameBook = () => {
   const address = useSelector((state: RootState) => state.wallet.address);
 
   const [fee, setFeeValue] = useState(0);
-  const [name, setAddressName] = useState("");
+  const [name, setAddressName] = useState('');
   const [klayDonators, setKlayDonators] = useState<Donator[]>([]);
   const [palaDonators, setPalaDonators] = useState<Donator[]>([]);
 
@@ -30,7 +30,7 @@ const NameBook = () => {
       if (donator.addr.toLowerCase() === account) return true;
     }
     return false;
-  }
+  };
 
   useEffect(() => {
     const GetTopDonators = async () => {
@@ -42,7 +42,7 @@ const NameBook = () => {
     const GetFee = async () => {
       const fee = getNumberFromBN(await getFee(caver), 18);
       setFeeValue(fee);
-    }
+    };
     GetTopDonators();
     GetFee();
   }, []);
@@ -67,15 +67,10 @@ const NameBook = () => {
 
   return (
     <>
-      <S.TitleText>Naming</S.TitleText>
       <S.ContentText>
-        <br />
-        "내가 그의 이름을 불러주었을 때, <br />
-        그는 나에게로 와서 <br />
-        꽃이 되었다." <br />
-        <br />
         이름을 생성하기 위해선 <S.Purple>{fee} PALA</S.Purple>가 필요하다. <br />
-        (TOP 10 서포터들은 무료로 사용 가능) <br /><br />
+        (TOP 10 서포터들은 무료로 사용 가능) <br />
+        <br />
       </S.ContentText>
       <S.DonationForm onSubmit={onSubmitName}>
         <S.DonationInput type="text" placeholder="이름 입력" onChange={onChangeName} />

@@ -12,7 +12,7 @@ import { defaultAlap } from 'constants/images';
 
 import * as S from './style';
 
-const Donation = () => {
+const Support = () => {
   const klaytnCaver = new Caver(window.klaytn);
   const caver = new Caver(gateway.cypress);
   const walletType = useSelector((state: RootState) => state.wallet.walletType);
@@ -30,19 +30,19 @@ const Donation = () => {
       const klayResult = await getKlayTopDonators(caver);
       const palaResult = await getPalaTopDonators(caver);
 
-      klayResult.sort((a: { amount: string; }, b: { amount: string; }) => {
+      klayResult.sort((a: { amount: string }, b: { amount: string }) => {
         return parseInt(b.amount) - parseInt(a.amount);
       });
-      palaResult.sort((a: { amount: string; }, b: { amount: string; }) => {
+      palaResult.sort((a: { amount: string }, b: { amount: string }) => {
         return parseInt(b.amount) - parseInt(a.amount);
       });
       const list: string[] = [];
       klayResult.forEach((donator: Donator) => {
         list.push(donator.addr);
-      })
+      });
       palaResult.forEach((donator: Donator) => {
         list.push(donator.addr);
-      })
+      });
       const nameInfos = await getNames(caver, list);
       setKlayDonatorsName(nameInfos.slice(0, klayResult.length));
       setPalaDonatorsName(nameInfos.slice(klayResult.length, klayResult.length + palaResult.length));
@@ -57,7 +57,7 @@ const Donation = () => {
   const onSubmitKlayDonation = async (event: any) => {
     event.preventDefault();
     if (walletType !== '' && address !== '') {
-      await donateKlay(klaytnCaver, address, contractAddr.Donation, klayAmount * 10 ** 18);
+      await donateKlay(klaytnCaver, address, contractAddr.Support, klayAmount * 10 ** 18);
     } else {
       alert('지갑을 연결해 주세요.');
     }
@@ -67,8 +67,8 @@ const Donation = () => {
   const onSubmitPalaDonation = async (event: any) => {
     event.preventDefault();
     if (walletType !== '' && address !== '') {
-      await approve(klaytnCaver, address, contractAddr.pala, contractAddr.Donation, palaAmount * 10 ** 18);
-      await donatePala(klaytnCaver, address, contractAddr.Donation, palaAmount * 10 ** 18);
+      await approve(klaytnCaver, address, contractAddr.pala, contractAddr.Support, palaAmount * 10 ** 18);
+      await donatePala(klaytnCaver, address, contractAddr.Support, palaAmount * 10 ** 18);
     } else {
       alert('지갑을 연결해 주세요.');
     }
@@ -95,10 +95,11 @@ const Donation = () => {
                         .concat('.png')
                 }
               />
-              {nameInfos[index].name === '' ?
-                donator.addr.substring(0, 6) + "..." + donator.addr.substring(donator.addr.length - 4, donator.addr.length) :
-                nameInfos[index].name
-              }
+              {nameInfos[index].name === ''
+                ? donator.addr.substring(0, 6) +
+                  '...' +
+                  donator.addr.substring(donator.addr.length - 4, donator.addr.length)
+                : nameInfos[index].name}
             </S.DonationRankProfile>
             <S.Purple>
               {getNumberFromInt256(donator.amount, 18).toLocaleString()}
@@ -111,36 +112,25 @@ const Donation = () => {
   };
 
   return (
-    <>
-      <S.TitleText>SUPPORT</S.TitleText>
-      <S.ContentText>
-        <br />
-        바닥부터 하나씩 만들어나가야 한다. <br />
-        <br />
-        팔라랜드의 무궁한 발전을 위해 <br />
-        많은 사랑과 후원이 필요해 보인다. <br />
-        <br />
-      </S.ContentText>
-      <S.DonationFrame>
-        <S.DonationBundle>
-          <S.SubTitleText>KLAY TOP 10</S.SubTitleText>
-          <S.DonationForm onSubmit={onSubmitKlayDonation}>
-            <S.DonationInput type="number" min={0} step={0.01} placeholder="후원 수량" onChange={onChangeKlayAmount} />
-            <S.DonationButton type="submit">KLAY 후원하기</S.DonationButton>
-          </S.DonationForm>
-          {viewRank(klayDonators, klayDonatorsName, 'KLAY')}
-        </S.DonationBundle>
-        <S.DonationBundle>
-          <S.SubTitleText>PALA TOP 10</S.SubTitleText>
-          <S.DonationForm onSubmit={onSubmitPalaDonation}>
-            <S.DonationInput type="number" min={0} step={0.01} placeholder="후원 수량" onChange={onChangePalaAmount} />
-            <S.DonationButton type="submit">PALA 후원하기</S.DonationButton>
-          </S.DonationForm>
-          {viewRank(PalaDonators, palaDonatorsName, 'PALA')}
-        </S.DonationBundle>
-      </S.DonationFrame>
-    </>
+    <S.DonationFrame>
+      <S.DonationBundle>
+        <S.SubTitleText>KLAY TOP 10</S.SubTitleText>
+        <S.DonationForm onSubmit={onSubmitKlayDonation}>
+          <S.DonationInput type="number" min={0} step={0.01} placeholder="후원 수량" onChange={onChangeKlayAmount} />
+          <S.DonationButton type="submit">KLAY 후원하기</S.DonationButton>
+        </S.DonationForm>
+        {viewRank(klayDonators, klayDonatorsName, 'KLAY')}
+      </S.DonationBundle>
+      <S.DonationBundle>
+        <S.SubTitleText>PALA TOP 10</S.SubTitleText>
+        <S.DonationForm onSubmit={onSubmitPalaDonation}>
+          <S.DonationInput type="number" min={0} step={0.01} placeholder="후원 수량" onChange={onChangePalaAmount} />
+          <S.DonationButton type="submit">PALA 후원하기</S.DonationButton>
+        </S.DonationForm>
+        {viewRank(PalaDonators, palaDonatorsName, 'PALA')}
+      </S.DonationBundle>
+    </S.DonationFrame>
   );
 };
 
-export default Donation;
+export default Support;

@@ -14,3 +14,7 @@ export const MainLogWrapper = styled.div`
   color: white;
   text-align: center;
 `;
+
+export const DarkCheon = styled.span`
+  color: ${(props) => props.theme.color.darkCheon};
+`;
