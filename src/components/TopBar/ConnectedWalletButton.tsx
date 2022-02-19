@@ -6,15 +6,13 @@ import * as S from './style';
 
 const ConnectedWalletButton = () => {
   const address = useSelector((state: RootState) => state.wallet.address);
-
-  const frontAddr = address.substr(0, 5);
-  const backAddr = address.substr(address.length - 4, 4);
+  const name = useSelector((state: RootState) => state.wallet.name);
+  const frontAddr = address.substring(0, 5);
+  const backAddr = address.substring(address.length - 3, address.length);
 
   return (
     <S.ConnectedWalletButton>
-      {frontAddr}
-      {'...'}
-      {backAddr}
+      {name !== '' ? name : frontAddr + '...' + backAddr}
     </S.ConnectedWalletButton>
   );
 };
