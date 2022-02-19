@@ -44,8 +44,9 @@ export const LabNoteButton = styled(NavLink)`
 export const MenuItem = styled(NavLink)`
   box-sizing: border-box;
   margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 0 10px;
   border-radius: 5px;
-  flex: 1;
 
   font-family: 'East Sea Dokdo';
   font-style: normal;
@@ -62,10 +63,6 @@ export const MenuItem = styled(NavLink)`
   }
 `;
 
-export const DarkCheon = styled.span`
-  color: ${(props) => props.theme.color.darkCheon};
-`;
-
 export const GuideWrapper = styled.div`
   font-family: Pretendard;
   font-style: normal;
@@ -78,4 +75,19 @@ export const GuideWrapper = styled.div`
 export const NoteContentWrapper = styled.div`
   box-sizing: border-box;
   margin-top: 20px;
+`;
+
+export const DarkCheon = styled.span`
+  color: ${(props) => props.theme.color.darkCheon};
+`;
+
+// note pages
+
+export const NoteLogWrapper = styled.div`
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: white;
+  text-align: center;
 `;

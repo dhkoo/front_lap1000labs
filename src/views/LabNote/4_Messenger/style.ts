@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Event = styled.div`
+export const Messenger = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

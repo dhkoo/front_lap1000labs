@@ -3,7 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 
 import Hall from 'views/LabNote/1_Hall';
 import Support from 'views/LabNote/2_Support';
-import Messenger from 'views/LabNote/3_Messenger';
+import ApproveZero from 'views/LabNote/3_ApproveZero';
+import Messenger from 'views/LabNote/4_Messenger';
 import Store from 'views/LabNote/Charnel';
 
 import * as S from './style';
@@ -34,7 +35,8 @@ const LabNote = () => {
       <S.MenuContainer>
         <S.MenuItem to="1">#1 전시관</S.MenuItem>
         <S.MenuItem to="2">#2 정착</S.MenuItem>
-        <S.MenuItem to="3">#3 비밀 쪽지</S.MenuItem>
+        <S.MenuItem to="3">#3 통신 보안</S.MenuItem>
+        <S.MenuItem to="4">#4 비밀 쪽지</S.MenuItem>
         {/* <S.MenuItem to="/charnel">납골당</S.MenuItem> */}
       </S.MenuContainer>
       <S.NoteContentWrapper>
@@ -42,7 +44,8 @@ const LabNote = () => {
           <Route path="" element={LabNoteGuide()} />
           <Route path="1" element={<Hall />} />
           <Route path="2" element={<Support />} />
-          <Route path="3" element={<Messenger />} />
+          <Route path="3" element={<ApproveZero />} />
+          <Route path="4" element={<Messenger />} />
           {/* <Route path="/charnel" element={<Store />} /> */}
         </Routes>
       </S.NoteContentWrapper>

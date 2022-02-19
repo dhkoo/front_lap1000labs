@@ -1,21 +1,6 @@
+import * as Image from 'constants/images';
 import * as S from './style';
-import {
-  Lapgend1_1,
-  Lapgend1_2,
-  Lapgend2_1,
-  Lapgend3_1,
-  Lapgend4_1,
-  NamedAlap1,
-  NamedAlap2,
-  NamedAlap3,
-  NamedAlap4,
-  NamedAlap5,
-  NamedAlap6,
-  NamedAlap7,
-  NamedAlap8,
-  Pet1,
-  Pet2,
-} from 'constants/images';
+import * as LabNoteS from '../style';
 
 const Hall = () => {
   const saySomething = (say: string) => {
@@ -23,7 +8,7 @@ const Hall = () => {
   };
   return (
     <S.HallContainer>
-      <S.MainLogWrapper>
+      <LabNoteS.NoteLogWrapper>
         이곳에도 사람들이 문명을 이뤄 살고 있었다. <br />
         앞으로 함께 지내야 할 사람들에 대한 조사가 필요했다. <br />
         {/* 앞으로 함께 지내야 할 사람들에 대해 먼저 알고 싶었다. <br /> */}
@@ -41,7 +26,7 @@ const Hall = () => {
         P.S. 인지도가 높은 알랍들은 유행어도 있는듯하다. <br />
         <br />
         P.S. 늑대와 토끼가 사이좋게 지내는 모습도 목격했다. <br />
-      </S.MainLogWrapper>
+      </LabNoteS.NoteLogWrapper>
 
       <S.LapgendContainer>
         <S.LapgendGroup>
@@ -61,7 +46,7 @@ const Hall = () => {
           <S.LapgendTemplateGroup>
             <S.LapgendTemplate>
               <S.LapgendImage
-                src={Lapgend1_1}
+                src={Image.Lapgend1_1}
                 onClick={() => {
                   saySomething('엣헴');
                 }}
@@ -81,7 +66,7 @@ const Hall = () => {
             </S.LapgendTemplate>
             <S.LapgendTemplate>
               <S.LapgendImage
-                src={Lapgend1_2}
+                src={Image.Lapgend1_2}
                 onClick={() => {
                   saySomething('이놈이!');
                 }}
@@ -117,7 +102,7 @@ const Hall = () => {
             </button>
             <S.LapgendTemplateGroup>
               <S.LapgendTemplate>
-                <S.LapgendImage src={Lapgend2_1} onClick={() => saySomething('et.ham')} />
+                <S.LapgendImage src={Image.Lapgend2_1} onClick={() => saySomething('et.ham')} />
                 <S.ContentText>
                   [닉네임]{' '}
                   <b>
@@ -148,7 +133,7 @@ const Hall = () => {
             </button>
             <S.LapgendTemplateGroup>
               <S.LapgendTemplate>
-                <S.LapgendImage src={Lapgend3_1} onClick={() => saySomething('우가가가')} />
+                <S.LapgendImage src={Image.Lapgend3_1} onClick={() => saySomething('우가가가')} />
                 <S.ContentText>
                   [닉네임]{' '}
                   <b>
@@ -179,7 +164,7 @@ const Hall = () => {
             </button>
             <S.LapgendTemplateGroup>
               <S.LapgendTemplate>
-                <S.LapgendImage src={Lapgend4_1} onClick={() => saySomething('뀨')} />
+                <S.LapgendImage src={Image.Lapgend4_1} onClick={() => saySomething('뀨')} />
                 <S.ContentText>
                   [닉네임]{' '}
                   <b>
@@ -200,53 +185,60 @@ const Hall = () => {
       <S.TitleText>네임드 알랍</S.TitleText>
       <S.NamedContainer>
         <S.NamedGroup>
-          <S.NamedImage src={NamedAlap1} onClick={() => saySomething('싼랍클로스 입니다. 선물 뿌린다!!')} />
+          <S.NamedImage src={Image.NamedAlap1} onClick={() => saySomething('싼랍클로스 입니다. 선물 뿌린다!!')} />
           <S.ContentText>
             <b>강도깨비</b>
           </S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
-          <S.NamedImage src={NamedAlap6} onClick={() => saySomething('똥이다.. 수염 아니다..')} />
+          <S.NamedImage src={Image.NamedAlap6} onClick={() => saySomething('똥이다.. 수염 아니다..')} />
           <S.ContentText>
             <b>셀마 헤이엑</b>
           </S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
-          <S.NamedImage src={NamedAlap2} onClick={() => saySomething('랍천 기억할게!')} />
+          <S.NamedImage src={Image.NamedAlap2} onClick={() => saySomething('랍천 기억할게!')} />
           <S.ContentText>
             <b>기억할게</b>
           </S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
-          <S.NamedImage src={NamedAlap3} onClick={() => saySomething('작명..그으으만..')} />
+          <S.NamedImage src={Image.NamedAlap3} onClick={() => saySomething('작명..그으으만..')} />
           <S.ContentText>
             <b>572</b>
           </S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
-          <S.NamedImage src={NamedAlap8} onClick={() => saySomething('블록왕 구사칠랍')} />
+          <S.NamedImage src={Image.NamedAlap8} onClick={() => saySomething('블록왕 구사칠랍')} />
           <S.ContentText>
             <b>구사칠랍S2</b>
           </S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
-          <S.NamedImage src={NamedAlap4} onClick={() => { 
-            if (window.confirm('k-bluewhale 블로그 바로가기')) window.open('https://blog.naver.com/k-bluewhale');
-          }} />
+          <S.NamedImage
+            src={Image.NamedAlap4}
+            onClick={() => {
+              if (window.confirm('k-bluewhale 블로그 바로가기')) window.open('https://blog.naver.com/k-bluewhale');
+            }}
+          />
           <S.ContentText>
             <b>k-bluewhale</b>
           </S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
-          <S.NamedImage src={NamedAlap7} onClick={() => {
-              if (window.confirm('팔라멘트 블로그 바로가기')) window.open('https://blog.naver.com/PostList.naver?blogId=palament_111');
-            }} />
+          <S.NamedImage
+            src={Image.NamedAlap7}
+            onClick={() => {
+              if (window.confirm('팔라멘트 블로그 바로가기'))
+                window.open('https://blog.naver.com/PostList.naver?blogId=palament_111');
+            }}
+          />
           <S.ContentText>
             <b>팔라멘트</b>
           </S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
-          <S.NamedImage src={NamedAlap5} onClick={() => saySomething('팔라 팔달라 가면 닉 뭐하지?')} />
+          <S.NamedImage src={Image.NamedAlap5} onClick={() => saySomething('팔라 팔달라 가면 닉 뭐하지?')} />
           <S.ContentText>
             <b>팔달라</b>
           </S.ContentText>
@@ -256,7 +248,7 @@ const Hall = () => {
       <S.NamedContainer>
         <S.NamedGroup>
           <S.PetImage
-            src={Pet1}
+            src={Image.Pet1}
             onClick={() => saySomething('으으으ㅏㅇ아아아ㅏ앙ㅇ꺄아아아아아아ㅜㅜ웅ㅇ우우우ㅜㅜ루룰~!')}
           />
           <S.ContentText>
@@ -264,7 +256,7 @@ const Hall = () => {
           </S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
-          <S.PetImage src={Pet2} onClick={() => saySomething('키치이이이잉이이이익!')} />
+          <S.PetImage src={Image.Pet2} onClick={() => saySomething('키치이이이잉이이이익!')} />
           <S.ContentText>
             <b>[늑대대신울어주는토끼]</b>
           </S.ContentText>

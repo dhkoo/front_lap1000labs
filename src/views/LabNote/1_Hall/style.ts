@@ -11,15 +11,6 @@ export const Purple = styled.span`
   color: #82a3f9;
 `;
 
-export const MainLogWrapper = styled.div`
-  font-family: Pretendard;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  color: white;
-  text-align: center;
-`;
-
 export const LapgendContainer = styled.div`
   display: flex;
   flex-direction: column;
