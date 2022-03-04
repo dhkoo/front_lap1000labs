@@ -3,11 +3,10 @@ import Caver from 'caver-js';
 import { useSelector } from 'react-redux';
 
 import { RootState } from 'state';
-import { Donator, donateKlay, getKlayTopDonators, getPalaTopDonators, donatePala } from 'contracts/donation';
+import { Donator, getKlayTopDonators, getPalaTopDonators } from 'contracts/donation';
 import { contractAddr, gateway } from 'contracts/addrBook';
 import { approve, getAllowance } from 'contracts/erc20';
-import { getNumberFromBN, getNumberFromInt256 } from 'utils/number';
-import { BN } from 'utils/number';
+import { getNumberFromBN } from 'utils/number';
 
 import * as S from './style';
 import { setName, getFee } from 'contracts/nameBook';
@@ -75,8 +74,8 @@ const NameBook = () => {
         그는 나에게로 와서 <br />
         꽃이 되었다." <br />
         <br />
-        비용: <S.Purple>{fee} PALA</S.Purple> <br />
-        (TOP 10 서포터들은 Free of Charge) <br /><br />
+        이름을 생성하기 위해선 <S.Purple>{fee} PALA</S.Purple>가 필요하다. <br />
+        (TOP 10 서포터들은 무료로 사용 가능) <br /><br />
       </S.ContentText>
       <S.DonationForm onSubmit={onSubmitName}>
         <S.DonationInput type="text" placeholder="이름 입력" onChange={onChangeName} />

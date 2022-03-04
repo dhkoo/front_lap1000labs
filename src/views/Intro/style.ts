@@ -24,6 +24,14 @@ export const TitleText = styled.div`
   color: white;
 `;
 
+export const SubTitleText = styled.div`
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  color: #82a3f9;
+`;
+
 export const ContentText = styled.div`
   font-family: Pretendard;
   font-style: normal;
@@ -49,6 +57,33 @@ export const EnterButton = styled(NavLink)`
   text-decoration: none;
 
   background: #74ecd2;
+`;
+
+export const DonationFrame = styled.div`
+  box-sizing: border-box;
+  width: 700px;
+  margin: 5px 0;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  @media screen and (max-width: 700px) {
+    width: 330px;
+  }
+`;
+
+export const DonationBundle = styled.div`
+  box-sizing: border-box;
+  width: 330px;
+  margin: 5px 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const DonationForm = styled.form`

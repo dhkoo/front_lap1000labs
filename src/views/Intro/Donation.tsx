@@ -121,16 +121,24 @@ const Donation = () => {
         많은 사랑과 후원이 필요해 보인다. <br />
         <br />
       </S.ContentText>
-      <S.DonationForm onSubmit={onSubmitKlayDonation}>
-        <S.DonationInput type="number" min={0} step={0.01} placeholder="후원 수량" onChange={onChangeKlayAmount} />
-        <S.DonationButton type="submit">KLAY 후원하기</S.DonationButton>
-      </S.DonationForm>
-      {viewRank(klayDonators, klayDonatorsName, 'KLAY')}
-      <S.DonationForm onSubmit={onSubmitPalaDonation}>
-        <S.DonationInput type="number" min={0} step={0.01} placeholder="후원 수량" onChange={onChangePalaAmount} />
-        <S.DonationButton type="submit">PALA 후원하기</S.DonationButton>
-      </S.DonationForm>
-      {viewRank(PalaDonators, palaDonatorsName, 'PALA')}
+      <S.DonationFrame>
+        <S.DonationBundle>
+          <S.SubTitleText>KLAY TOP 10</S.SubTitleText>
+          <S.DonationForm onSubmit={onSubmitKlayDonation}>
+            <S.DonationInput type="number" min={0} step={0.01} placeholder="후원 수량" onChange={onChangeKlayAmount} />
+            <S.DonationButton type="submit">KLAY 후원하기</S.DonationButton>
+          </S.DonationForm>
+          {viewRank(klayDonators, klayDonatorsName, 'KLAY')}
+        </S.DonationBundle>
+        <S.DonationBundle>
+          <S.SubTitleText>PALA TOP 10</S.SubTitleText>
+          <S.DonationForm onSubmit={onSubmitPalaDonation}>
+            <S.DonationInput type="number" min={0} step={0.01} placeholder="후원 수량" onChange={onChangePalaAmount} />
+            <S.DonationButton type="submit">PALA 후원하기</S.DonationButton>
+          </S.DonationForm>
+          {viewRank(PalaDonators, palaDonatorsName, 'PALA')}
+        </S.DonationBundle>
+      </S.DonationFrame>
     </>
   );
 };
