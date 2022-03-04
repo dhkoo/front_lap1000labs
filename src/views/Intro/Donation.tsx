@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { RootState } from 'state';
 import { Donator, donateKlay, getKlayTopDonators, getPalaTopDonators, donatePala } from 'contracts/donation';
+import { getNames, NameInfo } from 'contracts/nameBook';
 import { contractAddr, gateway } from 'contracts/addrBook';
 import { approve } from 'contracts/erc20';
 import { getNumberFromInt256 } from 'utils/number';
@@ -21,15 +22,35 @@ const Donation = () => {
   const [klayDonators, setKlayDonators] = useState<Donator[]>([]);
   const [palaAmount, setPalaAmount] = useState(0);
   const [PalaDonators, setPalaDonators] = useState<Donator[]>([]);
+  const [klayDonatorsName, setKlayDonatorsName] = useState<NameInfo[]>([]);
+  const [palaDonatorsName, setPalaDonatorsName] = useState<NameInfo[]>([]);
 
   useEffect(() => {
-    const GetTopDonators = async () => {
+    const GetTopDonatorsInfo = async () => {
       const klayResult = await getKlayTopDonators(caver);
-      setKlayDonators(klayResult);
       const palaResult = await getPalaTopDonators(caver);
+
+      klayResult.sort((a: { amount: string; }, b: { amount: string; }) => {
+        return parseInt(b.amount) - parseInt(a.amount);
+      });
+      palaResult.sort((a: { amount: string; }, b: { amount: string; }) => {
+        return parseInt(b.amount) - parseInt(a.amount);
+      });
+      const list: string[] = [];
+      klayResult.forEach((donator: Donator) => {
+        list.push(donator.addr);
+      })
+      palaResult.forEach((donator: Donator) => {
+        list.push(donator.addr);
+      })
+      const nameInfos = await getNames(caver, list);
+      setKlayDonatorsName(nameInfos.slice(0, klayResult.length));
+      setPalaDonatorsName(nameInfos.slice(klayResult.length, klayResult.length + palaResult.length));
+
+      setKlayDonators(klayResult);
       setPalaDonators(palaResult);
     };
-    GetTopDonators();
+    GetTopDonatorsInfo();
   }, []);
 
   const onChangeKlayAmount = (event: any) => setKlayAmount(event.target.value);
@@ -53,7 +74,7 @@ const Donation = () => {
     }
   };
 
-  const viewRank = (donators: Donator[], unit: string) => {
+  const viewRank = (donators: Donator[], nameInfos: NameInfo[], unit: string) => {
     if (donators.length !== 0) {
       donators.sort((a, b) => {
         return parseInt(b.amount) - parseInt(a.amount);
@@ -74,7 +95,10 @@ const Donation = () => {
                         .concat('.png')
                 }
               />
-              {donator.addr.substring(0, 6)}...{donator.addr.substring(donator.addr.length - 4, donator.addr.length)}
+              {nameInfos[index].name === '' ?
+                donator.addr.substring(0, 6) + "..." + donator.addr.substring(donator.addr.length - 4, donator.addr.length) :
+                nameInfos[index].name
+              }
             </S.DonationRankProfile>
             <S.Purple>
               {getNumberFromInt256(donator.amount, 18).toLocaleString()}
@@ -101,12 +125,12 @@ const Donation = () => {
         <S.DonationInput type="number" min={0} step={0.01} placeholder="후원 수량" onChange={onChangeKlayAmount} />
         <S.DonationButton type="submit">KLAY 후원하기</S.DonationButton>
       </S.DonationForm>
-      {viewRank(klayDonators, 'KLAY')}
+      {viewRank(klayDonators, klayDonatorsName, 'KLAY')}
       <S.DonationForm onSubmit={onSubmitPalaDonation}>
         <S.DonationInput type="number" min={0} step={0.01} placeholder="후원 수량" onChange={onChangePalaAmount} />
         <S.DonationButton type="submit">PALA 후원하기</S.DonationButton>
       </S.DonationForm>
-      {viewRank(PalaDonators, 'PALA')}
+      {viewRank(PalaDonators, palaDonatorsName, 'PALA')}
     </>
   );
 };

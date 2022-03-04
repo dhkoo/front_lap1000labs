@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Donation from './Donation';
+import NameBook from './NameBook';
 
 import * as S from './style';
 
@@ -33,6 +34,7 @@ const Intro = () => {
       <S.EnterButton to="LabNote/">
         <b>연구 노트 확인하기</b>
       </S.EnterButton>
+      <NameBook />
       <Donation />
     </S.Intro>
   );
