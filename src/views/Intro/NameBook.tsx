@@ -78,7 +78,7 @@ const NameBook = () => {
         (TOP 10 서포터들은 무료로 사용 가능) <br /><br />
       </S.ContentText>
       <S.DonationForm onSubmit={onSubmitName}>
-        <S.DonationInput type="text" placeholder="이름 입력" onChange={onChangeName} />
+        <S.DonationInput type="text" placeholder="이름 입력" maxLength={10} onChange={onChangeName} />
         <S.DonationButton type="submit">이름 생성하기</S.DonationButton>
       </S.DonationForm>
     </>
