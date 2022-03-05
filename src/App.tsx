@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import ReactGA from 'react-ga';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'GlobalStyle';
@@ -11,6 +13,12 @@ import theme from './theme';
 import * as S from './style';
 
 const App = () => {
+  useEffect(() => {
+    ReactGA.initialize("G-WMNB5FJNMF");
+    ReactGA.set({page: window.location.pathname});
+    ReactGA.pageview(window.location.pathname + window.location.search);
+   }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
