@@ -11,7 +11,6 @@ import theme from './theme';
 import * as S from './style';
 
 const App = () => {
-  console.log(theme);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
