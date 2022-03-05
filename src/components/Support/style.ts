@@ -5,7 +5,7 @@ export const Mint = styled.span`
 `;
 
 export const Purple = styled.span`
-  color: ${(props) => props.theme.color.main};
+  color: ${(props) => props.theme.color.sub};
 `;
 
 export const SubTitleText = styled.div`
@@ -13,7 +13,7 @@ export const SubTitleText = styled.div`
   font-style: normal;
   font-weight: 800;
   font-size: 20px;
-  color: #82a3f9;
+  color: ${(props) => props.theme.color.sub};
 `;
 
 export const DonationFrame = styled.div`

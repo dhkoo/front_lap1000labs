@@ -5,7 +5,7 @@ export const Mint = styled.span`
 `;
 
 export const Purple = styled.span`
-  color: ${(props) => props.theme.color.main};
+  color: ${(props) => props.theme.color.sub};
 `;
 
 export const ContentText = styled.div`

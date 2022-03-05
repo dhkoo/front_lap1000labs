@@ -8,7 +8,7 @@ export const HallContainer = styled.div`
 `;
 
 export const Purple = styled.span`
-  color: #82a3f9;
+  color: ${(props) => props.theme.color.sub};
 `;
 
 export const LapgendContainer = styled.div`

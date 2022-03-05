@@ -84,6 +84,9 @@ export const DarkCheon = styled.span`
 // note pages
 
 export const NoteLogWrapper = styled.div`
+  box-sizing: border-box;
+  margin-bottom: 20px;
+
   font-family: Pretendard;
   font-style: normal;
   font-weight: 400;

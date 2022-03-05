@@ -21,7 +21,6 @@ const Event = () => {
         <br />
         - 상위 후원자들에게 특별한 혜택..? <br />
         - 일정 금액이상의 후원금 모금시 알랍들에게 선물..? <br />
-        <br />
       </LabNoteS.NoteLogWrapper>
       <Support />
     </S.Event>
