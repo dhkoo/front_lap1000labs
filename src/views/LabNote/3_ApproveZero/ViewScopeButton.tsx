@@ -5,7 +5,7 @@ const ViewScopeButton: React.FC<{ type: string; addr: string }> = ({ type, addr 
     window.open('https://scope.klaytn.com/'.concat(type).concat('/').concat(addr));
   };
 
-  return <S.ViewScopeButton onClick={openKlaytnScope}>Scope 확인</S.ViewScopeButton>;
+  return <S.ViewScopeButton onClick={openKlaytnScope}>KlaytnScope로 확인하기</S.ViewScopeButton>;
 };
 
 export default ViewScopeButton;
