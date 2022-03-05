@@ -31,7 +31,9 @@ const ApproveZero = () => {
       const symbol = await tokenInstance.methods.symbol().call();
       setApprovedAmount(getNumberFromInt256(allowance, Number(decimals)).toString().concat(' ').concat(symbol));
     } catch {
-      setApprovedAmount('주소를 다시 확인해주세요.');
+      if (myAddress === '') {
+        setApprovedAmount('로그인을 먼저 해주세요.');
+      } else setApprovedAmount('주소를 다시 확인해주세요.');
     }
   };
 
@@ -44,7 +46,9 @@ const ApproveZero = () => {
       const symbol = await tokenInstance.methods.symbol().call();
       setApprovedAmount(getNumberFromInt256(allowance, Number(decimals)).toString().concat(' ').concat(symbol));
     } catch {
-      setApprovedAmount('주소를 다시 확인해주세요.');
+      if (myAddress === '') {
+        setApprovedAmount('로그인을 먼저 해주세요.');
+      } else setApprovedAmount('주소를 다시 확인해주세요.');
     }
   };
 
