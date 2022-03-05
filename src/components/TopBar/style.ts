@@ -19,7 +19,7 @@ export const LogoButton = styled(NavLink)`
 export const Lap1000Logo = styled.img`
   box-sizing: border-box;
   height: 120px;
-  border: double #74ecd2;
+  border: double ${(props) => props.theme.color.main};
   border-radius: 10px;
 `;
 
@@ -39,7 +39,7 @@ export const ProfileImage = styled.img`
   height: 100px;
   width: 100px;
   border-radius: 10px;
-  border: 1px solid #74ecd2;
+  border: 1px solid ${(props) => props.theme.color.sub};
 `;
 
 export const ConnectedWalletButton = styled.button`
@@ -47,9 +47,9 @@ export const ConnectedWalletButton = styled.button`
   height: 25px;
   width: 100px;
   border-radius: 10px;
-  border: 1px solid #74ecd2;
+  border: 1px solid ${(props) => props.theme.color.main};
 
-  color: #74ecd2;
+  color: ${(props) => props.theme.color.sub};
 
   background: black;
   cursor: pointer;
@@ -70,7 +70,7 @@ export const ConnectWalletButton = styled.button`
   height: 25px;
   width: 33px;
   border-radius: 10px;
-  border: 1px solid #74ecd2;
+  border: 1px solid ${(props) => props.theme.color.sub};
 
   display: flex;
   justify-content: center;

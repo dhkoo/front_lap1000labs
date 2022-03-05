@@ -7,14 +7,12 @@ import * as S from './style';
 
 const TopBar = () => {
   return (
-    <>
-      <S.TopBar>
-        <S.LogoButton to="/">
-          <S.Lap1000Logo src={Lap1000Logo} />
-        </S.LogoButton>
-        <Profile />
-      </S.TopBar>
-    </>
+    <S.TopBar>
+      <S.LogoButton to="/">
+        <S.Lap1000Logo src={Lap1000Logo} />
+      </S.LogoButton>
+      <Profile />
+    </S.TopBar>
   );
 };
 

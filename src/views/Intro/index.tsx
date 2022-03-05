@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Donation from './Donation';
-import NameBook from './NameBook';
+import Support from '../../components/Support';
+import NameBook from '../../components/NameBook';
 
 import * as S from './style';
 
@@ -20,6 +20,7 @@ const Intro = () => {
         <br />
         피부는 <S.Mint>민트색</S.Mint>으로 변해있고 <br />
         계속 의미를 알 수 없는 소리가 들려온다.. <br />
+        <S.DarkCheon>새로워! 짜릿해! 최고야!</S.DarkCheon> <br />
         <br />
         <S.Purple>
           Attention! Pala! Attention! Alap! <br />
@@ -34,8 +35,27 @@ const Intro = () => {
       <S.EnterButton to="LabNote/">
         <b>연구 노트 확인하기</b>
       </S.EnterButton>
+
+      <S.TitleText>Naming</S.TitleText>
+      <S.ContentText>
+        <br />
+        "내가 그의 이름을 불러주었을 때, <br />
+        그는 나에게로 와서 <br />
+        꽃이 되었다." <br />
+        <br />
+      </S.ContentText>
       <NameBook />
-      <Donation />
+
+      <S.TitleText>SUPPORT</S.TitleText>
+      <S.ContentText>
+        <br />
+        바닥부터 하나씩 만들어나가야 한다. <br />
+        <br />
+        팔라랜드의 무궁한 발전을 위해 <br />
+        많은 사랑과 후원이 필요해 보인다. <br />
+        <br />
+      </S.ContentText>
+      <Support />
     </S.Intro>
   );
 };

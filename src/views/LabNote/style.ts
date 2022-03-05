@@ -37,15 +37,16 @@ export const LabNoteButton = styled(NavLink)`
   text-decoration: none;
 
   &.active {
-    color: #74ecd2;
+    color: ${(props) => props.theme.color.main};
   }
 `;
 
 export const MenuItem = styled(NavLink)`
   box-sizing: border-box;
   margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 0 10px;
   border-radius: 5px;
-  flex: 1;
 
   font-family: 'East Sea Dokdo';
   font-style: normal;
@@ -58,7 +59,7 @@ export const MenuItem = styled(NavLink)`
   background: #222222;
   &.active {
     color: black;
-    background: #74ecd2;
+    background: ${(props) => props.theme.color.main};
   }
 `;
 
@@ -71,36 +72,25 @@ export const GuideWrapper = styled.div`
   text-align: center;
 `;
 
-export const ResearchNoteWrapper = styled.div`
-  padding: 15px;
-  font-family: 'East Sea Dokdo';
-  font-style: normal;
-  font-weight: 10;
-  font-size: 25px;
-  color: white;
-  text-align: center;
-  border: 1px solid #74ecd2;
-  border-radius: 10px;
-`;
-
-export const ResearchNoteTitle = styled.div`
-  box-sizing: border-box;
-  border-radius: 5px;
-
-  font-family: 'East Sea Dokdo';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-
-  &.active {
-    color: #74ecd2;
-  }
-`;
-
 export const NoteContentWrapper = styled.div`
   box-sizing: border-box;
   margin-top: 20px;
+`;
+
+export const DarkCheon = styled.span`
+  color: ${(props) => props.theme.color.darkCheon};
+`;
+
+// note pages
+
+export const NoteLogWrapper = styled.div`
+  box-sizing: border-box;
+  margin-bottom: 20px;
+
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: white;
+  text-align: center;
 `;
