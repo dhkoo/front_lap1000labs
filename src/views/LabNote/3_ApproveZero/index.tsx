@@ -1,7 +1,53 @@
+import { ChangeEvent, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from 'state';
+import Caver from 'caver-js';
+
+import { gateway } from 'contracts/addrBook';
+import { approve } from 'contracts/erc20';
+import Erc20Abi from 'contracts/abi/ERC20.json';
+import { getNumberFromInt256 } from 'utils/number';
+import ViewScopeButton from './ViewScopeButton';
+
 import * as S from './style';
 import * as LabNoteS from '../style';
 
 const ApproveZero = () => {
+  const myAddress = useSelector((state: RootState) => state.wallet.address);
+
+  const [tokenAddr, setTokenAddr] = useState<string>('');
+  const [targetContractAddr, setTargetContractAddr] = useState<string>('');
+
+  const [approvedAmount, setApprovedAmount] = useState<string>('');
+
+  const klaytnCaver = new Caver(window.klaytn);
+  const caver = new Caver(gateway.cypress);
+
+  const getMyApproved = async () => {
+    try {
+      const tokenInstance = caver.contract.create(Erc20Abi, tokenAddr);
+      const allowance = await tokenInstance.methods.allowance(myAddress, targetContractAddr).call();
+      const decimals = await tokenInstance.methods.decimals().call();
+      const symbol = await tokenInstance.methods.symbol().call();
+      setApprovedAmount(getNumberFromInt256(allowance, Number(decimals)).toString().concat(' ').concat(symbol));
+    } catch {
+      setApprovedAmount('주소를 다시 확인해주세요.');
+    }
+  };
+
+  const approveZero = async () => {
+    try {
+      await approve(klaytnCaver, myAddress, tokenAddr, targetContractAddr, 0);
+      const tokenInstance = caver.contract.create(Erc20Abi, tokenAddr);
+      const allowance = await tokenInstance.methods.allowance(myAddress, targetContractAddr).call();
+      const decimals = await tokenInstance.methods.decimals().call();
+      const symbol = await tokenInstance.methods.symbol().call();
+      setApprovedAmount(getNumberFromInt256(allowance, Number(decimals)).toString().concat(' ').concat(symbol));
+    } catch {
+      setApprovedAmount('주소를 다시 확인해주세요.');
+    }
+  };
+
   return (
     <S.ApproveZero>
       <LabNoteS.NoteLogWrapper>
@@ -16,9 +62,33 @@ const ApproveZero = () => {
         <br />
         서로 잘 믿어서 그런걸까, <br />
         착한 알랍들이 조금 걱정이다. <br />
-        권한을 회수할 수 있는 도구를 만들어보고자 한다. <br />
         <br />
+        권한을 회수할 수 있는 도구를 만들어보고자 한다. <br />
       </LabNoteS.NoteLogWrapper>
+      <S.AddrCheckWrapper>
+        토큰 주소 (ERC-20, KIP-17)
+        <S.ContractInput
+          placeholder="토큰 주소"
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setTokenAddr(e.target.value)}
+          autoComplete="none"
+        />
+        <ViewScopeButton type="token" addr={tokenAddr} />
+      </S.AddrCheckWrapper>
+      <S.AddrCheckWrapper>
+        계약 주소
+        <S.ContractInput
+          placeholder="계약 주소"
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setTargetContractAddr(e.target.value)}
+          autoComplete="none"
+        />
+        <ViewScopeButton type="account" addr={targetContractAddr} />
+      </S.AddrCheckWrapper>
+      <S.AddrCheckWrapper>
+        허용 내역
+        <S.ResultBox>{approvedAmount}</S.ResultBox>
+        <S.ViewScopeButton onClick={getMyApproved}> 조회하기 </S.ViewScopeButton>
+        <S.ViewScopeButton onClick={approveZero}> 해제하기 </S.ViewScopeButton>
+      </S.AddrCheckWrapper>
     </S.ApproveZero>
   );
 };
