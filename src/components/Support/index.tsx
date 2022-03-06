@@ -57,7 +57,7 @@ const Support = () => {
   const onSubmitKlayDonation = async (event: any) => {
     event.preventDefault();
     if (walletType !== '' && address !== '') {
-      await donateKlay(klaytnCaver, address, contractAddr.Support, klayAmount * 10 ** 18);
+      await donateKlay(klaytnCaver, address, contractAddr.Donation, klayAmount * 10 ** 18);
     } else {
       alert('지갑을 연결해 주세요.');
     }
@@ -68,7 +68,7 @@ const Support = () => {
     event.preventDefault();
     if (walletType !== '' && address !== '') {
       await approve(klaytnCaver, address, contractAddr.pala, contractAddr.Support, palaAmount * 10 ** 18);
-      await donatePala(klaytnCaver, address, contractAddr.Support, palaAmount * 10 ** 18);
+      await donatePala(klaytnCaver, address, contractAddr.Donation, palaAmount * 10 ** 18);
     } else {
       alert('지갑을 연결해 주세요.');
     }
