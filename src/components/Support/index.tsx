@@ -67,7 +67,7 @@ const Support = () => {
   const onSubmitPalaDonation = async (event: any) => {
     event.preventDefault();
     if (walletType !== '' && address !== '') {
-      await approve(klaytnCaver, address, contractAddr.pala, contractAddr.Support, palaAmount * 10 ** 18);
+      await approve(klaytnCaver, address, contractAddr.pala, contractAddr.Donation, palaAmount * 10 ** 18);
       await donatePala(klaytnCaver, address, contractAddr.Donation, palaAmount * 10 ** 18);
     } else {
       alert('지갑을 연결해 주세요.');
