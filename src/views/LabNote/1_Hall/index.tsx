@@ -210,6 +210,12 @@ const Hall = () => {
           </S.ContentText>
         </S.NamedGroup>
         <S.NamedGroup>
+          <S.NamedImage src={Image.NamedAlap9} onClick={() => saySomething('단타치면 지옥가여')} />
+          <S.ContentText>
+            <b>라라부인</b>
+          </S.ContentText>
+        </S.NamedGroup>
+        <S.NamedGroup>
           <S.NamedImage src={Image.NamedAlap8} onClick={() => saySomething('블록왕 구사칠랍')} />
           <S.ContentText>
             <b>구사칠랍S2</b>
