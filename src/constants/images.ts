@@ -22,5 +22,6 @@ export const NamedAlap5 = imageLocation.concat('/images/alap-1201.png');
 export const NamedAlap6 = imageLocation.concat('/images/alap-314.png');
 export const NamedAlap7 = imageLocation.concat('/images/alap-1012.png');
 export const NamedAlap8 = imageLocation.concat('/images/alap-947.png');
+export const NamedAlap9 = imageLocation.concat('/images/alap-777.png');
 export const Pet1 = imageLocation.concat('/images/pet1.png');
 export const Pet2 = imageLocation.concat('/images/pet2.png');
