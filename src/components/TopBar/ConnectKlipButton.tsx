@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Caver from 'caver-js';
 import { prepare } from 'klip-sdk';
 
-import * as walletAction from 'state/wallet';
+import { gateway } from 'contracts/addrBook';
+import * as walletActions from 'state/wallet';
+import KlipRequestListener from 'components/KlipRequestListner';
+import { getNames } from 'contracts/nameBook';
 
 import * as Image from 'constants/images';
 import * as S from './style';
 
-declare global {
-  interface Window {
-    klaytn: any;
-  }
-}
+const ConnectKlipButton: React.FC<{ setImageUrl: (url: string) => void }> = ({ setImageUrl }) => {
+  const dispatch = useDispatch();
+  const caver = new Caver(gateway.cypress);
 
-const ConnectKlipButton = () => {
-  const dispath = useDispatch();
   const [klipRequestKey, setKlipRequestKey] = useState('');
 
-  const onClickKaikas = async () => {
+  const onClickKlip = async () => {
     try {
       const bappName = '랍천 연구소';
       const res = await prepare.auth({ bappName });
@@ -33,9 +33,25 @@ const ConnectKlipButton = () => {
     }
   };
 
+  const connectSuccess = async (klipResult: any) => {
+    const address = klipResult.klaytn_address;
+    const names = await getNames(caver, [address]);
+    if (address) dispatch(walletActions.setWallet('klip', address, names[0].name));
+  };
+
+  const connectFailed = () => {
+    dispatch(walletActions.setWallet('', '', ''));
+  };
+
   return (
-    <S.ConnectWalletButton onClick={onClickKaikas}>
+    <S.ConnectWalletButton onClick={onClickKlip}>
       <S.KlipButtonImage src={Image.klipLogo} />
+      <KlipRequestListener
+        requestKey={klipRequestKey}
+        duration={150}
+        completeCallback={connectSuccess}
+        cancelCallback={connectFailed}
+      />
     </S.ConnectWalletButton>
   );
 };

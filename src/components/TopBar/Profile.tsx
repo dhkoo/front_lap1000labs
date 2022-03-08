@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Caver from 'caver-js';
+import { isMobile } from 'react-device-detect';
 
 import { RootState } from 'state';
 import { getUserAlapIds } from 'contracts/nft';
@@ -50,8 +51,8 @@ const Profile = () => {
           <S.ProfileImage src={imageUrl} />
           <S.ConnectWalletButtonWrapper>
             <ConnectKaikasButton setImageUrl={setImageUrl} />
-            <ConnectDcentButton setImageUrl={setImageUrl} />
-            {/* <ConnectKlipButton /> */}
+            {isMobile && <ConnectDcentButton setImageUrl={setImageUrl} />}
+            {isMobile && <ConnectKlipButton setImageUrl={setImageUrl} />}
           </S.ConnectWalletButtonWrapper>
         </>
       )}
