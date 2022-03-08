@@ -11,7 +11,7 @@ export const executeTxKaikas = async (
   abi: any,
   params: any,
   caver: typeof Caver,
-  receiptCallback?: any,
+  completeCallback?: any,
 ) => {
   const data = caver.abi.encodeFunctionCall(abi, params);
   const tx = {
@@ -30,7 +30,10 @@ export const executeTxKaikas = async (
     })
     .on('receipt', (receipt: any) => {
       console.log('receipt', receipt);
-      if (receiptCallback) receiptCallback();
+      if (completeCallback) {
+        console.log('callback setted');
+        completeCallback();
+      }
     })
     .on('error', async (error: any) => {
       const failedReceipt = await caver.rpc.klay.getTransactionReceipt(txHash.toString());

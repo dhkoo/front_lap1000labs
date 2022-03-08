@@ -1,26 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import Caver from 'caver-js';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { RootState } from 'state';
+import * as TxActions from 'state/transaction';
 import { Donator, donateKlay, getKlayTopDonators, getPalaTopDonators, donatePala } from 'contracts/donation';
 import { getNames, NameInfo } from 'contracts/nameBook';
 import { contractAddr, gateway } from 'contracts/addrBook';
-import { approve } from 'contracts/erc20';
-import { getNumberFromInt256 } from 'utils/number';
+import { approve, getAllowance } from 'contracts/erc20';
+import { BN, getNumberFromInt256 } from 'utils/number';
 import { defaultAlap } from 'constants/images';
 
 import * as S from './style';
 
 const Support = () => {
+  const dispatch = useDispatch();
   const klaytnCaver = new Caver(window.klaytn);
   const caver = new Caver(gateway.cypress);
   const walletType = useSelector((state: RootState) => state.wallet.walletType);
   const address = useSelector((state: RootState) => state.wallet.address);
+  const txFlag = useSelector((state: RootState) => state.tx.txFlag);
 
   const [klayAmount, setKlayAmount] = useState(0);
   const [klayDonators, setKlayDonators] = useState<Donator[]>([]);
   const [palaAmount, setPalaAmount] = useState(0);
+  const [palaAllowance, setPalaAllowance] = useState<typeof BN>(new BN(0));
   const [PalaDonators, setPalaDonators] = useState<Donator[]>([]);
   const [klayDonatorsName, setKlayDonatorsName] = useState<NameInfo[]>([]);
   const [palaDonatorsName, setPalaDonatorsName] = useState<NameInfo[]>([]);
@@ -50,14 +54,24 @@ const Support = () => {
       setKlayDonators(klayResult);
       setPalaDonators(palaResult);
     };
+    const setAllowance = async () => {
+      const allowance = await getAllowance(address, caver);
+      setPalaAllowance(allowance);
+    };
+    console.log(txFlag);
     GetTopDonatorsInfo();
-  }, []);
+    if (address !== '') setAllowance();
+  }, [txFlag]);
+
+  const successTx = async (txHash: any) => {
+    dispatch(TxActions.toggleFlag());
+  };
 
   const onChangeKlayAmount = (event: any) => setKlayAmount(event.target.value);
   const onSubmitKlayDonation = async (event: any) => {
     event.preventDefault();
     if (walletType !== '' && address !== '') {
-      await donateKlay(address, contractAddr.Donation, klayAmount * 10 ** 18, walletType, klaytnCaver);
+      await donateKlay(address, contractAddr.Donation, klayAmount * 10 ** 18, walletType, klaytnCaver, successTx);
     } else {
       alert('지갑을 연결해 주세요.');
     }
@@ -67,8 +81,19 @@ const Support = () => {
   const onSubmitPalaDonation = async (event: any) => {
     event.preventDefault();
     if (walletType !== '' && address !== '') {
-      await approve(address, contractAddr.pala, contractAddr.Donation, palaAmount * 10 ** 18, walletType, klaytnCaver);
-      await donatePala(address, contractAddr.Donation, palaAmount * 10 ** 18, walletType, klaytnCaver);
+      if (palaAllowance.lt(new BN(palaAmount * 10).mul(new BN(10).pow(new BN(17))))) {
+        await approve(
+          address,
+          contractAddr.pala,
+          contractAddr.Donation,
+          palaAmount * 10 ** 18,
+          walletType,
+          klaytnCaver,
+          successTx,
+        );
+      } else {
+        await donatePala(address, contractAddr.Donation, palaAmount * 10 ** 18, walletType, klaytnCaver, successTx);
+      }
     } else {
       alert('지갑을 연결해 주세요.');
     }
@@ -124,8 +149,12 @@ const Support = () => {
       <S.DonationBundle>
         <S.SubTitleText>PALA TOP 10</S.SubTitleText>
         <S.DonationForm onSubmit={onSubmitPalaDonation}>
-          <S.DonationInput type="number" min={0} step={0.01} placeholder="후원 수량" onChange={onChangePalaAmount} />
-          <S.DonationButton type="submit">PALA 후원하기</S.DonationButton>
+          <S.DonationInput type="number" min={0} step={0.1} placeholder="후원 수량" onChange={onChangePalaAmount} />
+          <S.DonationButton type="submit">
+            {palaAllowance.lt(new BN(palaAmount * 10).mul(new BN(10).pow(new BN(17))))
+              ? 'PALA 승인하기'
+              : 'PALA 후원하기'}
+          </S.DonationButton>
         </S.DonationForm>
         {viewRank(PalaDonators, palaDonatorsName, 'PALA')}
       </S.DonationBundle>

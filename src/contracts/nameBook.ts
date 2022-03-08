@@ -39,5 +39,5 @@ export const setName = async (
   const abi = getABI(NameBookABI as AbiItem[], 'setName');
   if (walletType === 'klip')
     await executeTxKlip(from, to, '0', JSON.stringify(abi), JSON.stringify([name]), completeCallback, cancelCallback);
-  else await executeTxKaikas(from, to, '0', abi, [name], caver);
+  else await executeTxKaikas(from, to, '0', abi, [name], caver, completeCallback);
 };

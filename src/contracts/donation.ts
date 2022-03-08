@@ -53,7 +53,7 @@ export const donateKlay = async (
       completeCallback,
       cancelCallback,
     );
-  else await executeTxKaikas(from, to, amount.toString(), abi, [], caver);
+  else await executeTxKaikas(from, to, amount.toString(), abi, [], caver, completeCallback);
 };
 
 export const donatePala = async (
@@ -76,5 +76,5 @@ export const donatePala = async (
       completeCallback,
       cancelCallback,
     );
-  else await executeTxKaikas(from, to, '0', abi, [amount.toString()], caver);
+  else await executeTxKaikas(from, to, '0', abi, [amount.toString()], caver, completeCallback);
 };

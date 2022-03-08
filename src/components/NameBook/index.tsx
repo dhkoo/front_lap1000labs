@@ -54,7 +54,7 @@ const NameBook = () => {
       if (isFreeUser(address)) {
         await setName(address, contractAddr.ProxyNameBook, name, walletType, klaytnCaver);
       } else {
-        const allowance = getNumberFromBN(await getAllowance(caver, address), 18);
+        const allowance = getNumberFromBN(await getAllowance(address, caver), 18);
         if (allowance < fee) {
           await approve(address, contractAddr.pala, contractAddr.ProxyNameBook, fee * 1e18, walletType, klaytnCaver);
         }
