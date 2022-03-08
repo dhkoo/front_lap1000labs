@@ -1,6 +1,10 @@
 import Caver from 'caver-js';
+import { prepare } from 'klip-sdk';
 
-export const executeTx = async (
+import * as Wallet from 'constants/wallet';
+import { pollingKlipRequest } from './pollingKlipRequest';
+
+export const executeTxKaikas = async (
   from: string,
   to: string,
   value: string,
@@ -33,4 +37,46 @@ export const executeTx = async (
       console.log('failed receipt', failedReceipt);
       console.log('error', error);
     });
+};
+
+export const executeTxKlip = async (
+  from: string,
+  to: string,
+  value: string,
+  abi: string,
+  params: any,
+  completeCallback?: (klipResult: any) => Promise<void>,
+  cancelCallback?: () => void,
+) => {
+  try {
+    // console.log('executeTxKlip');
+
+    let convertValue;
+    if (value !== '0') {
+      convertValue = value.substring(0, value.length - 12).concat('000000000000');
+    } else {
+      convertValue = '0';
+    }
+
+    const param = {
+      bappName: Wallet.AppName,
+      from,
+      to,
+      value: convertValue,
+      abi,
+      params,
+    };
+
+    const res = await prepare.executeContract(param);
+
+    if (res.err) {
+      // console.log('internal error', res);
+      return;
+    }
+    if (res.request_key) {
+      await pollingKlipRequest(res.request_key, 150, completeCallback, cancelCallback);
+    }
+  } catch (error) {
+    console.error('error', error);
+  }
 };

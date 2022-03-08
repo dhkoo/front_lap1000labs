@@ -16,8 +16,6 @@ const ConnectKlipButton: React.FC<{ setImageUrl: (url: string) => void }> = ({ s
   const dispatch = useDispatch();
   const caver = new Caver(gateway.cypress);
 
-  const [klipRequestKey, setKlipRequestKey] = useState('');
-
   const onClickKlip = async () => {
     try {
       const bappName = Wallet.AppName;
@@ -27,7 +25,6 @@ const ConnectKlipButton: React.FC<{ setImageUrl: (url: string) => void }> = ({ s
         return;
       }
       if (res.request_key) {
-        setKlipRequestKey(res.request_key);
         await pollingKlipRequest(res.request_key, 150, connectSuccess, connectFailed);
       }
     } catch (error) {

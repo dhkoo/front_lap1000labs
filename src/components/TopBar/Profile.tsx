@@ -16,12 +16,12 @@ import * as S from './style';
 
 const Profile = () => {
   const caver = new Caver(gateway.cypress);
-  const walletName = useSelector((state: RootState) => state.wallet.walletType);
+  const walletType = useSelector((state: RootState) => state.wallet.walletType);
   const address = useSelector((state: RootState) => state.wallet.address);
   const [imageUrl, setImageUrl] = useState<string>(Image.maina);
 
   const isLoggedIn = (): boolean => {
-    return walletName !== '' && address !== '';
+    return walletType !== '' && address !== '';
   };
 
   useEffect(() => {

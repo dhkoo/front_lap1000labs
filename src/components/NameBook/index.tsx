@@ -52,13 +52,13 @@ const NameBook = () => {
     event.preventDefault();
     if (walletType !== '' && address !== '') {
       if (isFreeUser(address)) {
-        await setName(klaytnCaver, address, contractAddr.ProxyNameBook, name);
+        await setName(address, contractAddr.ProxyNameBook, name, walletType, klaytnCaver);
       } else {
         const allowance = getNumberFromBN(await getAllowance(caver, address), 18);
         if (allowance < fee) {
-          await approve(klaytnCaver, address, contractAddr.pala, contractAddr.ProxyNameBook, fee * 1e18);
+          await approve(address, contractAddr.pala, contractAddr.ProxyNameBook, fee * 1e18, walletType, klaytnCaver);
         }
-        await setName(klaytnCaver, address, contractAddr.ProxyNameBook, name);
+        await setName(address, contractAddr.ProxyNameBook, name, walletType, klaytnCaver);
       }
     } else {
       alert('지갑을 연결해 주세요.');
