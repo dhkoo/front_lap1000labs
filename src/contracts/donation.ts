@@ -5,7 +5,7 @@ import DonationViewerABI from './abi/DonationViewer.json';
 import { contractAddr } from './addrBook';
 import { getABI } from './abi/AbiUtil';
 import { AbiItem } from 'web3-utils';
-import { executeTx } from './transaction';
+import { executeTx } from '../utils/transaction';
 
 export type Donator = {
   addr: string;

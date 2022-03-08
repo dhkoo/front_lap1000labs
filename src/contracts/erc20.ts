@@ -4,7 +4,7 @@ import ERC20ABI from './abi/ERC20.json';
 import { contractAddr } from './addrBook';
 import { getABI } from './abi/AbiUtil';
 import { AbiItem } from 'web3-utils';
-import { executeTx } from './transaction';
+import { executeTx } from '../utils/transaction';
 import { BN } from 'utils/number';
 
 export const getAllowance = async (caver: typeof Caver, address: string): Promise<String> => {

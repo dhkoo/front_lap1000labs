@@ -5,7 +5,7 @@ import NameBookABI from './abi/NameBook.json';
 import { contractAddr } from './addrBook';
 import { getABI } from './abi/AbiUtil';
 import { AbiItem } from 'web3-utils';
-import { executeTx } from './transaction';
+import { executeTx } from '../utils/transaction';
 import { BN } from 'utils/number';
 
 export type NameInfo = {
@@ -13,13 +13,11 @@ export type NameInfo = {
   name: string;
 };
 
-export const getNames = async (caver: typeof Caver, addrs: string []): Promise<NameInfo[]> => {
+export const getNames = async (caver: typeof Caver, addrs: string[]): Promise<NameInfo[]> => {
   const nameBookViewer = caver.contract.create(NameBookViewerABI, contractAddr.NameBookViewer);
   const res = await nameBookViewer.methods.getNames(addrs).call();
   const list: NameInfo[] = [];
-  Object.keys(res).forEach((id: string) =>
-    list.push({ addr: res[id].account, name: res[id].name}),
-  );
+  Object.keys(res).forEach((id: string) => list.push({ addr: res[id].account, name: res[id].name }));
   return list;
 };
 
