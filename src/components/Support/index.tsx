@@ -8,7 +8,7 @@ import { Donator, donateKlay, getKlayTopDonators, getPalaTopDonators, donatePala
 import { getNames, NameInfo } from 'contracts/nameBook';
 import { contractAddr, gateway } from 'contracts/addrBook';
 import { approve, getAllowance } from 'contracts/erc20';
-import { BN, getNumberFromInt256 } from 'utils/number';
+import { BN, getNumberFromBN, getNumberFromInt256 } from 'utils/number';
 import { defaultAlap } from 'constants/images';
 
 import * as S from './style';
@@ -55,7 +55,7 @@ const Support = () => {
       setPalaDonators(palaResult);
     };
     const setAllowance = async () => {
-      const allowance = await getAllowance(address, caver);
+      const allowance = await getAllowance(contractAddr.pala, contractAddr.Donation, address, caver);
       setPalaAllowance(allowance);
     };
     console.log(txFlag);
@@ -81,7 +81,7 @@ const Support = () => {
   const onSubmitPalaDonation = async (event: any) => {
     event.preventDefault();
     if (walletType !== '' && address !== '') {
-      if (palaAllowance.lt(new BN(palaAmount * 10).mul(new BN(10).pow(new BN(17))))) {
+      if (getNumberFromBN(palaAllowance, 18) < Number(palaAmount)) {
         await approve(
           address,
           contractAddr.pala,
@@ -151,9 +151,7 @@ const Support = () => {
         <S.DonationForm onSubmit={onSubmitPalaDonation}>
           <S.DonationInput type="number" min={0} step={0.1} placeholder="후원 수량" onChange={onChangePalaAmount} />
           <S.DonationButton type="submit">
-            {palaAllowance.lt(new BN(palaAmount * 10).mul(new BN(10).pow(new BN(17))))
-              ? 'PALA 승인하기'
-              : 'PALA 후원하기'}
+            {getNumberFromBN(palaAllowance, 18) < Number(palaAmount) ? 'PALA 승인하기' : 'PALA 후원하기'}
           </S.DonationButton>
         </S.DonationForm>
         {viewRank(PalaDonators, palaDonatorsName, 'PALA')}

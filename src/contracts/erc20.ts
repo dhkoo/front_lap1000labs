@@ -1,15 +1,19 @@
 import Caver from 'caver-js';
 
 import ERC20ABI from './abi/ERC20.json';
-import { contractAddr } from './addrBook';
 import { getABI } from './abi/AbiUtil';
 import { AbiItem } from 'web3-utils';
 import { executeTxKaikas, executeTxKlip } from '../utils/transaction';
 import { BN } from 'utils/number';
 
-export const getAllowance = async (address: string, caver: typeof Caver): Promise<typeof BN> => {
-  const token = caver.contract.create(ERC20ABI, contractAddr.pala);
-  const allowance = await token.methods.allowance(address, contractAddr.ProxyNameBook).call();
+export const getAllowance = async (
+  token: string,
+  spender: string,
+  myAddress: string,
+  caver: typeof Caver,
+): Promise<typeof BN> => {
+  const tokenInstance = caver.contract.create(ERC20ABI, token);
+  const allowance = await tokenInstance.methods.allowance(myAddress, spender).call();
   return new BN(allowance);
 };
 
