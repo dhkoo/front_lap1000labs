@@ -13,13 +13,18 @@ export const TopBar = styled.div`
 
 export const LogoButton = styled(NavLink)`
   box-sizing: border-box;
-  border-radius: 5px;
+  height: 100%;
+  border-radius: 10px;
+  border: double ${(props) => props.theme.color.main};
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Lap1000Logo = styled.img`
   box-sizing: border-box;
   height: 120px;
-  border: double ${(props) => props.theme.color.main};
   border-radius: 10px;
 `;
 
@@ -27,7 +32,7 @@ export const Lap1000Logo = styled.img`
 
 export const Profile = styled.div`
   box-sizing: border-box;
-  height: 120px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -38,17 +43,18 @@ export const ProfileImage = styled.img`
   box-sizing: border-box;
   height: 100px;
   width: 100px;
-  border-radius: 10px;
-  border: 1px solid ${(props) => props.theme.color.sub};
+  border-radius: 10px 10px 0 0;
+  border: 1.5px solid ${(props) => props.theme.color.sub};
 `;
 
 export const ConnectedWalletButton = styled.button`
   box-sizing: border-box;
   height: 25px;
   width: 100px;
-  border-radius: 10px;
-  border: 1px solid ${(props) => props.theme.color.main};
+  border-radius: 0 0 10px 10px;
+  border: 1.5px solid ${(props) => props.theme.color.sub};
 
+  white-space: pre;
   color: ${(props) => props.theme.color.sub};
 
   background: black;
@@ -68,10 +74,10 @@ export const ConnectWalletButtonWrapper = styled.div`
 export const ConnectWalletButton = styled.button`
   box-sizing: border-box;
   height: 25px;
-  width: 33px;
-  border-radius: 10px;
-  border: 1px solid ${(props) => props.theme.color.sub};
+  border-radius: 0 0 10px 10px;
+  border: 1.5px solid ${(props) => props.theme.color.sub};
 
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
