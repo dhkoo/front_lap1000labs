@@ -2,7 +2,9 @@ import React from 'react';
 import Caver from 'caver-js';
 import { useDispatch } from 'react-redux';
 
-import * as walletAction from 'state/wallet';
+import { getKaikasInstallUri } from 'constants/wallet';
+import { gateway } from 'contracts/addrBook';
+import * as walletActions from 'state/wallet';
 import { getNames } from 'contracts/nameBook';
 
 import * as Image from 'constants/images';
@@ -15,20 +17,21 @@ declare global {
 }
 
 const ConnectKaikasButton: React.FC<{ setImageUrl: (url: string) => void }> = ({ setImageUrl }) => {
-  const klaytnCaver = new Caver(window.klaytn);
-  const dispath = useDispatch();
+  const caver = new Caver(gateway.cypress);
+  const dispatch = useDispatch();
 
   const onClickKaikas = async () => {
     const { klaytn } = window;
     try {
       if (!klaytn) {
         console.log(`Need to install Kaikas`);
+        window.open(getKaikasInstallUri());
       } else {
         setImageUrl(Image.kaikasLogo);
         const accounts = await klaytn.enable();
         const address = accounts[0];
-        const names = await getNames(klaytnCaver, [address]);
-        if (address) dispath(walletAction.setWallet('kaikas', address, names[0].name));
+        const names = await getNames(caver, [address]);
+        if (address) dispatch(walletActions.setWallet('kaikas', address, names[0].name));
       }
     } catch (err) {
       console.log(`Kaikas connection Error ${err}`);
