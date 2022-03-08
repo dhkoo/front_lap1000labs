@@ -8,6 +8,8 @@ const KaikasExtentionUrl = 'https://chrome.google.com/webstore/detail/kaikas/jbl
 
 const DcentDeepLinkBaseUrl = 'https://link.dcentwallet.com/DAppBrowser/?url=';
 
+export const AppName = '랍천 연구소';
+
 export const getKaikasInstallUri = () => KaikasExtentionUrl;
 
 export const getKlipQrCode = (requestKey: string): string => {
