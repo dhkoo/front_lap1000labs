@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Caver from 'caver-js';
 import { prepare } from 'klip-sdk';
 
+import * as Wallet from 'constants/wallet';
 import { gateway } from 'contracts/addrBook';
 import * as walletActions from 'state/wallet';
-import KlipRequestListener from 'components/KlipRequestListner';
 import { getNames } from 'contracts/nameBook';
+import { pollingKlipRequest } from 'utils/pollingKlipRequest';
 
 import * as Image from 'constants/images';
 import * as S from './style';
@@ -19,7 +20,7 @@ const ConnectKlipButton: React.FC<{ setImageUrl: (url: string) => void }> = ({ s
 
   const onClickKlip = async () => {
     try {
-      const bappName = '랍천 연구소';
+      const bappName = Wallet.AppName;
       const res = await prepare.auth({ bappName });
       if (res.err) {
         // console.log('error auth');
@@ -27,6 +28,7 @@ const ConnectKlipButton: React.FC<{ setImageUrl: (url: string) => void }> = ({ s
       }
       if (res.request_key) {
         setKlipRequestKey(res.request_key);
+        await pollingKlipRequest(res.request_key, 150, connectSuccess, connectFailed);
       }
     } catch (error) {
       // console.error('error', error);
@@ -46,12 +48,6 @@ const ConnectKlipButton: React.FC<{ setImageUrl: (url: string) => void }> = ({ s
   return (
     <S.ConnectWalletButton onClick={onClickKlip}>
       <S.KlipButtonImage src={Image.klipLogo} />
-      <KlipRequestListener
-        requestKey={klipRequestKey}
-        duration={150}
-        completeCallback={connectSuccess}
-        cancelCallback={connectFailed}
-      />
     </S.ConnectWalletButton>
   );
 };
