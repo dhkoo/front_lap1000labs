@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Caver from 'caver-js';
-import { useSelector } from 'react-redux';
 
 import { contractAddr, gateway } from 'contracts/addrBook';
 import { Donator, getKlayTopDonators, getPalaTopDonators } from 'contracts/donation';
 import { setName, getFee } from 'contracts/nameBook';
 import { approve, getAllowance } from 'contracts/erc20';
 import { RootState } from 'state';
+import * as TxActions from 'state/transaction';
 import { BN, getNumberFromBN } from 'utils/number';
 
 import * as S from './style';
 
 const NameBook = () => {
+  const dispatch = useDispatch();
   const klaytnCaver = new Caver(window.klaytn);
   const caver = new Caver(gateway.cypress);
   const walletType = useSelector((state: RootState) => state.wallet.walletType);
@@ -55,13 +57,25 @@ const NameBook = () => {
     if (address !== '') setAllowance();
   }, [address, txFlag]);
 
+  const successTx = async (txHash: any) => {
+    dispatch(TxActions.toggleFlag());
+  };
+
   const onChangeName = (event: any) => setAddressName(event.target.value);
   const onSubmitName = async (event: any) => {
     event.preventDefault();
     if (walletType !== '' && address !== '') {
       if (!isFreeUser(address) && getNumberFromBN(palaAllowance, 18) < fee) {
-        await approve(address, contractAddr.pala, contractAddr.ProxyNameBook, fee * 1e18, walletType, klaytnCaver);
-      } else await setName(address, contractAddr.ProxyNameBook, name, walletType, klaytnCaver);
+        await approve(
+          address,
+          contractAddr.pala,
+          contractAddr.ProxyNameBook,
+          fee * 1e18,
+          walletType,
+          klaytnCaver,
+          successTx,
+        );
+      } else await setName(address, contractAddr.ProxyNameBook, name, walletType, klaytnCaver, successTx);
     } else {
       alert('지갑을 연결해 주세요.');
     }
