@@ -81,6 +81,12 @@ export const DonationButton = styled.button`
   width: 120px;
   border-radius: 10px;
 
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  white-space: pre;
+
   background: ${(props) => props.theme.color.main};
   cursor: pointer;
 `;

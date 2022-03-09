@@ -14,6 +14,7 @@ import * as LabNoteS from '../style';
 
 const ApproveZero = () => {
   const myAddress = useSelector((state: RootState) => state.wallet.address);
+  const walletType = useSelector((state: RootState) => state.wallet.walletType);
 
   const [tokenAddr, setTokenAddr] = useState<string>('');
   const [targetContractAddr, setTargetContractAddr] = useState<string>('');
@@ -39,7 +40,7 @@ const ApproveZero = () => {
 
   const approveZero = async () => {
     try {
-      await approve(klaytnCaver, myAddress, tokenAddr, targetContractAddr, 0);
+      await approve(myAddress, tokenAddr, targetContractAddr, 0, walletType, klaytnCaver);
       const tokenInstance = caver.contract.create(Erc20Abi, tokenAddr);
       const allowance = await tokenInstance.methods.allowance(myAddress, targetContractAddr).call();
       const decimals = await tokenInstance.methods.decimals().call();

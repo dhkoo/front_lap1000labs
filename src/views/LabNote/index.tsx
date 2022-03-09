@@ -12,20 +12,18 @@ import * as S from './style';
 const LabNote = () => {
   const LabNoteGuide = () => {
     return (
-      <>
-        <S.GuideWrapper>
-          이곳은, 매우 흥미롭다. <br />
-          <br />
-          새의 소리를 알아들을 수 있던 것은 우연이 아니었고, <br />
-          다행히 무인도도 아니었다. <br />
-          <br />
-          다시 집으로 돌아가기 전까지 <br />
-          앞으로 이 노트에 기록해 보고자 한다.
-          <br />
-          <br />
-          <S.DarkCheon>큭 큭 어떤 일이 벌어 질지 기대되는군</S.DarkCheon>
-        </S.GuideWrapper>
-      </>
+      <S.GuideWrapper>
+        이곳은, 매우 흥미롭다. <br />
+        <br />
+        새의 소리를 알아들을 수 있던 것은 우연이 아니었고, <br />
+        다행히 무인도도 아니었다. <br />
+        <br />
+        다시 집으로 돌아가기 전까지 <br />
+        앞으로 이 노트에 기록해 보고자 한다.
+        <br />
+        <br />
+        <S.DarkCheon>큭 큭 어떤 일이 벌어 질지 기대되는군</S.DarkCheon>
+      </S.GuideWrapper>
     );
   };
 

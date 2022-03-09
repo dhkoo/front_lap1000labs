@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Caver from 'caver-js';
+import { isMobile } from 'react-device-detect';
 
 import { RootState } from 'state';
 import { getUserAlapIds } from 'contracts/nft';
@@ -15,12 +16,12 @@ import * as S from './style';
 
 const Profile = () => {
   const caver = new Caver(gateway.cypress);
-  const walletName = useSelector((state: RootState) => state.wallet.walletType);
+  const walletType = useSelector((state: RootState) => state.wallet.walletType);
   const address = useSelector((state: RootState) => state.wallet.address);
   const [imageUrl, setImageUrl] = useState<string>(Image.maina);
 
   const isLoggedIn = (): boolean => {
-    return walletName !== '' && address !== '';
+    return walletType !== '' && address !== '';
   };
 
   useEffect(() => {
@@ -50,8 +51,8 @@ const Profile = () => {
           <S.ProfileImage src={imageUrl} />
           <S.ConnectWalletButtonWrapper>
             <ConnectKaikasButton setImageUrl={setImageUrl} />
-            <ConnectDcentButton setImageUrl={setImageUrl} />
-            {/* <ConnectKlipButton /> */}
+            {isMobile && <ConnectDcentButton setImageUrl={setImageUrl} />}
+            {isMobile && <ConnectKlipButton setImageUrl={setImageUrl} />}
           </S.ConnectWalletButtonWrapper>
         </>
       )}
