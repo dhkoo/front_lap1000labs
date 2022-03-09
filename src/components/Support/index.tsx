@@ -61,7 +61,7 @@ const Support = () => {
     console.log(txFlag);
     GetTopDonatorsInfo();
     if (address !== '') setAllowance();
-  }, [txFlag]);
+  }, [txFlag, address]);
 
   const successTx = async (txHash: any) => {
     dispatch(TxActions.toggleFlag());
@@ -151,7 +151,9 @@ const Support = () => {
         <S.DonationForm onSubmit={onSubmitPalaDonation}>
           <S.DonationInput type="number" min={0} step={0.1} placeholder="후원 수량" onChange={onChangePalaAmount} />
           <S.DonationButton type="submit">
-            {getNumberFromBN(palaAllowance, 18) < Number(palaAmount) ? 'PALA 승인하기' : 'PALA 후원하기'}
+            {getNumberFromBN(palaAllowance, 18) < Number(palaAmount)
+              ? 'PALA 사용\n승인하기'
+              : `PALA 후원하기\n(${getNumberFromBN(palaAllowance, 18)} PALA 승인됨)`}
           </S.DonationButton>
         </S.DonationForm>
         {viewRank(PalaDonators, palaDonatorsName, 'PALA')}
