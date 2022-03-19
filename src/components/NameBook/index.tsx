@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import Caver from 'caver-js';
 
 import { contractAddr, gateway } from 'contracts/addrBook';
-import { Donator, getKlayTopDonators, getPalaTopDonators } from 'contracts/donation';
-import { setName, getFee } from 'contracts/nameBook';
+import { Donator } from 'contracts/donation';
+import { getKlayTopDonators, getPalaTopDonators, getNamingFee } from 'contracts/viewer';
+import { setName } from 'contracts/nameBook';
 import { approve, getAllowance } from 'contracts/erc20';
 import { RootState } from 'state';
 import * as TxActions from 'state/transaction';
@@ -45,7 +46,7 @@ const NameBook = () => {
       setPalaDonators(palaResult);
     };
     const GetFee = async () => {
-      const fee = getNumberFromBN(await getFee(caver), 18);
+      const fee = getNumberFromBN(await getNamingFee(caver), 18);
       setFeeValue(fee);
     };
     const setAllowance = async () => {

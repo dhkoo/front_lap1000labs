@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { getKaikasInstallUri } from 'constants/wallet';
 import { gateway } from 'contracts/addrBook';
 import * as walletActions from 'state/wallet';
-import { getNames } from 'contracts/nameBook';
+import { getNamesOf } from 'contracts/viewer';
 
 import * as Image from 'constants/images';
 import * as S from './style';
@@ -30,7 +30,7 @@ const ConnectKaikasButton: React.FC<{ setImageUrl: (url: string) => void }> = ({
         setImageUrl(Image.kaikasLogo);
         const accounts = await klaytn.enable();
         const address = accounts[0];
-        const names = await getNames(caver, [address]);
+        const names = await getNamesOf(caver, [address]);
         if (address) dispatch(walletActions.setWallet('kaikas', address, names[0].name));
       }
     } catch (err) {

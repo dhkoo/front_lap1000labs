@@ -4,7 +4,7 @@ import Caver from 'caver-js';
 import { isMobile } from 'react-device-detect';
 
 import { RootState } from 'state';
-import { getUserAlapIds } from 'contracts/nft';
+import { representativeAlapIdOf } from 'contracts/viewer';
 import { gateway } from 'contracts/addrBook';
 import ConnectKaikasButton from './ConnectKaikasButton';
 import ConnectDcentButton from './ConnectDcentButton';
@@ -26,11 +26,11 @@ const Profile = () => {
 
   useEffect(() => {
     const displayAlap = async () => {
-      let ids = [];
+      let id;
       if (isLoggedIn()) {
-        ids = await getUserAlapIds(caver, address, 0, 10);
-        if (ids.length > 0) {
-          setImageUrl('https://alap.s3.ap-northeast-2.amazonaws.com/alap-' + ids[0] + '.png');
+        id = await representativeAlapIdOf(caver, address);
+        if (id != 0) {
+          setImageUrl('https://alap.s3.ap-northeast-2.amazonaws.com/alap-' + id + '.png');
         } else {
           setImageUrl(Image.defaultAlap);
         }

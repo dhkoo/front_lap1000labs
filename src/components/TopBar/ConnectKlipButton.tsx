@@ -6,7 +6,7 @@ import { prepare } from 'klip-sdk';
 import * as Wallet from 'constants/wallet';
 import { gateway } from 'contracts/addrBook';
 import * as walletActions from 'state/wallet';
-import { getNames } from 'contracts/nameBook';
+import { getNamesOf } from 'contracts/viewer';
 import { pollingKlipRequest } from 'utils/pollingKlipRequest';
 
 import * as Image from 'constants/images';
@@ -34,7 +34,7 @@ const ConnectKlipButton: React.FC<{ setImageUrl: (url: string) => void }> = ({ s
 
   const connectSuccess = async (klipResult: any) => {
     const address = klipResult.klaytn_address;
-    const names = await getNames(caver, [address]);
+    const names = await getNamesOf(caver, [address]);
     if (address) dispatch(walletActions.setWallet('klip', address, names[0].name));
   };
 
