@@ -39,6 +39,7 @@ export const executeTxKaikas = async (
       const failedReceipt = await caver.rpc.klay.getTransactionReceipt(txHash.toString());
       console.log('failed receipt', failedReceipt);
       console.log('error', error);
+      window.alert("tx failed");
     });
 };
 

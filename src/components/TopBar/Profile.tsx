@@ -10,6 +10,7 @@ import ConnectKaikasButton from './ConnectKaikasButton';
 import ConnectDcentButton from './ConnectDcentButton';
 import ConnectKlipButton from './ConnectKlipButton';
 import ConnectedWalletButton from './ConnectedWalletButton';
+import * as TxActions from 'state/transaction';
 
 import * as Image from 'constants/images';
 import * as S from './style';
@@ -19,6 +20,7 @@ const Profile = () => {
   const walletType = useSelector((state: RootState) => state.wallet.walletType);
   const address = useSelector((state: RootState) => state.wallet.address);
   const [imageUrl, setImageUrl] = useState<string>(Image.maina);
+  const txFlag = useSelector((state: RootState) => state.tx.txFlag);
 
   const isLoggedIn = (): boolean => {
     return walletType !== '' && address !== '';
@@ -37,7 +39,7 @@ const Profile = () => {
       }
     };
     displayAlap();
-  }, [address]);
+  }, [address, txFlag]);
 
   return (
     <S.Profile>

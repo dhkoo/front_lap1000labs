@@ -53,6 +53,12 @@ export const getNamingFee = async (caver: typeof Caver): Promise<any> => {
 
 export const getUserAlapId = async (caver: typeof Caver, account: string): Promise<any> => {
   const viewer = caver.contract.create(UnityViewerABI, contractAddr.UnityViewer);
-  const id = await viewer.methods.getUserAlapId().call();
-  return Number(id);
+  const id = await viewer.methods.getUserAlapId(account).call();
+  return id;
+};
+
+export const userAlapIds = async (caver: typeof Caver, account: string, offset: number, limit: number): Promise<string[]> => {
+  const viewer = caver.contract.create(UnityViewerABI, contractAddr.UnityViewer);
+  const res = await viewer.methods.userAlapIds(account, offset, limit).call();
+  return res.tokenIds;
 };

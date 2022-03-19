@@ -4,10 +4,12 @@ import Support from '../../components/Support';
 import NameBook from '../../components/NameBook';
 
 import * as S from './style';
+import AlapRegister from 'components/AlapRegistration';
 
 const Intro = () => {
   return (
     <S.Intro>
+      <AlapRegister />
       <S.TitleText>
         <S.Purple>Attention! Attention!</S.Purple>
       </S.TitleText>

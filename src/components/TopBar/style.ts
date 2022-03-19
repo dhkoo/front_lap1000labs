@@ -96,3 +96,11 @@ export const KlipButtonImage = styled.img`
   width: 22px;
   filter: invert(1);
 `;
+
+export const Mint = styled.span`
+  color: ${(props) => props.theme.color.main};
+`;
+
+export const Purple = styled.span`
+  color: ${(props) => props.theme.color.sub};
+`;
