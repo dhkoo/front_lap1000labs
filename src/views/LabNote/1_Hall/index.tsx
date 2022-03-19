@@ -117,7 +117,7 @@ const Hall = () => {
                 </S.ContentText>
               </S.LapgendTemplate>
               <S.LapgendTemplate>
-                <S.LapgendImage src={Image.Lapgend2_2} onClick={() => saySomething('!!')} />
+                <S.LapgendImage src={Image.Lapgend2_2} onClick={() => saySomething('꺄')} />
                 <S.ContentText>
                   [닉네임]{' '}
                   <b>
