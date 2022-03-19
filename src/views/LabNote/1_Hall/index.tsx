@@ -111,15 +111,31 @@ const Hall = () => {
                   </b>{' '}
                   <br />
                   [계정] 0x27c...3b7 <br />
+                  [상태] retirement <br />
+                  [임기 기간] 2022.01.12 ~ 2022.03.15<br />
+                  [계승 가격] 25,000 KLAY
+                </S.ContentText>
+              </S.LapgendTemplate>
+              <S.LapgendTemplate>
+                <S.LapgendImage src={Image.Lapgend2_2} onClick={() => saySomething('!!')} />
+                <S.ContentText>
+                  [닉네임]{' '}
+                  <b>
+                    <b>알랍에미리트</b>
+                  </b>{' '}
+                  <br />
+                  [계정] 0x1c4...1c5 <br />
                   [상태] active <br />
-                  [임기 기간] 2022.01.12 ~ <br />
+                  [임기 기간] 2022.03.15 ~ <br />
                   [계승 가격] 25,000 KLAY
                 </S.ContentText>
               </S.LapgendTemplate>
             </S.LapgendTemplateGroup>
             <S.VoteCreationButton color="#E920FF">투표 생성 (준비중)</S.VoteCreationButton>
           </S.LapgendGroup>
+        </S.LapgendTemplateGroup>
 
+        <S.LapgendTemplateGroup>
           <S.LapgendGroup>
             <S.TitleText>Lapgend #3</S.TitleText>
             <button
