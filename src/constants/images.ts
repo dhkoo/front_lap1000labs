@@ -12,6 +12,7 @@ export const defaultAlap = imageLocation.concat('/images/dummy_profile.png');
 export const Lapgend1_1 = imageLocation.concat('/images/lapgend1_1.png');
 export const Lapgend1_2 = imageLocation.concat('/images/lapgend1_2.png');
 export const Lapgend2_1 = imageLocation.concat('/images/lapgend2_1.png');
+export const Lapgend2_2 = imageLocation.concat('/images/lapgend2_2.png');
 export const Lapgend3_1 = imageLocation.concat('/images/lapgend3_1.png');
 export const Lapgend4_1 = imageLocation.concat('/images/lapgend4_1.png');
 export const NamedAlap1 = imageLocation.concat('/images/alap-39.png');
