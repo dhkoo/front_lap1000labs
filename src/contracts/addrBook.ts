@@ -5,7 +5,8 @@ export const contractAddr: { [key: string]: string } = {
   DonationViewer: '0x071cE5071Ce53284ED021aD472b4Bc8CcC7be1d1',
   ProxyNameBook: '0xA6D1af78630eB991e51e25d8b1606174641877Bb',
   NameBook: '0x3f6815AdE8AfF1D827E57bB8e8B1ef978528c54F',
-  NameBookViewer: '0xA145F42Ebe11DbEa05a3dC90c169439346D56E97'
+  NameBookViewer: '0xA145F42Ebe11DbEa05a3dC90c169439346D56E97',
+  UnityViewer: '0x0F1b626B8F29d29d1B565DaF0dC582291E49192B'
 };
 
 export const gateway: { [key: string]: string } = {
