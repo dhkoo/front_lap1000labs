@@ -2,17 +2,8 @@ import Caver from 'caver-js';
 
 import UnityViewerABI from './abi/UnityViewer.json';
 import { contractAddr } from './addrBook';
-
-export type Donator = {
-  addr: string;
-  amount: string;
-  alapId: number;
-};
-
-export type NameInfo = {
-  account: string;
-  name: string;
-};
+import { Donator } from './donation';
+import { NameInfo } from './nameBook';
 
 export const alapBalanceOf = async (caver: typeof Caver, account: string): Promise<any> => {
   const viewer = caver.contract.create(UnityViewerABI, contractAddr.UnityViewer);
@@ -50,9 +41,7 @@ export const getNamesOf = async (caver: typeof Caver, account: string[]): Promis
   const viewer = caver.contract.create(UnityViewerABI, contractAddr.UnityViewer);
   const res = await viewer.methods.getNamesOf(account).call();
   const list: NameInfo[] = [];
-  res.forEach((elem: NameInfo) => {
-    list.push({account: elem.account, name: elem.name });
-  })
+  Object.keys(res).forEach((id: string) => list.push({ addr: res[id].account, name: res[id].name }));
   return list;
 };
 

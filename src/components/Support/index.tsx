@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { RootState } from 'state';
 import * as TxActions from 'state/transaction';
-import { Donator, donateKlay, getKlayTopDonators, getPalaTopDonators, donatePala } from 'contracts/donation';
-import { getNames, NameInfo } from 'contracts/nameBook';
+import { getKlayTopDonators, getPalaTopDonators, getNamesOf } from 'contracts/viewer';
+import { Donator, donateKlay, donatePala } from 'contracts/donation';
+import { NameInfo } from 'contracts/nameBook';
 import { contractAddr, gateway } from 'contracts/addrBook';
 import { approve, getAllowance } from 'contracts/erc20';
 import { BN, getNumberFromBN, getNumberFromInt256 } from 'utils/number';
@@ -47,7 +48,7 @@ const Support = () => {
       palaResult.forEach((donator: Donator) => {
         list.push(donator.addr);
       });
-      const nameInfos = await getNames(caver, list);
+      const nameInfos = await getNamesOf(caver, list);
       setKlayDonatorsName(nameInfos.slice(0, klayResult.length));
       setPalaDonatorsName(nameInfos.slice(klayResult.length, klayResult.length + palaResult.length));
 
