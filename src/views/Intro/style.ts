@@ -54,3 +54,26 @@ export const EnterButton = styled(NavLink)`
 
   background: #74ecd2;
 `;
+
+export const FeatureFrame = styled.div`
+  box-sizing: border-box;
+  width: 700px;
+  margin: 5px 0;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  @media screen and (max-width: 700px) {
+    width: 330px;
+  }
+`;
+
+export const Feature = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;

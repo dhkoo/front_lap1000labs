@@ -4,13 +4,12 @@ import Caver from 'caver-js';
 import { isMobile } from 'react-device-detect';
 
 import { RootState } from 'state';
-import { representativeAlapIdOf } from 'contracts/viewer';
+import { getCommentInfos, representativeAlapIdOf } from 'contracts/viewer';
 import { gateway } from 'contracts/addrBook';
 import ConnectKaikasButton from './ConnectKaikasButton';
 import ConnectDcentButton from './ConnectDcentButton';
 import ConnectKlipButton from './ConnectKlipButton';
 import ConnectedWalletButton from './ConnectedWalletButton';
-import * as TxActions from 'state/transaction';
 
 import * as Image from 'constants/images';
 import * as S from './style';

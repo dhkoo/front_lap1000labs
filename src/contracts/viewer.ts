@@ -4,6 +4,7 @@ import UnityViewerABI from './abi/UnityViewer.json';
 import { contractAddr } from './addrBook';
 import { Donator } from './donation';
 import { NameInfo } from './nameBook';
+import { CommentInfo } from './commentBox';
 
 export const alapBalanceOf = async (caver: typeof Caver, account: string): Promise<any> => {
   const viewer = caver.contract.create(UnityViewerABI, contractAddr.UnityViewer);
@@ -61,4 +62,27 @@ export const userAlapIds = async (caver: typeof Caver, account: string, offset: 
   const viewer = caver.contract.create(UnityViewerABI, contractAddr.UnityViewer);
   const res = await viewer.methods.userAlapIds(account, offset, limit).call();
   return res.tokenIds;
+};
+
+export const getCommentInfos = async (caver: typeof Caver, count: number): Promise<CommentInfo[]> => {
+  const viewer = caver.contract.create(UnityViewerABI, contractAddr.UnityViewer);
+  const res = await viewer.methods.getCommentInfos(count).call();
+  const list: CommentInfo[] = [];
+  Object.keys(res.comments).forEach((id: string) => {
+    if (res.comments[id].account !== "0x0000000000000000000000000000000000000000")
+      list.push({
+        index: res.indices[id],
+        addr: res.comments[id].account,
+        name: res.comments[id].name,
+        content: res.comments[id].content,
+        timestamp: res.comments[id].timestamp
+      });
+  });
+  return list;
+};
+
+export const getCommentFee = async (caver: typeof Caver): Promise<any> => {
+  const viewer = caver.contract.create(UnityViewerABI, contractAddr.UnityViewer);
+  const fee = await viewer.methods.getCommentFee().call();
+  return Number(fee);
 };
