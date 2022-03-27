@@ -1,3 +1,5 @@
+// free icon source : https://www.flaticon.com/kr/uicons
+
 const imageLocation = window.location.origin;
 
 // wallet

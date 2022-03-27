@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 export const TopBar = styled.div`
   box-sizing: border-box;
-  width: 330px;
+  width: 100%;
+  max-width: 1280px;
 
   display: flex;
   flex-direction: row;

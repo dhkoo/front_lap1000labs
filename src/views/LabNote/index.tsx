@@ -31,10 +31,10 @@ const LabNote = () => {
     <>
       <S.LabNoteButton to="./">연구 노트</S.LabNoteButton>
       <S.MenuContainer>
-        <S.MenuItem to="1">#1 전시관</S.MenuItem>
+        <S.MenuItem to="1">#1 전당</S.MenuItem>
         <S.MenuItem to="2">#2 정착</S.MenuItem>
         <S.MenuItem to="3">#3 통신 보안</S.MenuItem>
-        <S.MenuItem to="4">#4 비밀 쪽지</S.MenuItem>
+        {/* <S.MenuItem to="4">#4 비밀 쪽지</S.MenuItem> */}
         {/* <S.MenuItem to="/charnel">납골당</S.MenuItem> */}
       </S.MenuContainer>
       <S.NoteContentWrapper>
@@ -43,7 +43,7 @@ const LabNote = () => {
           <Route path="1" element={<Hall />} />
           <Route path="2" element={<Support />} />
           <Route path="3" element={<ApproveZero />} />
-          <Route path="4" element={<Messenger />} />
+          {/* <Route path="4" element={<Messenger />} /> */}
           {/* <Route path="/charnel" element={<Store />} /> */}
         </Routes>
       </S.NoteContentWrapper>
