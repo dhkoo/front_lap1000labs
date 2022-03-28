@@ -1,10 +1,8 @@
 import React from 'react';
 
 import Support from '../../components/Support';
-import NameBook from '../../components/NameBook';
 
 import * as S from './style';
-import AlapRegister from 'components/AlapRegistration';
 import CommentBox from 'components/CommentBox';
 
 const Intro = () => {

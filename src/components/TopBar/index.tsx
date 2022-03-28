@@ -12,9 +12,13 @@ import * as S from './style';
 const TopBar = () => {
   const widthLevel = useSelector((state: RootState) => state.window.widthLevel);
 
+  const scrollToTop = () => {
+    document.getElementById('body')?.scrollTo(0, 0);
+  };
+
   return (
     <S.TopBar>
-      <S.LogoButton to="/">
+      <S.LogoButton to="/" onClick={scrollToTop}>
         <S.Lap1000Logo src={Lap1000Logo} />
         랍천 연구소
       </S.LogoButton>
