@@ -29,9 +29,11 @@ const MenuBar = () => {
       <S.MenuItem to="LabNote/" onClick={scrollToTop}>
         연구 노트
       </S.MenuItem>
-      <S.MenuItem to="MyPage" onClick={scrollToTop}>
-        마이 페이지
-      </S.MenuItem>
+      {widthLevel < 720 && (
+        <S.MenuItem to="MyPage" onClick={scrollToTop}>
+          마이 페이지
+        </S.MenuItem>
+      )}
     </S.MenuBar>
   );
 };

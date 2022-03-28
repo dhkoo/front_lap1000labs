@@ -4,7 +4,7 @@ import Caver from 'caver-js';
 import { isMobile } from 'react-device-detect';
 
 import { RootState } from 'state';
-import { getCommentInfos, representativeAlapIdOf } from 'contracts/viewer';
+import { representativeAlapIdOf } from 'contracts/viewer';
 import { gateway } from 'contracts/addrBook';
 import ConnectKaikasButton from './ConnectKaikasButton';
 import ConnectDcentButton from './ConnectDcentButton';
@@ -14,21 +14,22 @@ import ConnectedWalletButton from './ConnectedWalletButton';
 import * as Image from 'constants/images';
 import * as S from './style';
 
-const Profile = () => {
+const Profile: React.FC = () => {
   const caver = new Caver(gateway.cypress);
   const walletType = useSelector((state: RootState) => state.wallet.walletType);
   const address = useSelector((state: RootState) => state.wallet.address);
-  const [imageUrl, setImageUrl] = useState<string>(Image.maina);
   const txFlag = useSelector((state: RootState) => state.tx.txFlag);
 
-  const isLoggedIn = (): boolean => {
+  const [imageUrl, setImageUrl] = useState<string>(Image.maina);
+
+  const isWalletConnected = (): boolean => {
     return walletType !== '' && address !== '';
   };
 
   useEffect(() => {
     const displayAlap = async () => {
       let id;
-      if (isLoggedIn()) {
+      if (isWalletConnected()) {
         id = await representativeAlapIdOf(caver, address);
         if (id != 0) {
           setImageUrl('https://alap.s3.ap-northeast-2.amazonaws.com/alap-' + id + '.png');
@@ -41,23 +42,20 @@ const Profile = () => {
   }, [address, txFlag]);
 
   return (
-    <S.Profile>
-      {isLoggedIn() ? (
-        <>
-          <S.ProfileImage src={imageUrl} />
-          <ConnectedWalletButton />
-        </>
+    <S.ProfileWrapper>
+      <S.ProfileButton to="/MyPage/">
+        <S.ProfileImage src={imageUrl} />
+      </S.ProfileButton>
+      {isWalletConnected() ? (
+        <ConnectedWalletButton />
       ) : (
         <>
-          <S.ProfileImage src={imageUrl} />
-          <S.ConnectWalletButtonWrapper>
-            <ConnectKaikasButton setImageUrl={setImageUrl} />
-            {isMobile && <ConnectDcentButton setImageUrl={setImageUrl} />}
-            {isMobile && <ConnectKlipButton setImageUrl={setImageUrl} />}
-          </S.ConnectWalletButtonWrapper>
+          <ConnectKaikasButton setImageUrl={setImageUrl} />
+          {isMobile && <ConnectDcentButton setImageUrl={setImageUrl} />}
+          {isMobile && <ConnectKlipButton setImageUrl={setImageUrl} />}
         </>
       )}
-    </S.Profile>
+    </S.ProfileWrapper>
   );
 };
 

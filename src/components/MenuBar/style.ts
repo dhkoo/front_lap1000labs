@@ -14,11 +14,9 @@ export const MenuBar = styled.div`
 
 export const MenuItem = styled(NavLink)`
   box-sizing: border-box;
-  height: 100%;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  padding: 0 10px;
-  border-radius: 5px;
+  height: calc(100% - 4px);
+  margin: 2px;
+  border-radius: 10px;
 
   flex: 1;
 

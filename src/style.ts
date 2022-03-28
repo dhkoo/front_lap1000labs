@@ -32,6 +32,7 @@ export const ScrollableDiv = styled.div`
 export const TopBarSection = styled.div`
   box-sizing: border-box;
   width: 100%;
+  box-shadow: 0 -1px inset ${(props) => props.theme.color.dimmedFont};
 
   display: flex;
   flex-direction: row;
@@ -52,6 +53,8 @@ export const Body = styled(ScrollableDiv)`
 
 export const BottomBarSection = styled(ScrollableDiv)`
   box-sizing: border-box;
+  height: 50px;
+  padding: 5px 0;
   width: 100%;
 
   display: flex;

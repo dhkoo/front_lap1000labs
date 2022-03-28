@@ -19,7 +19,7 @@ const MyPage = () => {
     <S.MyPage>
       {isLoggedIn() ? (
         <>
-          <S.TitleText>Naming</S.TitleText>
+          <S.TitleText>이름 등록</S.TitleText>
           <S.ContentText>
             <br />
             "내가 그의 이름을 불러주었을 때, <br />
@@ -28,6 +28,8 @@ const MyPage = () => {
             <br />
           </S.ContentText>
           <NameBook />
+          <S.TitleText>대표 ALAP 등록</S.TitleText>
+          <br />
           <AlapRegister />
         </>
       ) : (

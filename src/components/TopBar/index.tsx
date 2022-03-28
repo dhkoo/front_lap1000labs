@@ -16,6 +16,7 @@ const TopBar = () => {
     <S.TopBar>
       <S.LogoButton to="/">
         <S.Lap1000Logo src={Lap1000Logo} />
+        랍천 연구소
       </S.LogoButton>
       {widthLevel >= 720 && <MenuBar />}
       <Profile />

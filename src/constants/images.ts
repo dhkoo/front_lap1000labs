@@ -2,6 +2,8 @@
 
 const imageLocation = window.location.origin;
 
+export const Lap1000Logo = imageLocation.concat('/images/lap1000.png');
+
 // wallet
 export const dcentLogo = imageLocation.concat('/images/wallet/dcent.svg');
 export const kaikasLogo = imageLocation.concat('/images/wallet/kaikas.svg');
@@ -9,7 +11,6 @@ export const klipLogo = imageLocation.concat('/images/wallet/klip.svg');
 export const maina = imageLocation.concat('/images/wallet/maina.png');
 
 // alaps
-export const Lap1000Logo = imageLocation.concat('/images/lap1000_logo.png');
 export const defaultAlap = imageLocation.concat('/images/dummy_profile.png');
 export const Lapgend1_1 = imageLocation.concat('/images/lapgend1_1.png');
 export const Lapgend1_2 = imageLocation.concat('/images/lapgend1_2.png');
