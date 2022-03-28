@@ -1,17 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const Main = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background-color: black;
-`;
-
 export const MenuContainer = styled.div`
   box-sizing: border-box;
   margin-top: 10px;

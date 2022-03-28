@@ -1,16 +1,13 @@
 import React from 'react';
 
 import Support from '../../components/Support';
-import NameBook from '../../components/NameBook';
 
 import * as S from './style';
-import AlapRegister from 'components/AlapRegistration';
 import CommentBox from 'components/CommentBox';
 
 const Intro = () => {
   return (
     <S.Intro>
-      <AlapRegister />
       <S.TitleText>
         <S.Purple>Attention! Attention!</S.Purple>
       </S.TitleText>
@@ -39,23 +36,12 @@ const Intro = () => {
         <b>연구 노트 확인하기</b>
       </S.EnterButton>
 
-      <S.FeatureFrame>
-        <S.Feature>
-          <S.TitleText>Naming</S.TitleText>
-          <S.ContentText>
-            <br />
-            "내가 그의 이름을 불러주었을 때, <br />
-            그는 나에게로 와서 <br />
-            꽃이 되었다." <br />
-            <br />
-          </S.ContentText>
-          <NameBook />
-        </S.Feature>
-        <S.Feature>
-          <S.TitleText>Comment</S.TitleText>
-          <CommentBox />
-        </S.Feature>
-      </S.FeatureFrame>
+      {/* <S.FeatureFrame> */}
+      <S.Feature>
+        <S.TitleText>Comment</S.TitleText>
+        <CommentBox />
+      </S.Feature>
+      {/* </S.FeatureFrame> */}
 
       <S.TitleText>SUPPORT</S.TitleText>
       <S.ContentText>

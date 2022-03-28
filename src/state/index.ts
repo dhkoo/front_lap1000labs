@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
+import windowReducer from './window';
 import walletReducer from './wallet';
 import transactionReducer from './transaction';
 
 const rootReducer = combineReducers({
+  window: windowReducer,
   wallet: walletReducer,
   tx: transactionReducer,
 });

@@ -44,7 +44,7 @@ const AlapRegister = () => {
   const onSubmitName = async (event: any) => {
     event.preventDefault();
     if (walletType !== '' && address !== '') {
-      await registerAlapId(address, contractAddr.AlapRegistration, registerId, walletType, klaytnCaver, successTx)
+      await registerAlapId(address, contractAddr.AlapRegistration, registerId, walletType, klaytnCaver, successTx);
     } else {
       alert('지갑을 연결해 주세요.');
     }
@@ -52,38 +52,31 @@ const AlapRegister = () => {
 
   const alapIds = (ids: string[]) => {
     return ids.map((id: string) => {
-      return (
-          <S.Mint>{id} &nbsp;</S.Mint>
-      );
+      return <S.Mint>{id} &nbsp;</S.Mint>;
     });
-  }
+  };
 
   return (
     <>
       {isLoggedIn() ? (
         <S.AlapRegistration>
           <S.Record>
-            <S.ContentText>
-              My ALAP ID :&nbsp;
-            </S.ContentText>
-            <S.Mint><b>{registeredId !== "0" ? registeredId : 'NONE'}</b></S.Mint>
+            <S.ContentText>대표 ALAP ID :&nbsp;</S.ContentText>
+            <S.Mint>
+              <b>{registeredId !== '0' ? registeredId : 'NONE'}</b>
+            </S.Mint>
           </S.Record>
           <S.Record>
-            <S.ContentText>
-              Owned ALAP IDs :&nbsp;
-            </S.ContentText>
+            <S.ContentText>내가 가진 ALAP IDs :&nbsp;</S.ContentText>
             {ownedAlapIds.length !== 0 ? alapIds(ownedAlapIds) : <S.Mint>NONE</S.Mint>}
           </S.Record>
           <S.AlapRegisterForm onSubmit={onSubmitName}>
-            <S.AlapRegisterInput type="number" placeholder="ID 입력" maxLength={5} onChange={onChangeName} />
-            <S.AlapRegisterButton type="submit">
-              ALAP ID 등록하기
-            </S.AlapRegisterButton>
+            <S.AlapRegisterInput type="number" placeholder="ALAP ID" maxLength={5} onChange={onChangeName} />
+            <S.AlapRegisterButton type="submit">대표 ALAP 등록하기</S.AlapRegisterButton>
           </S.AlapRegisterForm>
         </S.AlapRegistration>
       ) : (
-        <>
-        </>
+        <></>
       )}
     </>
   );
