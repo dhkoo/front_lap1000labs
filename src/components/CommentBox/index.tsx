@@ -28,7 +28,7 @@ const CommentBox = () => {
 
   useEffect(() => {
     const GetComments = async () => {
-      const res = await getCommentInfos(caver, 5);
+      const res = await getCommentInfos(caver, 10);
       setComments(res);
     };
     const GetFee = async () => {
@@ -107,8 +107,8 @@ const CommentBox = () => {
   return (
     <>
       <S.ContentText>
-        댓글을 남기기 위해선 <S.Purple>{fee} PALA</S.Purple>가 필요하다. <br />
-        최근 5개의 댓글만 확인이 가능하다.<br />
+        하고싶은 말을 남겨보자. (<S.Purple>FREE</S.Purple>) <br />
+        최근 <S.Purple>10</S.Purple>개의 댓글만 확인이 가능하다.<br />
         <br />
       </S.ContentText>
       <S.CommentForm onSubmit={onSubmitName}>
@@ -116,7 +116,7 @@ const CommentBox = () => {
         <S.CommentButton type="submit">
           {getNumberFromBN(palaAllowance, 18) < fee
             ? `${fee} PALA 사용\n승인하기`
-            : `댓글 생성하기\n(${getNumberFromBN(palaAllowance, 18)} PALA 승인됨)`}
+            : `댓글 생성하기`}
         </S.CommentButton>
       </S.CommentForm>
       {viewComment(comments)}

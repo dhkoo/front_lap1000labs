@@ -50,7 +50,7 @@ const NameBook = () => {
       setFeeValue(fee);
     };
     const setAllowance = async () => {
-      const allowance = await getAllowance(contractAddr.pala, contractAddr.Donation, address, caver);
+      const allowance = await getAllowance(contractAddr.pala, contractAddr.ProxyNameBook, address, caver);
       setPalaAllowance(allowance);
     };
     GetTopDonators();
@@ -66,6 +66,7 @@ const NameBook = () => {
   const onSubmitName = async (event: any) => {
     event.preventDefault();
     if (walletType !== '' && address !== '') {
+      console.log(`allowance: ${getNumberFromBN(palaAllowance, 18)}`);
       if (!isFreeUser(address) && getNumberFromBN(palaAllowance, 18) < fee) {
         await approve(
           address,
