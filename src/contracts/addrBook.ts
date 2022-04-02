@@ -5,7 +5,7 @@ export const contractAddr: { [key: string]: string } = {
   NameBook: '0x3f6815AdE8AfF1D827E57bB8e8B1ef978528c54F',
   UnityViewer: '0x6b5483821712E419E070d88B9d4ebd5D2bF15d2A',
   AlapRegistration: '0x98828E54539c4828A67A034dD62ce0026efa4291',
-  CommentBox: '0x33F0fD8298A3Cf45536d81E782058442CAd9527b'
+  CommentBox: '0x33F0fD8298A3Cf45536d81E782058442CAd9527b',
 };
 
 export const gateway: { [key: string]: string } = {

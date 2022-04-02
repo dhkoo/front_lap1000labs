@@ -24,6 +24,14 @@ export const leaveComment = async (
 ): Promise<void> => {
   const abi = getABI(CommentBoxABI as AbiItem[], 'leaveComment');
   if (walletType === 'klip')
-    await executeTxKlip(from, to, '0', JSON.stringify(abi), JSON.stringify([content]), completeCallback, cancelCallback);
+    await executeTxKlip(
+      from,
+      to,
+      '0',
+      JSON.stringify(abi),
+      JSON.stringify([content]),
+      completeCallback,
+      cancelCallback,
+    );
   else await executeTxKaikas(from, to, '0', abi, [content], caver, completeCallback);
 };

@@ -36,9 +36,7 @@
   {
     "inputs": [],
     "name": "alap",
-    "outputs": [
-      { "internalType": "contract ERC721", "name": "", "type": "address" }
-    ],
+    "outputs": [{ "internalType": "contract ERC721", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },
@@ -59,9 +57,7 @@
   {
     "inputs": [],
     "name": "donation",
-    "outputs": [
-      { "internalType": "address payable", "name": "", "type": "address" }
-    ],
+    "outputs": [{ "internalType": "address payable", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },
@@ -87,18 +83,14 @@
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "newOwner", "type": "address" }
-    ],
+    "inputs": [{ "internalType": "address", "name": "newOwner", "type": "address" }],
     "name": "transferOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_account", "type": "address" }
-    ],
+    "inputs": [{ "internalType": "address", "name": "_account", "type": "address" }],
     "name": "alapBalanceOf",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
@@ -119,9 +111,7 @@
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_account", "type": "address" }
-    ],
+    "inputs": [{ "internalType": "address", "name": "_account", "type": "address" }],
     "name": "representativeAlapIdOf",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
@@ -174,9 +164,7 @@
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address[]", "name": "_accounts", "type": "address[]" }
-    ],
+    "inputs": [{ "internalType": "address[]", "name": "_accounts", "type": "address[]" }],
     "name": "getNamesOf",
     "outputs": [
       {
@@ -200,18 +188,14 @@
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_account", "type": "address" }
-    ],
+    "inputs": [{ "internalType": "address", "name": "_account", "type": "address" }],
     "name": "getUserAlapId",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "uint256", "name": "_number", "type": "uint256" }
-    ],
+    "inputs": [{ "internalType": "uint256", "name": "_number", "type": "uint256" }],
     "name": "getCommentInfos",
     "outputs": [
       {
@@ -238,36 +222,28 @@
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_contractAddr", "type": "address" }
-    ],
+    "inputs": [{ "internalType": "address", "name": "_contractAddr", "type": "address" }],
     "name": "setDonation",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_contractAddr", "type": "address" }
-    ],
+    "inputs": [{ "internalType": "address", "name": "_contractAddr", "type": "address" }],
     "name": "setNameBook",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_contractAddr", "type": "address" }
-    ],
+    "inputs": [{ "internalType": "address", "name": "_contractAddr", "type": "address" }],
     "name": "setAlapRegistration",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_contractAddr", "type": "address" }
-    ],
+    "inputs": [{ "internalType": "address", "name": "_contractAddr", "type": "address" }],
     "name": "setCommentBox",
     "outputs": [],
     "stateMutability": "nonpayable",

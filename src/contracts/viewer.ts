@@ -58,7 +58,12 @@ export const getUserAlapId = async (caver: typeof Caver, account: string): Promi
   return id;
 };
 
-export const userAlapIds = async (caver: typeof Caver, account: string, offset: number, limit: number): Promise<string[]> => {
+export const userAlapIds = async (
+  caver: typeof Caver,
+  account: string,
+  offset: number,
+  limit: number,
+): Promise<string[]> => {
   const viewer = caver.contract.create(UnityViewerABI, contractAddr.UnityViewer);
   const res = await viewer.methods.userAlapIds(account, offset, limit).call();
   return res.tokenIds;
@@ -69,13 +74,13 @@ export const getCommentInfos = async (caver: typeof Caver, count: number): Promi
   const res = await viewer.methods.getCommentInfos(count).call();
   const list: CommentInfo[] = [];
   Object.keys(res.comments).forEach((id: string) => {
-    if (res.comments[id].account !== "0x0000000000000000000000000000000000000000")
+    if (res.comments[id].account !== '0x0000000000000000000000000000000000000000')
       list.push({
         index: res.indices[id],
         addr: res.comments[id].account,
         name: res.comments[id].name,
         content: res.comments[id].content,
-        timestamp: res.comments[id].timestamp
+        timestamp: res.comments[id].timestamp,
       });
   });
   return list;
