@@ -65,9 +65,7 @@
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "newOwner", "type": "address" }
-    ],
+    "inputs": [{ "internalType": "address", "name": "newOwner", "type": "address" }],
     "name": "transferOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
@@ -84,36 +82,28 @@
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "string", "name": "_comment", "type": "string" }
-    ],
+    "inputs": [{ "internalType": "string", "name": "_comment", "type": "string" }],
     "name": "leaveComment",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_account", "type": "address" }
-    ],
+    "inputs": [{ "internalType": "address", "name": "_account", "type": "address" }],
     "name": "setDev",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_feeTokenAddr", "type": "address" }
-    ],
+    "inputs": [{ "internalType": "address", "name": "_feeTokenAddr", "type": "address" }],
     "name": "setFeeToken",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "uint256", "name": "_amount", "type": "uint256" }
-    ],
+    "inputs": [{ "internalType": "uint256", "name": "_amount", "type": "uint256" }],
     "name": "setFee",
     "outputs": [],
     "stateMutability": "nonpayable",
