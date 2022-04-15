@@ -30,23 +30,21 @@ const App = () => {
       <GlobalStyle />
       <ResizeHandler print={process.env.NODE_ENV !== 'production'} />
       <BrowserRouter>
-        <S.Root>
-          <S.TopBarSection>
-            <TopBar />
-          </S.TopBarSection>
-          <S.Body id="body">
-            <Routes>
-              <Route path="/" element={<Intro />} />
-              <Route path="/LabNote/*" element={<LabNote />} />
-              <Route path="/MyPage/*" element={<MyPage />} />
-            </Routes>
-          </S.Body>
-          {widthLevel < 720 && (
-            <S.BottomBarSection>
-              <MenuBar />
-            </S.BottomBarSection>
-          )}
-        </S.Root>
+        <S.TopBarSection>
+          <TopBar />
+        </S.TopBarSection>
+        <S.Body>
+          <Routes>
+            <Route path="/" element={<Intro />} />
+            <Route path="/LabNote/*" element={<LabNote />} />
+            <Route path="/MyPage/*" element={<MyPage />} />
+          </Routes>
+        </S.Body>
+        {widthLevel < 720 && (
+          <S.BottomBarSection>
+            <MenuBar />
+          </S.BottomBarSection>
+        )}
       </BrowserRouter>
     </ThemeProvider>
   );

@@ -1,15 +1,4 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
-
-export const Root = styled.div`
-  box-sizing: border-box;
-  width: 100vw;
-  height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 export const ScrollableDiv = styled.div`
   overflow-y: overlay;
@@ -30,19 +19,25 @@ export const ScrollableDiv = styled.div`
 `;
 
 export const TopBarSection = styled.div`
+  position: fixed;
+  top: 0;
   box-sizing: border-box;
   width: 100%;
+  heigth: 70px;
   box-shadow: 0 -1px inset ${(props) => props.theme.color.dimmedFont};
 
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  background: black;
 `;
 
 export const Body = styled(ScrollableDiv)`
   box-sizing: border-box;
   width: 100%;
   max-width: 1280px;
+  margin: 70px 0 50px 0;
   padding: 10px 0;
 
   flex: 1;
@@ -52,10 +47,14 @@ export const Body = styled(ScrollableDiv)`
 `;
 
 export const BottomBarSection = styled(ScrollableDiv)`
+  position: fixed;
+  bottom: 0;
   box-sizing: border-box;
   height: 50px;
   padding: 5px 0;
   width: 100%;
 
   display: flex;
+
+  background: #0000009f;
 `;
