@@ -1,38 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import ConnectWalletButton from './ConnectWalletButton';
-import ConnectedWalletButton from './ConnectedWalletButton';
-import { getUserAlapIds } from 'contracts/nft';
-import * as S from './style';
-import { Lap1000Logo } from 'constants/images';
-import Caver from 'caver-js';
 
+import Profile from './Profile';
+
+import { Lap1000Logo } from 'constants/images';
 import { RootState } from 'state';
+import MenuBar from 'components/MenuBar';
+
+import * as S from './style';
 
 const TopBar = () => {
-  //const caver = new Caver('https://klaytn-en.sixnetwork.io:8651/');
-  const walletName = useSelector((state: RootState) => state.wallet.name);
-  const address = useSelector((state: RootState) => state.wallet.address);
-  const [test, setTest] = useState<String>();
+  const widthLevel = useSelector((state: RootState) => state.window.widthLevel);
 
-  const isLoggedIn = (): boolean => {
-    return walletName !== '' && address !== '';
+  const scrollToTop = () => {
+    document.getElementById('body')?.scrollTo(0, 0);
   };
 
-  useEffect(() => {
-    const getAlapId = async () => {
-      setTest(address);
-    };
-    getAlapId();
-  }, [address]);
-
   return (
-    <>
-      <S.TopBar>
+    <S.TopBar>
+      <S.LogoButton to="/" onClick={scrollToTop}>
         <S.Lap1000Logo src={Lap1000Logo} />
-        {isLoggedIn() ? <ConnectedWalletButton name={walletName} address={address} /> : <ConnectWalletButton />}
-      </S.TopBar>
-    </>
+        랍천 연구소
+      </S.LogoButton>
+      {widthLevel >= 720 && <MenuBar />}
+      <Profile />
+    </S.TopBar>
   );
 };
 

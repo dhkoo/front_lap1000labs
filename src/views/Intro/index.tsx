@@ -1,37 +1,58 @@
+import React from 'react';
+
+import Support from '../../components/Support';
+
 import * as S from './style';
+import CommentBox from 'components/CommentBox';
 
 const Intro = () => {
   return (
     <S.Intro>
-      <S.TitleText>INTRO</S.TitleText>
-      <S.ContentText>팔라 생태계 커뮤니티 기반 서비스 만들 예정</S.ContentText>
-      <S.ContentText>사이드로 진행하는거라 시간있을 때만 진행</S.ContentText>
-      <S.TitleText>PLAN</S.TitleText>
-      <S.ContentText>
-        1. <s>Hall of Lapgend NFT 및 전시관</s> (완료)
-      </S.ContentText>
+      <S.TitleText>
+        <S.Purple>Attention! Attention!</S.Purple>
+      </S.TitleText>
       <S.ContentText>
         <br />
-        2. 지갑 연결시 소유 Alap 표시 (작업중)
+        귀를 찌르는 청량한 소리에 정신이 들었다. <br />
+        <br />
+        나는.. <br />
+        분명 은퇴 기념 휴가를 가던 중이었는데 <br />
+        <br />
+        피부는 <S.Mint>민트색</S.Mint>으로 변해있고 <br />
+        계속 의미를 알 수 없는 소리가 들려온다.. <br />
+        <S.DarkCheon>새로워! 짜릿해! 최고야!</S.DarkCheon> <br />
+        <br />
+        <S.Purple>
+          Attention! Pala! Attention! Alap! <br />
+        </S.Purple>
+        <br />
+        팔..라..? <br />
+        새..가 말하는 것 같다.. <br />
+        나는 아직 살아 있는건가..? <br />
+        <b>궁금한 것</b> 투성이다. <br />
+        <br />
       </S.ContentText>
+      <S.EnterButton to="LabNote/">
+        <b>연구 노트 확인하기</b>
+      </S.EnterButton>
+
+      {/* <S.FeatureFrame> */}
+      <S.Feature>
+        <S.TitleText>Comment</S.TitleText>
+        <CommentBox />
+      </S.Feature>
+      {/* </S.FeatureFrame> */}
+
+      <S.TitleText>SUPPORT</S.TitleText>
       <S.ContentText>
         <br />
-        3. 레전드, 네임드 대사 등록 컨트랙트
-      </S.ContentText>
-      <S.ContentText>
+        바닥부터 하나씩 만들어나가야 한다. <br />
         <br />
-        4. 알랍 투표 기능
+        팔라랜드의 무궁한 발전을 위해 <br />
+        많은 사랑과 후원이 필요해 보인다. <br />
+        <br />
       </S.ContentText>
-      <S.IntroContainer>
-        <S.TitleText>DONATION</S.TitleText>
-        <S.ContentText></S.ContentText>
-        <S.ContentText>
-          0x2eE778B760F1fB93c24c48B9B2992Cd8F3f0c75A
-          <br />
-          <br />
-          <br />
-        </S.ContentText>
-      </S.IntroContainer>
+      <Support />
     </S.Intro>
   );
 };
