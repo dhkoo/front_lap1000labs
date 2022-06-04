@@ -36,7 +36,6 @@ export const TopBarSection = styled.div`
 export const Body = styled(ScrollableDiv)`
   box-sizing: border-box;
   width: 100%;
-  max-width: 1280px;
   margin: 70px 0 50px 0;
   padding: 10px 0;
 
