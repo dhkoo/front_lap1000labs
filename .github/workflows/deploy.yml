@@ -18,8 +18,8 @@ jobs:
         with:
           node-version: '16'
           check-latest: true
-      - run: yarn
-      - run: yarn run build
+      - run: npm install
+      - run: npm run build
       - uses: jakejarvis/s3-sync-action@master
         name: upload app to s3 bucket
         with:
