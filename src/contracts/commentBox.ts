@@ -11,6 +11,7 @@ export type CommentInfo = {
   name: string;
   content: string;
   timestamp: string;
+  alapId: string;
 };
 
 export const leaveComment = async (

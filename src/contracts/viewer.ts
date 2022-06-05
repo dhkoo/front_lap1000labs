@@ -81,6 +81,7 @@ export const getCommentInfos = async (caver: typeof Caver, count: number): Promi
         name: res.comments[id].name,
         content: res.comments[id].content,
         timestamp: res.comments[id].timestamp,
+        alapId: res.comments[id].alapId,
       });
   });
   return list;
