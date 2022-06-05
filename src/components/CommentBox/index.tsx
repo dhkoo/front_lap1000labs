@@ -11,7 +11,7 @@ import { BN, getNumberFromBN } from 'utils/number';
 
 import * as S from './style';
 import { CommentInfo, leaveComment } from 'contracts/commentBox';
-
+import { defaultAlap } from 'constants/images';
 
 const CommentBox = () => {
   const dispatch = useDispatch();
@@ -70,12 +70,21 @@ const CommentBox = () => {
 
   const convertToDate = (timestamp: number) => {
     const datetime = new Date(timestamp * 1000);
-    const formattedDate = 
-      datetime.getFullYear() + "." + (datetime.getMonth() + 1) + "." + datetime.getDate() +
-      " " + datetime.getHours() + ":" + datetime.getMinutes() + ":" + datetime.getSeconds();
+    const formattedDate =
+      datetime.getFullYear() +
+      '.' +
+      (datetime.getMonth() + 1) +
+      '.' +
+      datetime.getDate() +
+      ' ' +
+      datetime.getHours() +
+      ':' +
+      datetime.getMinutes() +
+      ':' +
+      datetime.getSeconds();
 
     return formattedDate.toLocaleString();
-  }
+  };
 
   const viewComment = (comments: CommentInfo[]) => {
     return comments.map((comment: CommentInfo) => {
@@ -84,39 +93,36 @@ const CommentBox = () => {
           <S.Comment>
             <S.Subject>
               <S.Purple>#{comment.index}&nbsp;</S.Purple>
-              <S.Mint>
-                {comment.name !== '' 
-                  ? comment.name
-                  : comment.addr.substring(0,4) +
-                    '...' +
-                    comment.addr.substring(comment.addr.length - 3, comment.addr.length)
+              <S.CommentAlapImage
+                src={
+                  Number(comment.alapId) == 0
+                    ? defaultAlap
+                    : 'https://alap.s3.ap-northeast-2.amazonaws.com/alap-'.concat(comment.alapId).concat('.png')
                 }
+              />
+              <S.Mint>
+                {comment.name !== ''
+                  ? comment.name
+                  : comment.addr.substring(0, 4) +
+                    '...' +
+                    comment.addr.substring(comment.addr.length - 3, comment.addr.length)}
                 &nbsp;
               </S.Mint>
-            <S.DateText>
-              ({convertToDate(parseInt(comment.timestamp))})
-            </S.DateText>
+              <S.DateText>({convertToDate(parseInt(comment.timestamp))})</S.DateText>
             </S.Subject>
             <S.CommentText>{comment.content}</S.CommentText>
           </S.Comment>
         </S.CommentBox>
       );
     });
-  }
+  };
 
   return (
     <>
-      <S.ContentText>
-        하고싶은 말을 남겨보자. (<S.Purple>FREE</S.Purple>) <br />
-        최근 <S.Purple>10</S.Purple>개의 댓글만 확인이 가능하다.<br />
-        <br />
-      </S.ContentText>
       <S.CommentForm onSubmit={onSubmitName}>
         <S.CommentInput type="text" placeholder="댓글 입력 (100자 제한)" maxLength={100} onChange={onChangeName} />
         <S.CommentButton type="submit">
-          {getNumberFromBN(palaAllowance, 18) < fee
-            ? `${fee} PALA 사용\n승인하기`
-            : `댓글 생성하기`}
+          {getNumberFromBN(palaAllowance, 18) < fee ? `${fee} PALA 사용\n승인하기` : `댓글 생성하기`}
         </S.CommentButton>
       </S.CommentForm>
       {viewComment(comments)}

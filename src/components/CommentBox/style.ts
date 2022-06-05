@@ -101,3 +101,10 @@ export const CommentButton = styled.button`
   background: ${(props) => props.theme.color.main};
   cursor: pointer;
 `;
+
+export const CommentAlapImage = styled.img`
+  box-sizing: border-box;
+  height: 22px;
+  margin: 0 2px;
+  border-radius: 5px;
+`;
