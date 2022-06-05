@@ -38,7 +38,7 @@ const Intro = () => {
 
       {/* <S.FeatureFrame> */}
       <S.Feature>
-        <S.TitleText>Comment</S.TitleText>
+        <S.TitleText>On-Chain Comment</S.TitleText>
         <CommentBox />
       </S.Feature>
       {/* </S.FeatureFrame> */}
