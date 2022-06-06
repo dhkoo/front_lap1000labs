@@ -59,7 +59,6 @@ const Support = () => {
       const allowance = await getAllowance(contractAddr.pala, contractAddr.Donation, address, caver);
       setPalaAllowance(allowance);
     };
-    console.log(txFlag);
     GetTopDonatorsInfo();
     if (address !== '') setAllowance();
   }, [txFlag, address]);
