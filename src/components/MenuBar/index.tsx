@@ -14,26 +14,23 @@ const MenuBar = () => {
 
   return (
     <S.MenuBar>
-      {widthLevel < 720 && (
+      {/* {widthLevel < 720 && (
         <S.MenuItem to="" onClick={scrollToTop}>
           홈
         </S.MenuItem>
-      )}
+      )} */}
       <S.MenuItem to="LabNote/1" onClick={scrollToTop}>
+        등록
+      </S.MenuItem>
+      <S.MenuItem to="LabNote/2" onClick={scrollToTop}>
         전당
       </S.MenuItem>
-      {/* <S.MenuItem to="2">방명록</S.MenuItem> */}
       <S.MenuItem to="LabNote/3" onClick={scrollToTop}>
         통신 보안
       </S.MenuItem>
-      <S.MenuItem to="LabNote/" onClick={scrollToTop}>
-        연구 노트
+      <S.MenuItem to="MyPage" onClick={scrollToTop}>
+        마이 페이지
       </S.MenuItem>
-      {widthLevel < 720 && (
-        <S.MenuItem to="MyPage" onClick={scrollToTop}>
-          마이 페이지
-        </S.MenuItem>
-      )}
     </S.MenuBar>
   );
 };
