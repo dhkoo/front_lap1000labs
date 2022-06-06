@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux';
 import { getDcentDeepLink } from 'constants/wallet';
 import { gateway } from 'contracts/addrBook';
 import * as walletActions from 'state/wallet';
-import { getNamesOf } from 'contracts/viewer';
+import * as TxActions from 'state/transaction';
+import { getNamesOf, representativeAlapIdOf } from 'contracts/viewer';
 
 import * as Image from 'constants/images';
 import * as S from './style';
@@ -29,7 +30,11 @@ const ConnectDcentButton: React.FC<{ setImageUrl: (url: string) => void }> = ({ 
         const accounts = await klaytn.enable();
         const address = accounts[0];
         const names = await getNamesOf(caver, [address]);
-        if (address) dispatch(walletActions.setWallet('dcent', address, names[0].name));
+        const id = await representativeAlapIdOf(caver, address);
+        if (address) {
+          dispatch(walletActions.setWallet('dcent', address, names[0].name, id));
+          dispatch(TxActions.toggleFlag());
+        }
       }
     } catch (err) {
       console.log(`dcent connection Error: ${err}`);
