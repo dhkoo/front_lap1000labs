@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import Caver from 'caver-js';
 import { isMobile } from 'react-device-detect';
 
 import { RootState } from 'state';
-import { representativeAlapIdOf } from 'contracts/viewer';
-import { gateway } from 'contracts/addrBook';
 import ConnectKaikasButton from './ConnectKaikasButton';
 import ConnectDcentButton from './ConnectDcentButton';
 import ConnectKlipButton from './ConnectKlipButton';
@@ -15,7 +12,6 @@ import * as Image from 'constants/images';
 import * as S from './style';
 
 const Profile: React.FC = () => {
-  const caver = new Caver(gateway.cypress);
   const walletType = useSelector((state: RootState) => state.wallet.walletType);
   const address = useSelector((state: RootState) => state.wallet.address);
   const alapId = useSelector((state: RootState) => state.wallet.alapId);

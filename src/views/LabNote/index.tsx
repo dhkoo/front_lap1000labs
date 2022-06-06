@@ -1,11 +1,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Hall from 'views/LabNote/1_Hall';
-import Support from 'views/LabNote/2_Support';
-import ApproveZero from 'views/LabNote/3_ApproveZero';
-import Messenger from 'views/LabNote/4_Messenger';
-import Store from 'views/LabNote/Charnel';
+import Hall from 'views/LabNote/Hall';
+import ApproveZero from 'views/LabNote/ApproveZero';
+import Register from 'views/LabNote/Register';
 
 import * as S from './style';
 
@@ -31,20 +29,17 @@ const LabNote = () => {
     <>
       <S.LabNoteButton to="./">연구 노트</S.LabNoteButton>
       <S.MenuContainer>
-        <S.MenuItem to="1">#1 전당</S.MenuItem>
-        <S.MenuItem to="2">#2 정착</S.MenuItem>
+        <S.MenuItem to="1">#1 등록</S.MenuItem>
+        <S.MenuItem to="2">#2 전당</S.MenuItem>
         <S.MenuItem to="3">#3 통신 보안</S.MenuItem>
-        {/* <S.MenuItem to="4">#4 비밀 쪽지</S.MenuItem> */}
-        {/* <S.MenuItem to="/charnel">납골당</S.MenuItem> */}
       </S.MenuContainer>
       <S.NoteContentWrapper>
         <Routes>
           <Route path="" element={LabNoteGuide()} />
-          <Route path="1" element={<Hall />} />
-          <Route path="2" element={<Support />} />
+          <Route path="1" element={<Register />} />
+          <Route path="2" element={<Hall />} />
           <Route path="3" element={<ApproveZero />} />
-          {/* <Route path="4" element={<Messenger />} /> */}
-          {/* <Route path="/charnel" element={<Store />} /> */}
+          <Route path="4" element={<Register />} />
         </Routes>
       </S.NoteContentWrapper>
     </>

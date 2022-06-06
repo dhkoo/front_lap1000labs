@@ -16,6 +16,7 @@ export const TitleText = styled.div`
   color: white;
   text-align: center;
   text-decoration: none;
+
   padding-top: 50px;
   color: white;
 `;
