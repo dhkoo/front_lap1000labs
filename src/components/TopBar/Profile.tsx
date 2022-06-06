@@ -18,6 +18,7 @@ const Profile: React.FC = () => {
   const caver = new Caver(gateway.cypress);
   const walletType = useSelector((state: RootState) => state.wallet.walletType);
   const address = useSelector((state: RootState) => state.wallet.address);
+  const alapId = useSelector((state: RootState) => state.wallet.alapId);
   const txFlag = useSelector((state: RootState) => state.tx.txFlag);
 
   const [imageUrl, setImageUrl] = useState<string>(Image.maina);
@@ -28,11 +29,9 @@ const Profile: React.FC = () => {
 
   useEffect(() => {
     const displayAlap = async () => {
-      let id;
       if (isWalletConnected()) {
-        id = await representativeAlapIdOf(caver, address);
-        if (id != 0) {
-          setImageUrl('https://alap.s3.ap-northeast-2.amazonaws.com/alap-' + id + '.png');
+        if (Number(alapId) != 0) {
+          setImageUrl('https://alap.s3.ap-northeast-2.amazonaws.com/alap-' + alapId + '.png');
         } else {
           setImageUrl(Image.defaultAlap);
         }
@@ -47,7 +46,12 @@ const Profile: React.FC = () => {
         <S.ProfileImage src={imageUrl} />
       </S.ProfileButton>
       {isWalletConnected() ? (
-        <ConnectedWalletButton />
+        <>
+          <ConnectedWalletButton />
+          <ConnectKaikasButton setImageUrl={setImageUrl} />
+          {isMobile && <ConnectDcentButton setImageUrl={setImageUrl} />}
+          {isMobile && <ConnectKlipButton setImageUrl={setImageUrl} />}
+        </>
       ) : (
         <>
           <ConnectKaikasButton setImageUrl={setImageUrl} />

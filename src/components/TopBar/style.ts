@@ -59,7 +59,8 @@ export const ProfileWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  overflow: hidden;
+  overflow: scroll;
+  overflow-y: hidden;
 `;
 
 export const ProfileButton = styled(NavLink)`
