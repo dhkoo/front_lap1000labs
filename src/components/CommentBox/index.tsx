@@ -91,8 +91,8 @@ const CommentBox = () => {
       return (
         <S.CommentBox>
           <S.Comment>
-            <S.Subject>
-              <S.Purple>#{comment.index}&nbsp;</S.Purple>
+            <S.Record>
+              <S.Purple>&nbsp;#{comment.index}&nbsp;</S.Purple>
               <S.CommentAlapImage
                 src={
                   Number(comment.alapId) == 0
@@ -102,15 +102,15 @@ const CommentBox = () => {
               />
               <S.Mint>
                 {comment.name !== ''
-                  ? comment.name
+                  ? comment.name + ' :'
                   : comment.addr.substring(0, 4) +
                     '...' +
                     comment.addr.substring(comment.addr.length - 3, comment.addr.length)}
                 &nbsp;
               </S.Mint>
-              <S.DateText>({convertToDate(parseInt(comment.timestamp))})</S.DateText>
-            </S.Subject>
-            <S.CommentText>{comment.content}</S.CommentText>
+              <S.CommentText>{comment.content}</S.CommentText>
+              {/* <S.DateText>({convertToDate(Number(comment.timestamp))})</S.DateText> */}
+            </S.Record>
           </S.Comment>
         </S.CommentBox>
       );
