@@ -20,10 +20,9 @@ export const ContentText = styled.div`
 export const CommentText = styled.div`
   font-family: Pretendard;
   font-style: normal;
-  font-weight: 320;
+  font-weight: 340;
   font-size: 16px;
   color: white;
-  text-align: end;
 `;
 
 export const DateText = styled.div`
@@ -45,12 +44,16 @@ export const Comment = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  margin-bottom: 8px;
+  background-color: #353535;
+  border-radius: 5px;
 `;
 
-export const Subject = styled.div`
+export const Record = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+  flex-wrap: wrap;
   width: 330px;
 `;
 
