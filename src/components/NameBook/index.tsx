@@ -9,6 +9,7 @@ import { setName } from 'contracts/nameBook';
 import { approve, getAllowance } from 'contracts/erc20';
 import { RootState } from 'state';
 import * as TxActions from 'state/transaction';
+import * as WalletActions from 'state/wallet';
 import { BN, getNumberFromBN } from 'utils/number';
 
 import * as S from './style';
@@ -19,11 +20,12 @@ const NameBook = () => {
   const caver = new Caver(gateway.cypress);
   const walletType = useSelector((state: RootState) => state.wallet.walletType);
   const address = useSelector((state: RootState) => state.wallet.address);
+  const alapId = useSelector((state: RootState) => state.wallet.alapId);
   const txFlag = useSelector((state: RootState) => state.tx.txFlag);
 
   const [fee, setFeeValue] = useState(0);
   const [palaAllowance, setPalaAllowance] = useState<typeof BN>(new BN(0));
-  const [name, setAddressName] = useState('');
+  const [nickName, setAddressNickName] = useState('');
   const [klayDonators, setKlayDonators] = useState<Donator[]>([]);
   const [palaDonators, setPalaDonators] = useState<Donator[]>([]);
 
@@ -60,9 +62,10 @@ const NameBook = () => {
 
   const successTx = async (txHash: any) => {
     dispatch(TxActions.toggleFlag());
+    dispatch(WalletActions.setWallet(walletType, address, nickName, alapId));
   };
 
-  const onChangeName = (event: any) => setAddressName(event.target.value);
+  const onChangeName = (event: any) => setAddressNickName(event.target.value);
   const onSubmitName = async (event: any) => {
     event.preventDefault();
     if (walletType !== '' && address !== '') {
@@ -77,7 +80,8 @@ const NameBook = () => {
           klaytnCaver,
           successTx,
         );
-      } else await setName(address, contractAddr.ProxyNameBook, name, walletType, klaytnCaver, successTx);
+      }
+      await setName(address, contractAddr.ProxyNameBook, nickName, walletType, klaytnCaver, successTx);
     } else {
       alert('지갑을 연결해 주세요.');
     }
