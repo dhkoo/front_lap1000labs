@@ -30,11 +30,10 @@ const Intro = () => {
         새..가 말하는 것 같다.. <br />
         나는 아직 살아 있는건가..? <br />
         <b>궁금한 것</b> 투성이다. <br />
-        <br />
       </S.ContentText>
-      <S.EnterButton to="LabNote/">
+      {/* <S.EnterButton to="LabNote/">
         <b>연구 노트 확인하기</b>
-      </S.EnterButton>
+      </S.EnterButton> */}
 
       {/* <S.FeatureFrame> */}
       <S.Feature>

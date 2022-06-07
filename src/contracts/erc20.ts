@@ -6,6 +6,12 @@ import { AbiItem } from 'web3-utils';
 import { executeTxKaikas, executeTxKlip } from '../utils/transaction';
 import { BN } from 'utils/number';
 
+export const getBalanceOf = async (token: string, myAddress: string, caver: typeof Caver): Promise<typeof BN> => {
+  const tokenInstance = caver.contract.create(ERC20ABI, token);
+  const balance = await tokenInstance.methods.balanceOf(myAddress).call();
+  return new BN(balance);
+};
+
 export const getAllowance = async (
   token: string,
   spender: string,

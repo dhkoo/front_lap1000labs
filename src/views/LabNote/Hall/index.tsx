@@ -9,6 +9,8 @@ const Hall = () => {
   return (
     <S.HallContainer>
       <LabNoteS.NoteLogWrapper>
+        <br />
+        <br />
         이곳에도 사람들이 문명을 이뤄 살고 있었다. <br />
         앞으로 함께 지내야 할 사람들에 대한 조사가 필요했다. <br />
         {/* 앞으로 함께 지내야 할 사람들에 대해 먼저 알고 싶었다. <br /> */}

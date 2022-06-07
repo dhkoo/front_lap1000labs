@@ -56,6 +56,8 @@ const ApproveZero = () => {
   return (
     <S.ApproveZero>
       <LabNoteS.NoteLogWrapper>
+        <br />
+        <br />
         팔라의 사람들은 서로 다양한 계약을 맺으며 살아간다. <br />
         그리고 계약을 중개하는 서비스들도 매우 다양한 것으로 파악된다. <br />
         <br />

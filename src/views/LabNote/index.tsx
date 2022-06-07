@@ -27,12 +27,12 @@ const LabNote = () => {
 
   return (
     <>
-      <S.LabNoteButton to="./">연구 노트</S.LabNoteButton>
+      {/* <S.LabNoteButton to="./">연구 노트</S.LabNoteButton>
       <S.MenuContainer>
         <S.MenuItem to="1">#1 등록</S.MenuItem>
         <S.MenuItem to="2">#2 전당</S.MenuItem>
         <S.MenuItem to="3">#3 통신 보안</S.MenuItem>
-      </S.MenuContainer>
+      </S.MenuContainer> */}
       <S.NoteContentWrapper>
         <Routes>
           <Route path="" element={LabNoteGuide()} />

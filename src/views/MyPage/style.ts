@@ -20,11 +20,32 @@ export const TitleText = styled.div`
   color: white;
 `;
 
+export const EmphasisText = styled.div`
+  font-family: 'East Sea Dokdo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  color: white;
+  text-align: center;
+`;
+
 export const ContentText = styled.div`
-  font-family: Pretendard;
+  font-family: Georgia;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   color: white;
   text-align: center;
+`;
+
+export const ProfileImage = styled.img`
+  box-sizing: border-box;
+  border-radius: 50px;
+  height: 100px;
+`;
+
+export const NFTImage = styled.img`
+  box-sizing: border-box;
+  border-radius: 20px;
+  height: 100px;
 `;

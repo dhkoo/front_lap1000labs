@@ -14,11 +14,9 @@ const MenuBar = () => {
 
   return (
     <S.MenuBar>
-      {/* {widthLevel < 720 && (
-        <S.MenuItem to="" onClick={scrollToTop}>
-          홈
-        </S.MenuItem>
-      )} */}
+      <S.MenuItem to="" onClick={scrollToTop}>
+        홈
+      </S.MenuItem>
       <S.MenuItem to="LabNote/1" onClick={scrollToTop}>
         등록
       </S.MenuItem>
