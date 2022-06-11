@@ -65,7 +65,7 @@ export const DropDownList = styled.ul`
 
 export const TopicText = styled.div`
   box-sizing: border-box;
-  width: 150px;
+  width: 120px;
   font-family: Pretendard;
   font-style: normal;
   font-weight: 500;
@@ -77,7 +77,7 @@ export const TopicText = styled.div`
 
 export const NormalText = styled.div`
   box-sizing: border-box;
-  width: 150px;
+  width: 100px;
   font-family: Pretendard;
   font-style: normal;
   font-weight: 500;
