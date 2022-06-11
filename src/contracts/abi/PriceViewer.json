@@ -1,0 +1,280 @@
+[
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_palaFactory", "type": "address" },
+      {
+        "internalType": "address",
+        "name": "_klaySwapFactory",
+        "type": "address"
+      },
+      { "internalType": "address", "name": "_pala", "type": "address" },
+      { "internalType": "address", "name": "_spala", "type": "address" },
+      { "internalType": "address", "name": "_salap", "type": "address" },
+      { "internalType": "address", "name": "_smoksha", "type": "address" },
+      { "internalType": "address", "name": "_sbwpm", "type": "address" },
+      { "internalType": "address", "name": "_wklay", "type": "address" },
+      { "internalType": "address", "name": "_kusdt", "type": "address" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [],
+    "name": "klaySwapFactory",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "kusdt",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "pala",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "palaFactory",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "salap",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "sbwpm",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "smoksha",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "spala",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "wklay",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "priceList",
+    "outputs": [
+      { "internalType": "uint256", "name": "palaPrice", "type": "uint256" },
+      { "internalType": "uint256", "name": "salapPrice", "type": "uint256" },
+      { "internalType": "uint256", "name": "smokshaPrice", "type": "uint256" },
+      { "internalType": "uint256", "name": "sbwpmPrice", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "account", "type": "address" }
+    ],
+    "name": "allPalaBalance",
+    "outputs": [
+      { "internalType": "uint256", "name": "inWallet", "type": "uint256" },
+      { "internalType": "uint256", "name": "inLP", "type": "uint256" },
+      { "internalType": "uint256", "name": "inStaked", "type": "uint256" },
+      { "internalType": "uint256", "name": "pending", "type": "uint256" },
+      { "internalType": "uint256", "name": "price", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "account", "type": "address" }
+    ],
+    "name": "getDepositPala",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "account", "type": "address" }
+    ],
+    "name": "getStakedPala",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "account", "type": "address" }
+    ],
+    "name": "getPendingPala",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "pool", "type": "address" }
+    ],
+    "name": "getPalaReserveOf",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "token", "type": "address" }
+    ],
+    "name": "tokenPrice",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum PriceViewer.DexType",
+        "name": "dexType",
+        "type": "uint8"
+      },
+      { "internalType": "address", "name": "pool", "type": "address" }
+    ],
+    "name": "getTokens",
+    "outputs": [
+      { "internalType": "address", "name": "tokenA", "type": "address" },
+      { "internalType": "address", "name": "tokenB", "type": "address" }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum PriceViewer.DexType",
+        "name": "dextype",
+        "type": "uint8"
+      },
+      { "internalType": "address", "name": "tokenA", "type": "address" },
+      { "internalType": "address", "name": "tokenB", "type": "address" }
+    ],
+    "name": "getPool",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum PriceViewer.DexType",
+        "name": "dexType",
+        "type": "uint8"
+      },
+      { "internalType": "address", "name": "pool", "type": "address" }
+    ],
+    "name": "getReserves",
+    "outputs": [
+      { "internalType": "uint256", "name": "reserve0", "type": "uint256" },
+      { "internalType": "uint256", "name": "reserve1", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum PriceViewer.DexType",
+        "name": "dexType",
+        "type": "uint8"
+      },
+      { "internalType": "address", "name": "pool", "type": "address" },
+      { "internalType": "address", "name": "baseToken", "type": "address" }
+    ],
+    "name": "enoughLiquidity",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "pool", "type": "address" },
+      { "internalType": "address", "name": "baseToken", "type": "address" },
+      { "internalType": "address", "name": "targetToken", "type": "address" },
+      {
+        "internalType": "enum PriceViewer.DexType",
+        "name": "dexType",
+        "type": "uint8"
+      }
+    ],
+    "name": "getExchangeRatio",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum PriceViewer.DexType",
+        "name": "dexType",
+        "type": "uint8"
+      },
+      { "internalType": "address", "name": "token", "type": "address" }
+    ],
+    "name": "getPrice",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "getPalaPrice",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  }
+]

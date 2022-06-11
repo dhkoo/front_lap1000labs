@@ -1,10 +1,13 @@
 import Caver from 'caver-js';
 
 import UnityViewerABI from './abi/UnityViewer.json';
+import PriceViewerABI from './abi/PriceViewer.json';
 import { contractAddr } from './addrBook';
 import { Donator } from './donation';
 import { NameInfo } from './nameBook';
 import { CommentInfo } from './commentBox';
+import { AllPalaInfo } from 'utils/types';
+import { BN } from 'utils/number';
 
 export const alapBalanceOf = async (caver: typeof Caver, account: string): Promise<any> => {
   const viewer = caver.contract.create(UnityViewerABI, contractAddr.UnityViewer);
@@ -91,4 +94,22 @@ export const getCommentFee = async (caver: typeof Caver): Promise<any> => {
   const viewer = caver.contract.create(UnityViewerABI, contractAddr.UnityViewer);
   const fee = await viewer.methods.getCommentFee().call();
   return Number(fee);
+};
+
+export const getTokenPrice = async (caver: typeof Caver, token: string): Promise<any> => {
+  const viewer = caver.contract.create(PriceViewerABI, contractAddr.PriceViewer);
+  const res = await viewer.methods.tokenPrice(token).call();
+  return res;
+};
+
+export const getAllPalaBalance = async (caver: typeof Caver, account: string): Promise<AllPalaInfo> => {
+  const viewer = caver.contract.create(PriceViewerABI, contractAddr.PriceViewer);
+  const res = await viewer.methods.allPalaBalance(account).call();
+  return {
+    inWallet: res.inWallet,
+    inLP: res.inLP,
+    inStaked: res.inStaked,
+    pending: res.pending,
+    price: res.price,
+  };
 };
