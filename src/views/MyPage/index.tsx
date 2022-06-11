@@ -20,6 +20,7 @@ const MyPage = () => {
   const txFlag = useSelector((state: RootState) => state.tx.txFlag);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [exchageRate, setExchangeRate] = useState<Number>(0);
   const [imageUrl, setImageUrl] = useState<string>(Image.defaultAlap);
   const [ownedAlapIds, setOwnedAlapIds] = useState<string[]>([]);
   const [mokshaBalance, setMokshaBalance] = useState<string>('0');
@@ -48,6 +49,13 @@ const MyPage = () => {
         setMokshaBalance(mokshaBal.toString());
         setOwnedAlapIds(await userAlapIds(caver, address, 0, 20));
         setAllPala((await getAllPalaBalance(caver, address)) as AllPalaInfo);
+        const res = await fetch('https://v1.clink.money/v1/util/currency', {
+          headers: {
+            Origin: 'https://v1.clink.money',
+            Referer: 'https://v1.clink.money',
+          },
+        });
+        setExchangeRate((await res.json()).result);
 
         if (Number(alapId) != 0) {
           setImageUrl('https://alap.s3.ap-northeast-2.amazonaws.com/alap-' + alapId + '.png');
@@ -61,7 +69,12 @@ const MyPage = () => {
 
   const alapIds = (ids: string[]) => {
     return ids.map((id: string) => {
-      return <S.NFTImage src={'https://alap.s3.ap-northeast-2.amazonaws.com/alap-' + id + '.png'} />;
+      return (
+        <S.ColumnContainer>
+          <S.NFTImage src={'https://alap.s3.ap-northeast-2.amazonaws.com/alap-' + id + '.png'} />
+          <S.ContentText>{id}</S.ContentText>
+        </S.ColumnContainer>
+      );
     });
   };
 
@@ -72,100 +85,129 @@ const MyPage = () => {
           <S.TitleText>마이 페이지</S.TitleText>
           <S.ProfileImage src={imageUrl} />
           <br />
-          <br />
-          <S.EmphasisText>Account</S.EmphasisText>
-          <S.ContentText>
+          <S.SubTitleText>지갑주소</S.SubTitleText>
+          <S.ContentText onClick={() => window.open(`https://scope.klaytn.com/account/${address}?tabId=txList`)}>
             {address.substring(0, 7) + '...' + address.substring(address.length - 6, address.length)}
           </S.ContentText>
+          <S.ContentLink onClick={() => window.open(`https://scope.klaytn.com/account/${address}?tabId=txList`)}>
+            klaytnScope
+          </S.ContentLink>
+          <br />
+          <S.SubTitleText>닉네임</S.SubTitleText>
+          <S.ContentText>{name ? name : '-'}</S.ContentText>
           <br />
           <br />
-          <S.EmphasisText>닉네임</S.EmphasisText>
-          <S.ContentText>{name}</S.ContentText>
+          <S.RowContainer>
+            <S.TokenImage src={Image.klayTicker} />
+            <S.SubTitleText>KLAY 자산</S.SubTitleText>
+          </S.RowContainer>
+          <S.RowContainer>
+            <S.ContentText>
+              {(Number(klayBalance) * Number(klayPrice) * Number(exchageRate)).toLocaleString().split('.')[0] + '원'}
+            </S.ContentText>
+            <S.ContentText>
+              {'( ' + Number(klayBalance).toLocaleString(undefined, { maximumFractionDigits: 2 }) + ' 개 )'}
+            </S.ContentText>
+          </S.RowContainer>
           <br />
           <br />
-          <S.EmphasisText>KLAY 자산</S.EmphasisText>
-          <S.ContentText>
-            {'$ ' +
-              (Number(klayBalance) * Number(klayPrice)).toFixed(1).toLocaleString() +
-              ' ( ' +
-              Number(klayBalance).toFixed(1).toLocaleString() +
-              ' KLAY )'}
-          </S.ContentText>
-          <br />
-          <br />
-          <S.EmphasisText>PALA 자산</S.EmphasisText>
+          <S.RowContainer>
+            <S.TokenImage src={Image.palaTicker} />
+            <S.SubTitleText>PALA 자산</S.SubTitleText>
+          </S.RowContainer>
           <S.DropDownContainer>
             <S.DropDownHeader onClick={toggling}>
               <S.ContentText>
-                {'> $ ' +
-                  (
-                    (((Number(allPala.inWallet) +
-                      Number(allPala.inLP) +
-                      Number(allPala.inStaked) +
-                      Number(allPala.pending)) /
-                      1e18) *
-                      Number(allPala.price)) /
-                    1e18
-                  )
-                    .toFixed(1)
-                    .toLocaleString() +
-                  ' ( ' +
+                {!isOpen ? '▷ ' : '∇ '}
+                {(
+                  (((Number(allPala.inWallet) +
+                    Number(allPala.inLP) +
+                    Number(allPala.inStaked) +
+                    Number(allPala.pending)) /
+                    1e18) *
+                    Number(allPala.price) *
+                    Number(exchageRate)) /
+                  1e18
+                )
+                  .toLocaleString()
+                  .split('.')[0] +
+                  '원( ' +
                   (
                     (Number(allPala.inWallet) +
                       Number(allPala.inLP) +
                       Number(allPala.inStaked) +
                       Number(allPala.pending)) /
                     1e18
-                  )
-                    .toFixed(1)
-                    .toLocaleString() +
-                  ' PALA )'}
+                  ).toLocaleString(undefined, { maximumFractionDigits: 2 }) +
+                  ' 개 )'}
               </S.ContentText>
             </S.DropDownHeader>
             {isOpen && (
               <S.DropDownListContainer>
-                <S.DropDownList>
-                  <S.ListItem>
-                    <S.TopicText>보유 PALA</S.TopicText>
-                    <S.NormalText>
-                      {'$ ' + (((Number(allPala.inWallet) / 1e18) * Number(allPala.price)) / 1e18).toLocaleString()}
-                    </S.NormalText>
-                    <S.NormalText>{(Number(allPala.inWallet) / 1e18).toLocaleString() + ' 개'}</S.NormalText>
-                  </S.ListItem>
-                  <S.ListItem>
-                    <S.TopicText>스테이킹된 PALA</S.TopicText>
-                    <S.NormalText>
-                      {'$ ' + (((Number(allPala.inStaked) / 1e18) * Number(allPala.price)) / 1e18).toLocaleString()}
-                    </S.NormalText>
-                    <S.NormalText>{(Number(allPala.inStaked) / 1e18).toLocaleString() + ' 개'}</S.NormalText>
-                  </S.ListItem>
-                  <S.ListItem>
-                    <S.TopicText>LP로된 PALA</S.TopicText>
-                    <S.NormalText>
-                      {'$ ' + (((Number(allPala.inLP) / 1e18) * Number(allPala.price)) / 1e18).toLocaleString()}
-                    </S.NormalText>
-                    <S.NormalText>{(Number(allPala.inLP) / 1e18).toLocaleString() + ' 개'}</S.NormalText>
-                  </S.ListItem>
-                  <S.ListItem>
-                    <S.TopicText>수령 가능한 PALA</S.TopicText>
-                    <S.NormalText>
-                      {'$ ' + (((Number(allPala.pending) / 1e18) * Number(allPala.price)) / 1e18).toLocaleString()}
-                    </S.NormalText>
-                    <S.NormalText>{(Number(allPala.pending) / 1e18).toLocaleString() + ' 개'}</S.NormalText>
-                  </S.ListItem>
-                </S.DropDownList>
+                <S.ListItem>
+                  <S.TopicText>지갑</S.TopicText>
+                  <S.CountText>
+                    {(Number(allPala.inWallet) / 1e18).toLocaleString(undefined, { maximumFractionDigits: 2 }) + ' 개'}
+                  </S.CountText>
+                  <S.AssetText>
+                    {((((Number(allPala.inWallet) / 1e18) * Number(allPala.price)) / 1e18) * Number(exchageRate))
+                      .toLocaleString()
+                      .split('.')[0] + '원'}
+                  </S.AssetText>
+                </S.ListItem>
+                <S.ListItem>
+                  <S.TopicText>스테이킹</S.TopicText>
+                  <S.CountText>
+                    {(Number(allPala.inStaked) / 1e18).toLocaleString(undefined, { maximumFractionDigits: 2 }) + ' 개'}
+                  </S.CountText>
+                  <S.AssetText>
+                    {((((Number(allPala.inStaked) / 1e18) * Number(allPala.price)) / 1e18) * Number(exchageRate))
+                      .toLocaleString()
+                      .split('.')[0] + '원'}
+                  </S.AssetText>
+                </S.ListItem>
+                <S.ListItem>
+                  <S.TopicText>LP 토큰</S.TopicText>
+                  <S.CountText>
+                    {(Number(allPala.inLP) / 1e18).toLocaleString(undefined, { maximumFractionDigits: 2 }) + ' 개'}
+                  </S.CountText>
+                  <S.AssetText>
+                    {((((Number(allPala.inLP) / 1e18) * Number(allPala.price)) / 1e18) * Number(exchageRate))
+                      .toLocaleString()
+                      .split('.')[0] + '원'}
+                  </S.AssetText>
+                </S.ListItem>
+                <S.ListItem>
+                  <S.TopicText>수령가능</S.TopicText>
+                  <S.CountText>
+                    {(Number(allPala.pending) / 1e18).toLocaleString(undefined, { maximumFractionDigits: 2 }) + ' 개'}
+                  </S.CountText>
+                  <S.AssetText>
+                    {((((Number(allPala.pending) / 1e18) * Number(allPala.price)) / 1e18) * Number(exchageRate))
+                      .toLocaleString()
+                      .split('.')[0] + '원'}
+                  </S.AssetText>
+                </S.ListItem>
               </S.DropDownListContainer>
             )}
           </S.DropDownContainer>
           <br />
           <br />
-          <S.EmphasisText>모크샤 수량</S.EmphasisText>
-          <S.ContentText>{Number(mokshaBalance).toLocaleString() + ' MOKSHA'}</S.ContentText>
+          <S.RowContainer>
+            <S.TokenImage src={Image.vaultTicker} />
+            <S.SubTitleText>모크샤 자산</S.SubTitleText>
+          </S.RowContainer>
+          <S.ContentText>{Number(mokshaBalance).toLocaleString() + ' 개'}</S.ContentText>
           <br />
           <br />
-          <S.EmphasisText>알랍 수량</S.EmphasisText>
-          <S.ContentText>{Number(ownedAlapIds.length).toLocaleString() + ' ALAP'}</S.ContentText>
-          {ownedAlapIds.length !== 0 ? alapIds(ownedAlapIds) : <S.ContentText>NONE</S.ContentText>}
+          <S.RowContainer>
+            <S.TokenImage src={Image.vaultTicker} />
+            <S.SubTitleText>알랍 자산</S.SubTitleText>
+          </S.RowContainer>
+          <S.ContentText>{Number(ownedAlapIds.length).toLocaleString() + ' 개'}</S.ContentText>
+          <S.AlapGrid>
+            {ownedAlapIds.length !== 0 ? alapIds(ownedAlapIds) : <S.ContentText>-</S.ContentText>}
+          </S.AlapGrid>
         </>
       ) : (
         <S.ContentText>

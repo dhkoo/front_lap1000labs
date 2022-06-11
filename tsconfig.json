@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "baseUrl": "./src",
     "allowJs": true,
     "skipLibCheck": true,
@@ -20,18 +16,10 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "typeRoots": [
-      "./types",
-      "./node_modules/@types"
-    ],
+    "typeRoots": ["./types", "./node_modules/@types"],
     "declaration": true,
     "declarationDir": "./types"
   },
-  "typeRoots" : [
-    "./types",
-    "./node_modules/@types"
-  ],
-  "include": [
-    "src"
-  ]
+  "typeRoots": ["./types", "./node_modules/@types"],
+  "include": ["src"]
 }

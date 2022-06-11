@@ -4,6 +4,13 @@ const imageLocation = window.location.origin;
 
 export const Lap1000Logo = imageLocation.concat('/images/lap1000.png');
 
+// token
+export const palaTicker = imageLocation.concat('/images/token/pala_ticker.png');
+export const klayTicker = imageLocation.concat('/images/token/klay_ticker.svg');
+export const smokshaTicker = imageLocation.concat('/images/token/smoksha_ticker.png');
+export const salapTicker = imageLocation.concat('/images/token/salap_ticker.png');
+export const vaultTicker = imageLocation.concat('/images/token/vault_ticker.svg');
+
 // wallet
 export const dcentLogo = imageLocation.concat('/images/wallet/dcent.svg');
 export const kaikasLogo = imageLocation.concat('/images/wallet/kaikas.svg');

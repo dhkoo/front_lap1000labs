@@ -5,6 +5,8 @@ export const MyPage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  margin-bottom: 200px;
 `;
 
 export const TitleText = styled.div`
@@ -19,7 +21,21 @@ export const TitleText = styled.div`
   color: white;
 `;
 
-export const EmphasisText = styled.div`
+export const RowContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ColumnContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const SubTitleText = styled.div`
   font-family: 'East Sea Dokdo';
   font-style: normal;
   font-weight: 200;
@@ -32,7 +48,7 @@ export const ContentText = styled.div`
   font-family: Pretendard;
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 17px;
   color: white;
   text-align: center;
 `;
@@ -46,54 +62,101 @@ export const ProfileImage = styled.img`
 export const NFTImage = styled.img`
   box-sizing: border-box;
   border-radius: 20px;
-  height: 100px;
+  height: 80px;
+`;
+
+export const TokenImage = styled.img`
+  box-sizing: border-box;
+  border-radius: 50px;
+  height: 30px;
+  margin-right: 10px;
 `;
 
 export const DropDownContainer = styled.div``;
 export const DropDownHeader = styled.div`
-  margin-bottom: 5px;
   font-weight: 500;
   text-align: center;
+  margin-bottom: 5px;
+
   cursor: pointer;
 `;
-export const DropDownListContainer = styled.div``;
-export const DropDownList = styled.ul`
-  &:first-child {
-    padding-top: 1px;
-  }
-`;
-
-export const TopicText = styled.div`
-  box-sizing: border-box;
-  width: 120px;
-  font-family: Pretendard;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 15px;
-
-  color: ${(props) => props.theme.color.sub};
-  text-align: left;
-`;
-
-export const NormalText = styled.div`
-  box-sizing: border-box;
-  width: 100px;
-  font-family: Pretendard;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 15px;
-
-  color: white;
-  text-align: right;
-`;
-
-export const ListItem = styled.li`
-  list-style: none;
-  width: 380px;
+export const DropDownListContainer = styled.div`
   display: flex;
-  direction: row;
+  flex-direction: column;
+  width: 330px;
+`;
+
+export const ListItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 330px;
   justify-content: space-between;
   text-align: right;
   margin-bottom: 10px;
-  background-color: #353535;
+  border-bottom: 1px solid ${(props) => props.theme.color.sub};
+`;
+
+export const TopicText = styled.div`
+  flex-basis: 110px;
+
+  font-family: Pretendard;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 15px;
+
+  text-align: left;
+  color: ${(props) => props.theme.color.sub};
+`;
+
+export const CountText = styled.div`
+  flex-basis: 110px;
+
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+
+  text-align: right;
+  color: white;
+`;
+
+export const AssetText = styled.div`
+  flex-basis: 110px;
+
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 15px;
+
+  text-align: right;
+  color: ${(props) => props.theme.color.main};
+`;
+
+export const AlapGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+`;
+
+export const ContentLink = styled.div`
+  box-sizing: border-box;
+  height: calc(100% - 4px);
+  margin: 2px;
+  border-radius: 5px;
+
+  font-family: monospace;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  word-break: keep-all;
+
+  background: #222222;
+  &:hover {
+    color: black;
+    background: ${(props) => props.theme.color.main};
+  }
+  cursor: pointer;
 `;
