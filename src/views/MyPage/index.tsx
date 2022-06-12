@@ -116,7 +116,7 @@ const MyPage = () => {
             <S.SubTitleText>PALA 자산</S.SubTitleText>
           </S.RowContainer>
           <S.DropDownContainer>
-            <S.DropDownHeader onClick={toggling}>
+            <S.DropDownHeader>
               <S.ContentText>
                 {(
                   (((Number(allPala.inWallet) +
@@ -130,7 +130,11 @@ const MyPage = () => {
                 )
                   .toLocaleString()
                   .split('.')[0] + '원'}
-                {!isOpen ? <S.ContentLink>상세보기</S.ContentLink> : <S.ContentLink>접기</S.ContentLink>}
+                {!isOpen ? (
+                  <S.ContentLink onClick={toggling}>상세보기</S.ContentLink>
+                ) : (
+                  <S.ContentLink onClick={toggling}>접기</S.ContentLink>
+                )}
               </S.ContentText>
             </S.DropDownHeader>
             {isOpen && (

@@ -87,8 +87,6 @@ export const DropDownHeader = styled.div`
   font-weight: 500;
   text-align: center;
   margin-bottom: 5px;
-
-  cursor: pointer;
 `;
 export const DropDownListContainer = styled.div`
   display: flex;
