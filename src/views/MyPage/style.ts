@@ -47,8 +47,8 @@ export const SubTitleText = styled.div`
 export const ContentText = styled.div`
   font-family: monospace;
   font-style: normal;
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: 700;
+  font-size: 18px;
   color: white;
   text-align: center;
 `;
@@ -201,18 +201,14 @@ export const TokenPriceBox = styled.div`
   word-break: keep-all;
 
   background: #333333;
-  &:hover {
-    color: black;
-    background: ${(props) => props.theme.color.main};
-  }
-  margin-left: 5px;
+  margin-left: 10px;
 `;
 
 export const PriceText = styled.div`
   font-family: monospace;
   font-style: normal;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 13px;
   color: white;
   text-align: center;
   margin-right: 7px;
