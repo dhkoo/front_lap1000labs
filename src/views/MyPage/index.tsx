@@ -7,9 +7,9 @@ import { erc20TokenAddr, erc721TokenAddr, gateway } from 'contracts/addrBook';
 
 import * as Image from 'constants/images';
 import * as S from './style';
-import { getAllPalaBalance, getTokenPrice, userAlapIds } from 'contracts/viewer';
+import { allPalaNFTInfo, allPalaTokneInfo, getTokenPrice, userAlapIds } from 'contracts/viewer';
 import { getBalanceOf } from 'contracts/erc20';
-import { AllPalaInfo } from 'utils/types';
+import { AllPalaNFTInfo, AllPalaTokenInfo } from 'utils/types';
 
 const MyPage = () => {
   const caver = new Caver(gateway.cypress);
@@ -23,10 +23,10 @@ const MyPage = () => {
   const [exchageRate, setExchangeRate] = useState<Number>(0);
   const [imageUrl, setImageUrl] = useState<string>(Image.defaultAlap);
   const [ownedAlapIds, setOwnedAlapIds] = useState<string[]>([]);
-  const [mokshaBalance, setMokshaBalance] = useState<string>('0');
   const [klayBalance, setKlayBalance] = useState<string>('0');
   const [klayPrice, setKlayPrice] = useState<Number>(0);
-  const [allPala, setAllPala] = useState<AllPalaInfo>({} as AllPalaInfo);
+  const [allPala, setAllPala] = useState<AllPalaTokenInfo>({} as AllPalaTokenInfo);
+  const [allPalaNFT, setAllPalaNFT] = useState<AllPalaNFTInfo>({} as AllPalaNFTInfo);
 
   const toggling = () => setIsOpen(!isOpen);
 
@@ -42,13 +42,12 @@ const MyPage = () => {
     const displayAlap = async () => {
       if (isWalletConnected()) {
         const klayBal = Number(await caver.rpc.klay.getBalance(address));
-        const mokshaBal = await getBalanceOf(erc721TokenAddr.moksha, address, caver);
         const price = await getTokenPrice(caver, erc20TokenAddr.wklay);
         setKlayPrice(Number(price) / 1e18);
         setKlayBalance((klayBal / 1e18).toFixed(2).toString());
-        setMokshaBalance(mokshaBal.toString());
         setOwnedAlapIds(await userAlapIds(caver, address, 0, 20));
-        setAllPala((await getAllPalaBalance(caver, address)) as AllPalaInfo);
+        setAllPala((await allPalaTokneInfo(caver, address)) as AllPalaTokenInfo);
+        setAllPalaNFT((await allPalaNFTInfo(caver, address)) as AllPalaNFTInfo);
         const res = await fetch('https://v1.clink.money/v1/util/currency', {
           headers: {
             Origin: 'https://v1.clink.money',
@@ -97,6 +96,27 @@ const MyPage = () => {
           <S.ContentText>{name ? name : '-'}</S.ContentText>
           <br />
           <br />
+          <S.SubTitleText>총 자산평가</S.SubTitleText>
+          <S.ContentText>
+            {(
+              Number(klayBalance) * Number(klayPrice) * Number(exchageRate) +
+              (((Number(allPala.inWallet) +
+                Number(allPala.inLP) +
+                Number(allPala.inSingleStaking) +
+                Number(allPala.inPairStaking) +
+                Number(allPala.pending)) /
+                1e18) *
+                Number(allPala.price) *
+                Number(exchageRate)) /
+                1e18 +
+              (Number(allPalaNFT.mokshaBalance) * Number(allPalaNFT.smokshaPrice) * Number(exchageRate)) / 1e18 +
+              (Number(allPalaNFT.alapBalance) * Number(allPalaNFT.salapPrice) * Number(exchageRate)) / 1e18
+            )
+              .toLocaleString()
+              .split('.')[0] + '원'}
+          </S.ContentText>
+          <br />
+          <br />
           <S.RowContainer>
             <S.SubTitleText>KLAY 자산</S.SubTitleText>
             <S.TokenPriceBox>
@@ -129,7 +149,8 @@ const MyPage = () => {
                 {(
                   (((Number(allPala.inWallet) +
                     Number(allPala.inLP) +
-                    Number(allPala.inStaked) +
+                    Number(allPala.inSingleStaking) +
+                    Number(allPala.inPairStaking) +
                     Number(allPala.pending)) /
                     1e18) *
                     Number(allPala.price) *
@@ -159,12 +180,25 @@ const MyPage = () => {
                   </S.AssetText>
                 </S.ListItem>
                 <S.ListItem>
-                  <S.TopicText>스테이킹</S.TopicText>
+                  <S.TopicText>단일 스테이킹</S.TopicText>
                   <S.CountText>
-                    {(Number(allPala.inStaked) / 1e18).toLocaleString(undefined, { maximumFractionDigits: 2 }) + '개'}
+                    {(Number(allPala.inSingleStaking) / 1e18).toLocaleString(undefined, { maximumFractionDigits: 2 }) +
+                      '개'}
                   </S.CountText>
                   <S.AssetText>
-                    {((((Number(allPala.inStaked) / 1e18) * Number(allPala.price)) / 1e18) * Number(exchageRate))
+                    {((((Number(allPala.inSingleStaking) / 1e18) * Number(allPala.price)) / 1e18) * Number(exchageRate))
+                      .toLocaleString()
+                      .split('.')[0] + '원'}
+                  </S.AssetText>
+                </S.ListItem>
+                <S.ListItem>
+                  <S.TopicText>페어 스테이킹</S.TopicText>
+                  <S.CountText>
+                    {(Number(allPala.inPairStaking) / 1e18).toLocaleString(undefined, { maximumFractionDigits: 2 }) +
+                      '개'}
+                  </S.CountText>
+                  <S.AssetText>
+                    {((((Number(allPala.inPairStaking) / 1e18) * Number(allPala.price)) / 1e18) * Number(exchageRate))
                       .toLocaleString()
                       .split('.')[0] + '원'}
                   </S.AssetText>
@@ -197,7 +231,8 @@ const MyPage = () => {
                     {(
                       (Number(allPala.inWallet) +
                         Number(allPala.inLP) +
-                        Number(allPala.inStaked) +
+                        Number(allPala.inSingleStaking) +
+                        Number(allPala.inPairStaking) +
                         Number(allPala.pending)) /
                       1e18
                     ).toLocaleString(undefined, { maximumFractionDigits: 2 }) + '개'}
@@ -206,7 +241,8 @@ const MyPage = () => {
                     {(
                       (((Number(allPala.inWallet) +
                         Number(allPala.inLP) +
-                        Number(allPala.inStaked) +
+                        Number(allPala.inSingleStaking) +
+                        Number(allPala.inPairStaking) +
                         Number(allPala.pending)) /
                         1e18) *
                         Number(allPala.price) *
@@ -223,17 +259,38 @@ const MyPage = () => {
           <br />
           <br />
           <S.RowContainer>
-            <S.TokenImage src={Image.vaultTicker} />
             <S.SubTitleText>모크샤 자산</S.SubTitleText>
+            <S.TokenPriceBox>
+              <S.TokenImage src={Image.vaultTicker} />
+              <S.PriceText>
+                {((Number(allPalaNFT.smokshaPrice) * Number(exchageRate)) / 1e18).toLocaleString().split('.')[0] + '원'}
+              </S.PriceText>
+            </S.TokenPriceBox>
           </S.RowContainer>
-          <S.ContentText>{Number(mokshaBalance).toLocaleString() + '개'}</S.ContentText>
+          <S.ContentText>
+            {((Number(allPalaNFT.mokshaBalance) * (Number(allPalaNFT.smokshaPrice) * Number(exchageRate))) / 1e18)
+              .toLocaleString()
+              .split('.')[0] + '원'}
+          </S.ContentText>
+          <S.SubContentText>{Number(allPalaNFT.mokshaBalance).toLocaleString() + '개'}</S.SubContentText>
           <br />
           <br />
           <S.RowContainer>
-            <S.TokenImage src={Image.vaultTicker} />
             <S.SubTitleText>알랍 자산</S.SubTitleText>
+            <S.TokenPriceBox>
+              <S.TokenImage src={Image.vaultTicker} />
+              <S.PriceText>
+                {((Number(allPalaNFT.salapPrice) * Number(exchageRate)) / 1e18).toLocaleString().split('.')[0] + '원'}
+              </S.PriceText>
+            </S.TokenPriceBox>
           </S.RowContainer>
-          <S.ContentText>{Number(ownedAlapIds.length).toLocaleString() + '개'}</S.ContentText>
+          <S.ContentText>
+            {((Number(allPalaNFT.alapBalance) * (Number(allPalaNFT.salapPrice) * Number(exchageRate))) / 1e18)
+              .toLocaleString()
+              .split('.')[0] + '원'}
+          </S.ContentText>
+          <S.SubContentText>{Number(allPalaNFT.alapBalance).toLocaleString() + '개'}</S.SubContentText>
+
           <S.AlapGrid>
             {ownedAlapIds.length !== 0 ? alapIds(ownedAlapIds) : <S.ContentText>-</S.ContentText>}
           </S.AlapGrid>

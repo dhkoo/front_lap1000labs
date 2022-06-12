@@ -23,151 +23,128 @@
     "name": "klaySwapFactory",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [],
     "name": "kusdt",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [],
     "name": "pala",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [],
     "name": "palaFactory",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [],
     "name": "salap",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [],
     "name": "sbwpm",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [],
     "name": "smoksha",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [],
     "name": "spala",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [],
     "name": "wklay",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
-    "inputs": [],
-    "name": "priceList",
+    "inputs": [{ "internalType": "address", "name": "account", "type": "address" }],
+    "name": "allPalaNFTInfo",
     "outputs": [
-      { "internalType": "uint256", "name": "palaPrice", "type": "uint256" },
       { "internalType": "uint256", "name": "salapPrice", "type": "uint256" },
+      { "internalType": "uint256", "name": "alapBalance", "type": "uint256" },
       { "internalType": "uint256", "name": "smokshaPrice", "type": "uint256" },
-      { "internalType": "uint256", "name": "sbwpmPrice", "type": "uint256" }
+      { "internalType": "uint256", "name": "mokshaBalance", "type": "uint256" }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "account", "type": "address" }
-    ],
-    "name": "allPalaBalance",
+    "inputs": [{ "internalType": "address", "name": "account", "type": "address" }],
+    "name": "allPalaTokneInfo",
     "outputs": [
       { "internalType": "uint256", "name": "inWallet", "type": "uint256" },
       { "internalType": "uint256", "name": "inLP", "type": "uint256" },
-      { "internalType": "uint256", "name": "inStaked", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "inSingleStaking",
+        "type": "uint256"
+      },
+      { "internalType": "uint256", "name": "inPairStaking", "type": "uint256" },
       { "internalType": "uint256", "name": "pending", "type": "uint256" },
       { "internalType": "uint256", "name": "price", "type": "uint256" }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "account", "type": "address" }
-    ],
+    "inputs": [{ "internalType": "address", "name": "account", "type": "address" }],
     "name": "getDepositPala",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "account", "type": "address" }
-    ],
-    "name": "getStakedPala",
+    "inputs": [{ "internalType": "address", "name": "account", "type": "address" }],
+    "name": "getPairStakingPala",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "account", "type": "address" }
-    ],
+    "inputs": [{ "internalType": "address", "name": "account", "type": "address" }],
     "name": "getPendingPala",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "pool", "type": "address" }
-    ],
+    "inputs": [{ "internalType": "address", "name": "pool", "type": "address" }],
     "name": "getPalaReserveOf",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "token", "type": "address" }
-    ],
+    "inputs": [{ "internalType": "address", "name": "token", "type": "address" }],
     "name": "tokenPrice",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -184,8 +161,7 @@
       { "internalType": "address", "name": "tokenB", "type": "address" }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -200,8 +176,7 @@
     "name": "getPool",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -218,8 +193,7 @@
       { "internalType": "uint256", "name": "reserve1", "type": "uint256" }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -234,8 +208,7 @@
     "name": "enoughLiquidity",
     "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -251,8 +224,7 @@
     "name": "getExchangeRatio",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -266,15 +238,13 @@
     "name": "getPrice",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [],
     "name": "getPalaPrice",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   }
 ]

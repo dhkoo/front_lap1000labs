@@ -5,7 +5,7 @@ export const contractAddr: { [key: string]: string } = {
   UnityViewer: '0x3c792c83274cF4CEA32bA22bBA674E3A47C49f9a',
   AlapRegistration: '0x98828E54539c4828A67A034dD62ce0026efa4291',
   CommentBox: '0x33F0fD8298A3Cf45536d81E782058442CAd9527b',
-  PriceViewer: '0xeB5DA1C1C3d7BA80E12Ec7e6a70A236c6450aad8',
+  PriceViewer: '0x38bA46E59c0a21A54B4C87aceEB020814cb09fC7',
 };
 
 export const erc20TokenAddr: { [key: string]: string } = {

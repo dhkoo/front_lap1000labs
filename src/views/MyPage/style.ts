@@ -112,7 +112,7 @@ export const ListItem = styled.div`
   width: 330px;
   text-align: right;
   margin-bottom: 10px;
-  opacity: 0.6;
+  opacity: 0.8;
 `;
 
 export const TopicText = styled.div`
@@ -212,4 +212,12 @@ export const PriceText = styled.div`
   color: white;
   text-align: center;
   margin-right: 7px;
+`;
+
+export const Mint = styled.span`
+  color: ${(props) => props.theme.color.main};
+`;
+
+export const Purple = styled.span`
+  color: ${(props) => props.theme.color.sub};
 `;

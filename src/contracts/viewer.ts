@@ -6,7 +6,7 @@ import { contractAddr } from './addrBook';
 import { Donator } from './donation';
 import { NameInfo } from './nameBook';
 import { CommentInfo } from './commentBox';
-import { AllPalaInfo } from 'utils/types';
+import { AllPalaNFTInfo, AllPalaTokenInfo } from 'utils/types';
 import { BN } from 'utils/number';
 
 export const alapBalanceOf = async (caver: typeof Caver, account: string): Promise<any> => {
@@ -102,14 +102,25 @@ export const getTokenPrice = async (caver: typeof Caver, token: string): Promise
   return res;
 };
 
-export const getAllPalaBalance = async (caver: typeof Caver, account: string): Promise<AllPalaInfo> => {
+export const allPalaTokneInfo = async (caver: typeof Caver, account: string): Promise<AllPalaTokenInfo> => {
   const viewer = caver.contract.create(PriceViewerABI, contractAddr.PriceViewer);
-  const res = await viewer.methods.allPalaBalance(account).call();
+  const res = await viewer.methods.allPalaTokneInfo(account).call();
   return {
     inWallet: res.inWallet,
     inLP: res.inLP,
-    inStaked: res.inStaked,
+    inSingleStaking: res.inSingleStaking,
+    inPairStaking: res.inPairStaking,
     pending: res.pending,
     price: res.price,
+  };
+};
+export const allPalaNFTInfo = async (caver: typeof Caver, account: string): Promise<AllPalaNFTInfo> => {
+  const viewer = caver.contract.create(PriceViewerABI, contractAddr.PriceViewer);
+  const res = await viewer.methods.allPalaNFTInfo(account).call();
+  return {
+    salapPrice: res.salapPrice,
+    alapBalance: res.alapBalance,
+    smokshaPrice: res.smokshaPrice,
+    mokshaBalance: res.mokshaBalance,
   };
 };
