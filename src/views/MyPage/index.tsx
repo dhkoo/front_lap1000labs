@@ -98,22 +98,30 @@ const MyPage = () => {
           <br />
           <br />
           <S.RowContainer>
-            <S.TokenImage src={Image.klayTicker} />
             <S.SubTitleText>KLAY 자산</S.SubTitleText>
+            <S.TokenPriceBox>
+              <S.TokenImage src={Image.klayTicker} />
+              <S.PriceText>
+                {(Number(klayPrice) * Number(exchageRate)).toLocaleString().split('.')[0] + '원'}
+              </S.PriceText>
+            </S.TokenPriceBox>
           </S.RowContainer>
-          <S.RowContainer>
-            <S.ContentText>
-              {(Number(klayBalance) * Number(klayPrice) * Number(exchageRate)).toLocaleString().split('.')[0] + '원'}
-            </S.ContentText>
-            <S.ContentText>
-              {'( ' + Number(klayBalance).toLocaleString(undefined, { maximumFractionDigits: 2 }) + '개 )'}
-            </S.ContentText>
-          </S.RowContainer>
+          <S.ContentText>
+            {(Number(klayBalance) * Number(klayPrice) * Number(exchageRate)).toLocaleString().split('.')[0] + '원'}
+          </S.ContentText>
+          <S.SubContentText>
+            {Number(klayBalance).toLocaleString(undefined, { maximumFractionDigits: 2 }) + '개'}
+          </S.SubContentText>
           <br />
           <br />
           <S.RowContainer>
-            <S.TokenImage src={Image.palaTicker} />
             <S.SubTitleText>PALA 자산</S.SubTitleText>
+            <S.TokenPriceBox>
+              <S.TokenImage src={Image.palaTicker} />
+              <S.PriceText>
+                {((Number(allPala.price) * Number(exchageRate)) / 1e18).toLocaleString().split('.')[0] + '원'}
+              </S.PriceText>
+            </S.TokenPriceBox>
           </S.RowContainer>
           <S.DropDownContainer>
             <S.DropDownHeader>
@@ -173,7 +181,7 @@ const MyPage = () => {
                   </S.AssetText>
                 </S.ListItem>
                 <S.ListItem>
-                  <S.TopicText>수령가능</S.TopicText>
+                  <S.TopicText>보상</S.TopicText>
                   <S.CountText>
                     {(Number(allPala.pending) / 1e18).toLocaleString(undefined, { maximumFractionDigits: 2 }) + '개'}
                   </S.CountText>
@@ -184,7 +192,7 @@ const MyPage = () => {
                   </S.AssetText>
                 </S.ListItem>
                 <S.ListMainItem>
-                  <S.TopicText>= TOTAL</S.TopicText>
+                  <S.TopicText>총 합계</S.TopicText>
                   <S.CountText>
                     {(
                       (Number(allPala.inWallet) +

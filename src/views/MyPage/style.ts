@@ -45,22 +45,20 @@ export const SubTitleText = styled.div`
 `;
 
 export const ContentText = styled.div`
-  font-family: Pretendard;
+  font-family: monospace;
   font-style: normal;
   font-weight: 600;
-  font-size: 17px;
+  font-size: 15px;
   color: white;
   text-align: center;
 `;
-
-export const PriceText = styled.div`
+export const SubContentText = styled.div`
   font-family: monospace;
   font-style: normal;
-  font-weight: 700;
-  font-size: 17px;
-  color: ${(props) => props.theme.color.main};
+  font-weight: 500;
+  font-size: 13px;
+  color: white;
   text-align: center;
-  margin-left: 10px;
 `;
 
 export const ProfileImage = styled.img`
@@ -78,8 +76,8 @@ export const NFTImage = styled.img`
 export const TokenImage = styled.img`
   box-sizing: border-box;
   border-radius: 50px;
-  height: 30px;
-  margin-right: 10px;
+  height: 25px;
+  margin-right: 5px;
 `;
 
 export const DropDownContainer = styled.div``;
@@ -181,4 +179,41 @@ export const ContentLink = styled.div`
     background: ${(props) => props.theme.color.main};
   }
   cursor: pointer;
+`;
+
+export const TokenPriceBox = styled.div`
+  display: flex;
+  direction: row;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+  margin: 2px;
+  border-radius: 10px;
+
+  font-family: monospace;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  word-break: keep-all;
+
+  background: #333333;
+  &:hover {
+    color: black;
+    background: ${(props) => props.theme.color.main};
+  }
+  margin-left: 5px;
+`;
+
+export const PriceText = styled.div`
+  font-family: monospace;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  color: white;
+  text-align: center;
+  margin-right: 7px;
 `;
