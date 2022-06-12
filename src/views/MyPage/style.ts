@@ -47,10 +47,20 @@ export const SubTitleText = styled.div`
 export const ContentText = styled.div`
   font-family: Pretendard;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 17px;
   color: white;
   text-align: center;
+`;
+
+export const PriceText = styled.div`
+  font-family: monospace;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  color: ${(props) => props.theme.color.main};
+  text-align: center;
+  margin-left: 10px;
 `;
 
 export const ProfileImage = styled.img`
@@ -86,21 +96,34 @@ export const DropDownListContainer = styled.div`
   width: 330px;
 `;
 
+export const ListMainItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid ${(props) => props.theme.color.sub};
+
+  width: 330px;
+  text-align: right;
+  margin-bottom: 10px;
+`;
+
 export const ListItem = styled.div`
   display: flex;
   flex-direction: row;
-  width: 330px;
   justify-content: space-between;
+  border-bottom: 1px solid ${(props) => props.theme.color.sub};
+
+  width: 330px;
   text-align: right;
   margin-bottom: 10px;
-  border-bottom: 1px solid ${(props) => props.theme.color.sub};
+  opacity: 0.6;
 `;
 
 export const TopicText = styled.div`
   flex-basis: 110px;
 
   font-family: Pretendard;
-  font-style: italic;
+  font-style: normal;
   font-weight: 700;
   font-size: 15px;
 
@@ -125,11 +148,11 @@ export const AssetText = styled.div`
 
   font-family: Pretendard;
   font-style: normal;
-  font-weight: 800;
+  font-weight: 600;
   font-size: 15px;
 
   text-align: right;
-  color: ${(props) => props.theme.color.main};
+  color: white;
 `;
 
 export const AlapGrid = styled.div`
@@ -149,6 +172,7 @@ export const ContentLink = styled.div`
   font-weight: 500;
   font-size: 13px;
   color: white;
+  opacity: 0.8;
   text-align: center;
   text-decoration: none;
   word-break: keep-all;
