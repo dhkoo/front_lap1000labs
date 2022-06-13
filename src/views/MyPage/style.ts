@@ -57,7 +57,7 @@ export const SubContentText = styled.div`
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
-  color: white;
+  color: #dddddd;
   text-align: center;
 `;
 

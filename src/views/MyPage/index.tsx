@@ -8,7 +8,6 @@ import { erc20TokenAddr, erc721TokenAddr, gateway } from 'contracts/addrBook';
 import * as Image from 'constants/images';
 import * as S from './style';
 import { allPalaNFTInfo, allPalaTokneInfo, getTokenPrice, userAlapIds } from 'contracts/viewer';
-import { getBalanceOf } from 'contracts/erc20';
 import { AllPalaNFTInfo, AllPalaTokenInfo } from 'utils/types';
 
 const MyPage = () => {
@@ -27,6 +26,8 @@ const MyPage = () => {
   const [klayPrice, setKlayPrice] = useState<Number>(0);
   const [allPala, setAllPala] = useState<AllPalaTokenInfo>({} as AllPalaTokenInfo);
   const [allPalaNFT, setAllPalaNFT] = useState<AllPalaNFTInfo>({} as AllPalaNFTInfo);
+  const [alapFloorPrice, setAlapFloorPrice] = useState<string>('0');
+  const [mokshaFloorPrice, setMokshaFloorPrice] = useState<string>('0');
 
   const toggling = () => setIsOpen(!isOpen);
 
@@ -48,13 +49,19 @@ const MyPage = () => {
         setOwnedAlapIds(await userAlapIds(caver, address, 0, 20));
         setAllPala((await allPalaTokneInfo(caver, address)) as AllPalaTokenInfo);
         setAllPalaNFT((await allPalaNFTInfo(caver, address)) as AllPalaNFTInfo);
-        const res = await fetch('https://v1.clink.money/v1/util/currency', {
+        let res = await fetch('https://v1.clink.money/v1/util/currency', {
           headers: {
             Origin: 'https://v1.clink.money',
             Referer: 'https://v1.clink.money',
           },
         });
         setExchangeRate((await res.json()).result);
+
+        res = await fetch(`https://api.pala.world/projects/${erc721TokenAddr.alap}`);
+        setAlapFloorPrice((await res.json()).floorPriceInKlay);
+
+        res = await fetch(`https://api.pala.world/projects/${erc721TokenAddr.moksha}`);
+        setMokshaFloorPrice((await res.json()).floorPriceInKlay);
 
         if (Number(alapId) != 0) {
           setImageUrl('https://alap.s3.ap-northeast-2.amazonaws.com/alap-' + alapId + '.png');
@@ -267,6 +274,9 @@ const MyPage = () => {
               </S.PriceText>
             </S.TokenPriceBox>
           </S.RowContainer>
+          <S.SubContentText>
+            {'FloorPrice ' + (Number(mokshaFloorPrice) / 1e18).toLocaleString() + ' KLAY'}
+          </S.SubContentText>
           <S.ContentText>
             {((Number(allPalaNFT.mokshaBalance) * (Number(allPalaNFT.smokshaPrice) * Number(exchageRate))) / 1e18)
               .toLocaleString()
@@ -284,6 +294,9 @@ const MyPage = () => {
               </S.PriceText>
             </S.TokenPriceBox>
           </S.RowContainer>
+          <S.SubContentText>
+            {'FloorPrice ' + (Number(alapFloorPrice) / 1e18).toLocaleString() + ' KLAY'}
+          </S.SubContentText>
           <S.ContentText>
             {((Number(allPalaNFT.alapBalance) * (Number(allPalaNFT.salapPrice) * Number(exchageRate))) / 1e18)
               .toLocaleString()
