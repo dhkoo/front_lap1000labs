@@ -291,9 +291,7 @@ const MyPage = () => {
           </S.ContentText>
           <S.SubContentText>{Number(allPalaNFT.alapBalance).toLocaleString() + '개'}</S.SubContentText>
 
-          <S.AlapGrid>
-            {ownedAlapIds.length !== 0 ? alapIds(ownedAlapIds) : <S.ContentText>-</S.ContentText>}
-          </S.AlapGrid>
+          <S.AlapGrid>{alapIds(ownedAlapIds)}</S.AlapGrid>
         </>
       ) : (
         <S.ContentText>

@@ -59,7 +59,7 @@ export const ProfileWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  overflow: scroll;
+  overflow: auto;
   overflow-y: hidden;
 `;
 
