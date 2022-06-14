@@ -46,41 +46,25 @@ export const ColumnBoxContainer = styled.div`
   border-radius: 10px;
 `;
 
-export const SubTitleText = styled.div`
+export const SubTitleText = styled.div<{ size?: string }>`
   font-family: 'East Sea Dokdo';
   font-style: normal;
   font-weight: 200;
-  font-size: 22px;
+  font-size: ${(props) => (props.size === undefined ? '22px' : props.size)};
   color: ${(props) => props.theme.color.sub};
   text-align: center;
 `;
 
-export const SubTitleForTotalText = styled.div`
-  font-family: 'East Sea Dokdo';
-  font-style: normal;
-  font-weight: 200;
-  font-size: 25px;
-  color: ${(props) => props.theme.color.sub};
-  text-align: center;
-`;
-
-export const ContentText = styled.div`
+export const ContentText = styled.div<{ size?: string }>`
   font-family: monospace;
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
+  font-size: ${(props) => (props.size === undefined ? '18px' : props.size)};
   color: white;
   text-align: center;
 `;
 
-export const NormalText = styled.div`
-  font-family: monospace;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 13px;
-  color: white;
-  text-align: center;
-`;
 export const SubContentText = styled.div`
   font-family: monospace;
   font-style: normal;

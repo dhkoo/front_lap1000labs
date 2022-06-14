@@ -94,9 +94,12 @@ const MyPage = () => {
           <S.ProfileImage src={imageUrl} />
           <S.ContentText>{name ? name : '-'}</S.ContentText>
           <br />
-          <S.NormalText onClick={() => window.open(`https://scope.klaytn.com/account/${address}?tabId=txList`)}>
+          <S.ContentText
+            size="13px"
+            onClick={() => window.open(`https://scope.klaytn.com/account/${address}?tabId=txList`)}
+          >
             {address.substring(0, 7) + '...' + address.substring(address.length - 6, address.length)}
-          </S.NormalText>
+          </S.ContentText>
           <S.ContentLink onClick={() => window.open(`https://scope.klaytn.com/account/${address}?tabId=txList`)}>
             klaytnScope
           </S.ContentLink>

@@ -38,12 +38,20 @@ export const LogoButton = styled(NavLink)`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
+  @media screen and (max-width: 370px) {
+    font-size: 30px;
+  }
 `;
 
 export const Lap1000Logo = styled.img`
   box-sizing: border-box;
   height: 50px;
   margin-right: 10px;
+
+  @media screen and (max-width: 370px) {
+    height: 40px;
+  }
 `;
 
 // Profile

@@ -28,7 +28,7 @@ export const MenuItem = styled(NavLink)`
   font-family: 'East Sea Dokdo';
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 22px;
   color: white;
   text-align: center;
   text-decoration: none;
@@ -38,5 +38,8 @@ export const MenuItem = styled(NavLink)`
   &.active {
     color: black;
     background: ${(props) => props.theme.color.main};
+  }
+  @media screen and (max-width: 370px) {
+    font-size: 20px;
   }
 `;
