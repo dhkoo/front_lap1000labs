@@ -35,11 +35,31 @@ export const ColumnContainer = styled.div`
   align-items: center;
 `;
 
+export const ColumnBoxContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 330px;
+  height: 70px;
+  background: #222222;
+  border-radius: 10px;
+`;
+
 export const SubTitleText = styled.div`
   font-family: 'East Sea Dokdo';
   font-style: normal;
   font-weight: 200;
-  font-size: 30px;
+  font-size: 22px;
+  color: ${(props) => props.theme.color.sub};
+  text-align: center;
+`;
+
+export const SubTitleForTotalText = styled.div`
+  font-family: 'East Sea Dokdo';
+  font-style: normal;
+  font-weight: 200;
+  font-size: 25px;
   color: ${(props) => props.theme.color.sub};
   text-align: center;
 `;
@@ -49,6 +69,15 @@ export const ContentText = styled.div`
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
+  color: white;
+  text-align: center;
+`;
+
+export const NormalText = styled.div`
+  font-family: monospace;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
   color: white;
   text-align: center;
 `;
